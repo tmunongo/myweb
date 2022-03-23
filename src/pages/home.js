@@ -3,30 +3,37 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 //import components
-import homeCover from '../img/spiderwave.jpg';
+import homeCover from '../img/backstreet-2.jpg';
 
 //styling
 const CoverImage = styled.div`
-    
+    width: calc(100%);
+    height: auto;
+    background-color: black;
 `;
 
+const Head = styled.h1`
+    margin: 0px 0px 0px 0px;
+    text-align: center;
+`
+
 const Image = styled.img`
-    position: relative;
     margin: 0px;
-    width: 100vw;
+    width: calc(100%);
     height: auto;
-    border-top: solid white;
-    border-bottom: solid white;
+    border-top: solid black;
+    border-bottom: solid black;
 
     @media (min-width: 700px) {
         padding-left: 0px;
-        width: 100vw;
+        width: calc(100%);
         height: 70vh;
     }
 `;
 
 const Body = styled.div`
     color: white;
+    background-color: black;
 
     @media (min-width: 700px) {
         padding: 0px calc(100% - 75%) 0px calc(100% - 75%);
@@ -41,6 +48,16 @@ const Main = styled.div`
     
 `;
 
+const Para = styled.p`
+    margin-block-start: 0;
+    margin-block-end: 0;
+`
+
+const Title = styled.p`
+    margin-block-start: 0;
+    margin-block-end: 0;
+`
+
 const Home = () => {
 
     useEffect(() => {
@@ -53,17 +70,26 @@ const Home = () => {
                     <Image  src={homeCover} alt='MyCover' />
                 </CoverImage>
                 <Body>
-                    <h1>Home of Pilgrims</h1>
-                    <p>Welcome, traveller</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore 
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                        exercitation ullamco laboris nisi ut aliquip ex ea 
-                        commodo consequat. Duis aute irure dolor in reprehenderit 
-                        in voluptate velit esse cillum dolore eu fugiat nulla 
-                        pariatur. Excepteur sint occaecat cupidatat non proident, 
-                        sunt in culpa qui officia deserunt mollit anim id est 
-                        laborum.</p>
+                    <Head>Welcome, traveller</Head>
+                    <Para>This is my thin slice of the internet pie. 
+                        I hope you like what you see. <br />
+                        <br />
+                        I haven’t decided what I love more, reading or 
+                        telling stories. I like to tell stories about 
+                        the world, to connect dots, to understand. 
+                        There’s a piece of me in everything that you’ll 
+                        read here. It’s okay to not agree with me — 
+                        half the time I don’t even agree with myself. 
+                        I do, however, try to be honest. My points of view 
+                        are constantly changing, evolving, as am I. My story 
+                        is still being written. Feel free to tag along. <br />
+                        <br />
+                        I have sought (and am still seeking) wisdom from 
+                        everywhere, trying to understand my place in this 
+                        world. I’ll write on everything from philosophy, 
+                        modern technology, science, religion, and spirituality. 
+                        I’ll (hopefully) share my fiction more frequently, too.
+                    </Para>
                 </Body>
             </Main>
     );

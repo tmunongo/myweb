@@ -8,7 +8,7 @@ const Foot = styled.div`
     background-color: #1f1f1f;
     color: white;
     width: 100%;
-    border-top: 4px solid white;
+    border-top: 4px solid black;
     text-align: centered;
     margin: 0;
     bottom: 0;

@@ -3,18 +3,17 @@ import styled from 'styled-components';
 
 //import components
 import Header from './Header';
-import Navigation from './Navigation';
 import Footer from './Footer';
 
 // component styles
 const Wrapper = styled.div`
+    width: calc(100%);
 
     @media (min-width: 700px) {
-        height: calc(100% - 64px);
-        width: 100%;
+        height: auto;
         flex: auto;
         flex-direction: column;
-        padding: 24px 0 64px 0;
+        padding: 0px 0px 64px 0px;
 
         /* visual */
         background-color: black;
@@ -23,12 +22,12 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
     height: calc(100%);
-    width: 100vw;
+    max-width: calc(100%);
 
     @media (min-width: 700px) {
         flex: 1;
         height: calc(100%);
-        padding: 0;
+        
     }
 `;
 

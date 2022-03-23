@@ -6,14 +6,6 @@ import SideBar from './SideBar';
 const Nav = styled.nav`
     height: 100px;
     padding-top: 20px;
-    
-    @media (max-width: 750px) {
-        padding-top: 20px;
-    }
-
-    @media (min-width: 750px) {
-        padding: 0px 0px 40px 0px;
-    }
 `;
 
 const NavList = styled.ul`
@@ -23,6 +15,7 @@ const NavList = styled.ul`
     line-height: 2;
     float: right;
     padding-right: 64px;
+
 
     /* We can nest styles in styled-components */
     /* The following styles will apply to links within the NavList component */

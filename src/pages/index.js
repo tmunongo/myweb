@@ -8,7 +8,10 @@ import Layout from '../components/Layout';
 import Home from './home';
 import About from './about';
 import Writings from './writings';
-
+import QuickView from './quickview'
+import PostPage from './post';
+import SignUp from './signup';
+import SignIn from './signin';
 
 //define routes
 const Pages = () => {
@@ -19,6 +22,10 @@ const Pages = () => {
                     <Route path="/" element={<Home />}></Route>
                     <Route path="about" element={<About />}></Route>
                     <Route path="writings" element={<Writings />}></Route>
+                    <Route path="quickview" element={<QuickView />}></Route>
+                    <Route path="post/:id" element={<PostPage />}></Route>
+                    <Route path="signup" element={<SignUp />}></Route>
+                    <Route path="signin" element={<SignIn />}></Route>
                 </Routes>
             </Layout>
         </Router>

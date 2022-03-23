@@ -12,14 +12,14 @@ export default createGlobalStyle`
   html {
     height: 100%;
     margin: 0;
+    color: bisque;
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    color: #fff;
-    background-color: #49494F;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    background-color: #252522;
     line-height: 1.4;
+    background-color: 'black';
   }
 
   a:link,

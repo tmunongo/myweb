@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: calc(100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: "AstroSpace";
+  src: local("AstroSpace"),
+    url("./assets/a-astro-space-font/AstroSpace.ttf") format("truetype");
+}
+
+.headerName {
+  font-family: "AstroSpace";
 }
