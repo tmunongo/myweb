@@ -147,10 +147,10 @@ const Writings = () => {
     document.title = 'Tawanda Munongo - Writings'
   })
 
-  const { data, loading, error } = useQuery(GET_POSTS)
+  const { data, loading, error } = useQuery(GET_POSTS, {})
 
   //if data loading, display message
-  if (loading) return <p>Loadin'...</p>
+  if (loading) return <p style={{ textAlign: 'center' }}>Loadin'...</p>
   //if there is an error, display error message
   if (error) return <p>Error!</p> + error.message
   //if there is no data

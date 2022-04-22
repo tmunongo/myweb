@@ -10,30 +10,21 @@ import Pages from './pages'
 //import components
 import GlobalStyle from './components/GlobalStyle'
 
-//const uri = process.env.API_URI;
 const cache = new InMemoryCache()
 
-const uri = process.env.API_URI
+const API_URI = process.env.REACT_APP_API_URI
 
 const client = new ApolloClient({
+  uri: API_URI,
   cache,
-  uri: uri,
   headers: {
     //authorization: localStorage.getItem('token') || '',
     resolvers: {},
     connectToDevTools: true,
   },
+  introspection: process.env.NODE_ENV !== 'production',
 })
-/*
-const data = {
-  isLoggedIn: !!localStorage.getItem('token')
-};
 
-//write the cache data on initial load
-cache.modify({ data });
-//write cache data after cache is reset
-client.onResetStore(() => cache.modify({ data }));
-*/
 const App = () => {
   return (
     <ApolloProvider client={client}>
