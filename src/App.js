@@ -1,14 +1,8 @@
+// require('dotenv').config()
 import React from 'react'
 import ReactDOM from 'react-dom'
 //import Apollo Client libraries
-import {
-  ApolloClient,
-  ApolloProvider,
-  createHttpLink,
-  InMemoryCache,
-} from '@apollo/client'
-
-import AstroSpace from './assets/a-astro-space-font/AstroSpace.ttf'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
 //import routes
 import Pages from './pages'
@@ -21,7 +15,7 @@ const cache = new InMemoryCache()
 
 const client = new ApolloClient({
   cache,
-  uri: 'http://localhost:4321/realm-api',
+  uri: process.env.API_URI,
   headers: {
     //authorization: localStorage.getItem('token') || '',
     resolvers: {},
