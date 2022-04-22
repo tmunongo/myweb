@@ -13,9 +13,11 @@ import GlobalStyle from './components/GlobalStyle'
 //const uri = process.env.API_URI;
 const cache = new InMemoryCache()
 
+const uri = process.env.API_URI
+
 const client = new ApolloClient({
   cache,
-  uri: process.env.API_URI,
+  uri: uri,
   headers: {
     //authorization: localStorage.getItem('token') || '',
     resolvers: {},

@@ -80,7 +80,7 @@ const About = () => {
           </a>{' '}
           and <a href="https://www.rushmagazine.org/">The Rush Magazine</a>. You
           can find my earlier writings on my{' '}
-          <a href="thoughtrealm.medium.com">Medium</a> page.
+          <a href="https://thoughtrealm.medium.com">Medium</a> page.
         </Text>
       </Body>
     </Page>
