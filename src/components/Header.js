@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import SideBar from './SideBar'
-import Astro from '../assets/a-astro-space-font/AstroSpace.ttf'
 
 const Burger = styled.div`
   @media (min-width: 700px) {

@@ -115,10 +115,14 @@ const Article = styled.article`
   border-bottom: 1px solid #7fe3d8;
 `
 
-const Text3 = styled.span`
-  grid-row-start: row3;
-  grid-row-end: rowend;
-  grid-column-start: column2;
+const TimeStamp = styled.h3`
+  margin: 0px 0px 2px 0px;
+  color: #95d779;
+  font-size: 13px;
+  width: calc(100%);
+  @screen (max-width: 700px) {
+    width: calc(100%);
+  }
 `
 
 const Title = styled.h2`
@@ -130,18 +134,6 @@ const Title = styled.h2`
     margin: 0px 0px 5px 0px;
   }
 `
-
-function formatDate(timestamp) {
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-  let date = new Date(timestamp).toLocaleDateString(undefined, options)
-  return date
-}
-
 function readTime(text) {
   const wpm = 225
   const words = text.trim().split(/\s+/).length
@@ -164,6 +156,16 @@ const Writings = () => {
   //if there is no data
   if (!data) return <p>Not found</p>
 
+  function formatDate(timestamp) {
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+    let date = new Date(timestamp).toLocaleDateString(undefined, options)
+    return date
+  }
   //if fetch successful, display in UI
   return (
     <Body>
@@ -173,10 +175,12 @@ const Writings = () => {
           <Banner>
             <Article className="postList" key={post.id}>
               <Title>{post.title}</Title>
-              <Text3>
-                Posted: {formatDate(post.createdAt)} {' | '}
-                {readTime(post.content)} min read
-              </Text3>
+              <TimeStamp>
+                <span style={{ color: '#8EE0F5' }}>posted</span>(
+                {formatDate(post.createdAt)}),{' '}
+                <span style={{ color: '#8EE0F5' }}>readTime</span>(
+                {readTime(post.content)} min)
+              </TimeStamp>
               <div>
                 <Blurb>{post.blurb}</Blurb> <br />
                 <Link to={`/post/${post.id}`}>Read More</Link>
@@ -186,7 +190,7 @@ const Writings = () => {
         ))}
       </Left>
       <Middle>
-        <h3 style={{ 'padding-left': '10px', 'margin-bottom': '5px' }}>
+        <h3 style={{ paddingLeft: '10px', marginBottom: '5px' }}>
           Categories coming soon...
         </h3>
         <Wrap>

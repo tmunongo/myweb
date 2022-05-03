@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 
 import styled from 'styled-components'
@@ -15,7 +15,12 @@ import {
   TumblrShareButton,
   WhatsappIcon,
   WhatsappShareButton,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TelegramShareButton,
+  TelegramIcon,
 } from 'react-share'
+import { Fade } from 'react-reveal'
 
 //import query
 //import logged in user UI components
@@ -68,17 +73,29 @@ const Name = styled.h3`
   color: white;
 `
 
-const Body = styled.p`
+const Body = styled.div`
   color: #b4b4b4;
   grid-column-start: second;
   grid-column-end: third;
-  border-bottom: 2px solid white;
   margin-top: 0;
+  @media (min-width: 700px) {
+    border-bottom: 2px solid white;
+    margin: 0px 0px 10px 0px;
+    padding-bottom: 5px;
+  }
+  @media (max-width: 700px) {
+    border-bottom: 2px solid white;
+  }
 `
 
 const Image = styled.img`
   max-width: calc(100%);
   align-items: center;
+`
+
+const Share = styled.div`
+  display: flex;
+  justify-content: space-evenly;
 `
 
 const Title = styled.h2`
@@ -93,7 +110,10 @@ const TimeStamp = styled.h3`
   margin: 0px 0px 10px 0px;
   color: #95d779;
   font-size: 13px;
-  width: calc(75%);
+  width: calc(100%);
+  @media (max-width: 700px) {
+    width: calc(100%);
+  }
 `
 
 function readTime(text) {
@@ -102,36 +122,11 @@ function readTime(text) {
   const time = Math.ceil(words / wpm)
   return time
 }
-//page animations *
-//select elements with required class name
-// const scrollElements = document.querySelectorAll('.js-scroll')
-// scrollElements.forEach((el) => {
-//   el.style.opacity = 1
-// })
-// console.log(scrollElements)
-// /* check if element is in view */
-// const elementInView = (el, scrollOffset = 100) => {
-//   const elementTop = el.getBoundingClientRect().top
-
-//   return (
-//     elementTop <=
-//     (window.innerHeight || document.documentElement.clientHeight) - scrollOffset
-//   )
-// }
-// /* assign class name */
-// const displayScrollElement = (element) => {
-//   element.classList.add('scrolled')
-// }
-// const handleScrollAnimation = () => {
-//   scrollElements.forEach((el) => {
-//     if (elementInView(el, 100)) {
-//       displayScrollElement(el)
-//     }
-//   })
-// }
-// window.addEventListener('scroll', handleScrollAnimation())
 
 const Post = ({ post }) => {
+  useEffect(() => {
+    document.title = `${post.title} - Tawanda Munongo`
+  })
   var options = {
     weekday: 'long',
     year: 'numeric',
@@ -149,15 +144,52 @@ const Post = ({ post }) => {
           {readTime(post.content)} min)
         </TimeStamp>
         <Image src={post.coverUrl} alt={post.title} />
-
-        <ReactMarkdown className="blogContent" children={post.content} />
-
-        <EmailShareButton subject={post.title} body={post.blurb} />
-        <a href="">
-          <EmailIcon size={32} round={true} />
-        </a>
-        <FacebookShareButton quote={post.blurb} />
-        <FacebookIcon size={32} round={true} />
+        <Fade bottom>
+          <ReactMarkdown className="blogContent" children={post.content} />
+        </Fade>
+        <Share>
+          <EmailShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            subject={post.title}
+            body={post.blurb}
+          >
+            <EmailIcon size={32} round={true} />
+          </EmailShareButton>
+          <FacebookShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            quote={post.blurb}
+          >
+            {' '}
+            <FacebookIcon size={32} round={true} />
+          </FacebookShareButton>
+          <LinkedinShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+          >
+            <LinkedinIcon size={32} round={true} />
+          </LinkedinShareButton>
+          <PocketShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+          >
+            <PocketIcon size={32} round={true} />
+          </PocketShareButton>
+          <TelegramShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            title={post.title}
+          >
+            <TelegramIcon size={32} round={true} />
+          </TelegramShareButton>
+          <TwitterShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            related={'@edtha3rd'}
+          >
+            <TwitterIcon size={32} round={true} />
+          </TwitterShareButton>
+          <WhatsappShareButton
+            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+          >
+            <WhatsappIcon size={32} round={true} />
+          </WhatsappShareButton>
+        </Share>
       </Body>
       <MetaData>
         {/* <BioPic
@@ -165,28 +197,30 @@ const Post = ({ post }) => {
           alt={`${post.author.username} avatar`}
           height="90px"
         /> */}
-        <MetaInfo className="js-scroll">
-          <Name>
-            {post.author.fullname}
-            <strong
-              style={{
-                'font-size': 10,
-                color: 'purple',
-                'font-style': 'oblique',
-              }}
-            >
-              {' '}
-              AUTHOR{' '}
-            </strong>
-          </Name>{' '}
-          Seeking truth, wisdom, and, above all, enlightenment | Lover of
-          fiction | Computer Scientist | My short fiction has been published in
-          Ab Terra Flash Fiction, The Rush Magazine, and Literary Heist Magazine
-          |
-          {/* {post.author.fullname} <br />
+        <MetaInfo>
+          <Fade>
+            <Name>
+              {post.author.fullname}
+              <strong
+                style={{
+                  fontSize: 10,
+                  color: 'purple',
+                  fontStyle: 'oblique',
+                }}
+              >
+                {' '}
+                AUTHOR{' '}
+              </strong>
+            </Name>{' '}
+            Seeking truth, wisdom, and, above all, enlightenment | Lover of
+            fiction | Computer Scientist | My short fiction has been published
+            in Ab Terra Flash Fiction, The Rush Magazine, and Literary Heist
+            Magazine |
+            {/* {post.author.fullname} <br />
                     {post.author.username} <br />
                     {post.createdAt}
-                    {format(post.createdAt, "MMM Do YYYY")} */}
+                  {format(post.createdAt, "MMM Do YYYY")} */}
+          </Fade>
         </MetaInfo>
       </MetaData>
     </StyledPost>
