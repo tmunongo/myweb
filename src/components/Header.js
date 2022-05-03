@@ -81,7 +81,7 @@ const ListItem = styled.li`
   font-style: normal;
   font-stretch: regular;
   text-transform: capitalize;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: bold;
   text-decoration: underline;
   text-decoration-thickness: 2px;

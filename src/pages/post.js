@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 //import Post component
 import Post from '../components/Post'
 import { GET_POST } from '../gql/query'
+import Loading from '../components/Loading'
 
 const PostPage = () => {
   let { id } = useParams()
@@ -15,7 +16,7 @@ const PostPage = () => {
     { fetchPolicy: 'no-cache' }
   )
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
   if (error) return <p>Error - Post Does Not Exist</p>
 
   return (

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
 //import components
+import Loading from '../components/Loading'
 import essays from '../img/essays.jpg'
 import fiction from '../img/fiction.jpg'
 import freeWriting from '../img/free-writing.jpg'
@@ -156,7 +157,8 @@ const Writings = () => {
   const { data, loading, error } = useQuery(GET_POSTS, {})
 
   //if data loading, display message
-  if (loading) return <p style={{ textAlign: 'center' }}>Loadin'...</p>
+  // if (loading) return <p>Loading...</p>
+  if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
   //if there is an error, display error message
   if (error) return <p>Error!</p> + error.message
   //if there is no data
