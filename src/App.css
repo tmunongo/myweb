@@ -36,14 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-@font-face {
-  font-family: "AstroSpace";
-  src: local("AstroSpace"),
-    url("./assets/a-astro-space-font/AstroSpace.ttf") format("truetype");
-}
-
-.headerName {
-  font-family: "AstroSpace";
-}
-
