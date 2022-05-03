@@ -26,11 +26,13 @@ const HeaderBar = styled.header`
 `
 
 const LogoText = styled.h1`
-  margin: 0;
+  margin: 10px;
   padding: 20px 0px 0px 0px;
   color: #e4e8e9;
-  font-size: 24px;
+  font-size: 20px;
   @media (max-width: 768px) {
+    margin: 0px;
+    padding: 25px 0px 0px 0px;
   }
 `
 
@@ -61,7 +63,7 @@ const NavList = styled.ul`
   a {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.3em;
     color: #e4e8e9;
   }
 
@@ -106,15 +108,17 @@ const Header = () => {
       <Nav>
         <NavList>
           <ListItem>
-            <Link to="/">Home</Link>
+            <Link className="navItem" to="/">
+              Home
+            </Link>
           </ListItem>
-          <ListItem>
+          <ListItem className="navItem">
             <Link to="/about">About</Link>
           </ListItem>
-          <ListItem>
+          <ListItem className="navItem">
             <Link to="/writings">Writings</Link>
           </ListItem>
-          <ListItem>Projects</ListItem>
+          <ListItem className="navItem">Projects</ListItem>
         </NavList>
       </Nav>
     </HeaderBar>

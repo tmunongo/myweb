@@ -61,6 +61,19 @@ export default createGlobalStyle`
   .blogContent {
     font-family: "Montserrat";
   }
+  
+  .js-scroll {
+    opacity: 0;
+    transition: opacity 500ms;
+  }
+
+  js-scroll.scrolled {
+    opacity: 1;
+  }
+
+  .scrolled.fade-in {
+    animation: fade-in 1s ease-in-out both;
+  }
 
   .postList:hover,
   .postList:focus {

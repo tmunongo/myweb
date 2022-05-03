@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import essays from '../img/essays.jpg'
 import fiction from '../img/fiction.jpg'
 import freeWriting from '../img/free-writing.jpg'
-import { formatDistanceToNow } from 'date-fns'
 
 //import gql
 import { GET_POSTS } from '../gql/query'
@@ -132,7 +131,14 @@ const Title = styled.h2`
 `
 
 function formatDate(timestamp) {
-  return formatDistanceToNow(new Date(timestamp), { addSuffix: true })
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+  let date = new Date(timestamp).toLocaleDateString(undefined, options)
+  return date
 }
 
 function readTime(text) {

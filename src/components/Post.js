@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-//import formal utility from date-fns
-import { formatDistanceToNow } from 'date-fns'
 
 import styled from 'styled-components'
 import {
@@ -93,14 +91,10 @@ const Title = styled.h2`
 
 const TimeStamp = styled.h3`
   margin: 0px 0px 10px 0px;
-  color: #787878;
+  color: #95d779;
   font-size: 13px;
-  width: calc(50%);
+  width: calc(75%);
 `
-
-function formatDate(timestamp) {
-  return formatDistanceToNow(new Date(timestamp), { addSuffix: true })
-}
 
 function readTime(text) {
   const wpm = 225
@@ -108,6 +102,34 @@ function readTime(text) {
   const time = Math.ceil(words / wpm)
   return time
 }
+//page animations *
+//select elements with required class name
+// const scrollElements = document.querySelectorAll('.js-scroll')
+// scrollElements.forEach((el) => {
+//   el.style.opacity = 1
+// })
+// console.log(scrollElements)
+// /* check if element is in view */
+// const elementInView = (el, scrollOffset = 100) => {
+//   const elementTop = el.getBoundingClientRect().top
+
+//   return (
+//     elementTop <=
+//     (window.innerHeight || document.documentElement.clientHeight) - scrollOffset
+//   )
+// }
+// /* assign class name */
+// const displayScrollElement = (element) => {
+//   element.classList.add('scrolled')
+// }
+// const handleScrollAnimation = () => {
+//   scrollElements.forEach((el) => {
+//     if (elementInView(el, 100)) {
+//       displayScrollElement(el)
+//     }
+//   })
+// }
+// window.addEventListener('scroll', handleScrollAnimation())
 
 const Post = ({ post }) => {
   var options = {
@@ -121,9 +143,15 @@ const Post = ({ post }) => {
     <StyledPost>
       <Title className="headerName">{post.title}</Title> <br />
       <Body>
-        <TimeStamp>{date + ' | ' + readTime(post.content)} min read</TimeStamp>
+        <TimeStamp>
+          <span style={{ color: '#8EE0F5' }}>posted</span>({date}),{' '}
+          <span style={{ color: '#8EE0F5' }}>readTime</span>(
+          {readTime(post.content)} min)
+        </TimeStamp>
         <Image src={post.coverUrl} alt={post.title} />
+
         <ReactMarkdown className="blogContent" children={post.content} />
+
         <EmailShareButton subject={post.title} body={post.blurb} />
         <a href="">
           <EmailIcon size={32} round={true} />
@@ -137,13 +165,13 @@ const Post = ({ post }) => {
           alt={`${post.author.username} avatar`}
           height="90px"
         /> */}
-        <MetaInfo>
+        <MetaInfo className="js-scroll">
           <Name>
             {post.author.fullname}
             <strong
               style={{
                 'font-size': 10,
-                color: 'white',
+                color: 'purple',
                 'font-style': 'oblique',
               }}
             >
