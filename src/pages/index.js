@@ -23,7 +23,7 @@ const Pages = () => {
           <Route path="about" element={<About />}></Route>
           <Route path="writings" element={<Writings />}></Route>
           <Route path="quickview" element={<QuickView />}></Route>
-          <Route path="post/:id" element={<PostPage />}></Route>
+          <Route path="post/:slug" element={<PostPage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="signin" element={<SignIn />}></Route>
         </Routes>

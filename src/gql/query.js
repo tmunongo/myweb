@@ -9,12 +9,14 @@ const GET_POSTS = gql`
         id
         title
         blurb
+        caption
         createdAt
         content
         category
         createdAt
         coverUrl
         favoriteCount
+        slug
         author {
           username
           id
@@ -33,9 +35,34 @@ const GET_POST = gql`
       title
       createdAt
       blurb
+      caption
       content
       category
       coverUrl
+      slug
+      favoriteCount
+      author {
+        username
+        id
+        fullname
+        avatar
+      }
+    }
+  }
+`
+
+const GET_POST_BY_SLUG = gql`
+  query postBySlug($slug: String!) {
+    postBySlug(slug: $slug) {
+      id
+      title
+      createdAt
+      blurb
+      caption
+      content
+      category
+      coverUrl
+      slug
       favoriteCount
       author {
         username
@@ -53,4 +80,4 @@ const IS_LOGGED_IN = gql`
   }
 `
 
-export { GET_POSTS, GET_POST, IS_LOGGED_IN }
+export { GET_POSTS, GET_POST, GET_POST_BY_SLUG, IS_LOGGED_IN }

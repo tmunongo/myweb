@@ -43,9 +43,15 @@ code {
     url("./assets/anurati_font/Anurati-Regular.otf");
 }
 
+@font-face {
+  font-family: 'Nixie';
+  src: url("./assets/nixie_one/NixieOne.ttf") format("truetype");
+}
+
 .blogContent {
-  font-family: "Montserrat";
-  font-size: 26px;
+  color: white;
+  font-family: "Nixie";
+  font-size: 22px;
 }
 
 .headerName {

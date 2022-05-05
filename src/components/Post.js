@@ -21,6 +21,7 @@ import {
   TelegramIcon,
 } from 'react-share'
 import { Fade } from 'react-reveal'
+import draftjsToHtml from 'draftjs-to-html'
 
 //import query
 //import logged in user UI components
@@ -88,6 +89,14 @@ const Body = styled.div`
   }
 `
 
+const Caption = styled.span`
+  align-items: center;
+  display: flex;
+  flex: 0;
+  justify-content: center;
+  color: grey;
+`
+
 const Image = styled.img`
   max-width: calc(100%);
   align-items: center;
@@ -134,6 +143,12 @@ const Post = ({ post }) => {
     day: 'numeric',
   }
   let date = new Date(post.createdAt).toLocaleDateString(undefined, options)
+  let txt = post.content
+  function store() {
+    var txttostore = txt.replace(/\n/g, '\n\n')
+
+    return txttostore
+  }
   return (
     <StyledPost>
       <Title className="headerName">{post.title}</Title> <br />
@@ -144,48 +159,54 @@ const Post = ({ post }) => {
           {readTime(post.content)} min)
         </TimeStamp>
         <Image src={post.coverUrl} alt={post.title} />
+        <Caption>{post.caption}</Caption>
         <Fade bottom>
-          <ReactMarkdown className="blogContent" children={post.content} />
+          {/* <Editor
+            editorState={EditorState.createWithContent(post.content)}
+            readOnly={true}
+          /> */}
+          <ReactMarkdown className="blogContent">{store()}</ReactMarkdown>
+          {/* <textarea disabled value={draftjsToHtml(post.content)} /> */}
         </Fade>
         <Share>
           <EmailShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
             subject={post.title}
             body={post.blurb}
           >
             <EmailIcon size={32} round={true} />
           </EmailShareButton>
           <FacebookShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
             quote={post.blurb}
           >
             {' '}
             <FacebookIcon size={32} round={true} />
           </FacebookShareButton>
           <LinkedinShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
           >
             <LinkedinIcon size={32} round={true} />
           </LinkedinShareButton>
           <PocketShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
           >
             <PocketIcon size={32} round={true} />
           </PocketShareButton>
           <TelegramShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
             title={post.title}
           >
             <TelegramIcon size={32} round={true} />
           </TelegramShareButton>
           <TwitterShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
             related={'@edtha3rd'}
           >
             <TwitterIcon size={32} round={true} />
           </TwitterShareButton>
           <WhatsappShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.id}`}
+            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
           >
             <WhatsappIcon size={32} round={true} />
           </WhatsappShareButton>

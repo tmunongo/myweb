@@ -4,15 +4,15 @@ import { useParams } from 'react-router-dom'
 
 //import Post component
 import Post from '../components/Post'
-import { GET_POST } from '../gql/query'
+import { GET_POST_BY_SLUG } from '../gql/query'
 import Loading from '../components/Loading'
 
 const PostPage = () => {
-  let { id } = useParams()
+  let { slug } = useParams()
 
   const { loading, error, data } = useQuery(
-    GET_POST,
-    { variables: { id } },
+    GET_POST_BY_SLUG,
+    { variables: { slug } },
     { fetchPolicy: 'no-cache' }
   )
 
@@ -21,7 +21,7 @@ const PostPage = () => {
 
   return (
     <div>
-      <Post post={data.post} />
+      <Post post={data.postBySlug} />
     </div>
   )
 }

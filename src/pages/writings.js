@@ -166,6 +166,7 @@ const Writings = () => {
     let date = new Date(timestamp).toLocaleDateString(undefined, options)
     return date
   }
+
   //if fetch successful, display in UI
   return (
     <Body>
@@ -183,7 +184,7 @@ const Writings = () => {
               </TimeStamp>
               <div>
                 <Blurb>{post.blurb}</Blurb> <br />
-                <Link to={`/post/${post.id}`}>Read More</Link>
+                <Link to={`/post/${post.slug}`}>Read More</Link>
               </div>
             </Article>
           </Banner>
