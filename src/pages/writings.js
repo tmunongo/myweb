@@ -24,7 +24,10 @@ const Banner = styled.div`
   }
 `
 
-const Blurb = styled.span``
+const Blurb = styled.p`
+  margin: 5px 15px 0px 15px;
+  padding: 0px 0px 0px 0px;
+`
 
 const Image = styled.img`
   width: calc(100%);
@@ -116,7 +119,7 @@ const Article = styled.article`
 `
 
 const TimeStamp = styled.h3`
-  margin: 0px 0px 2px 0px;
+  margin: 0px 15px 2px 15px;
   color: #95d779;
   font-size: 13px;
   width: calc(100%);
