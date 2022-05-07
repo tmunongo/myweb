@@ -13,9 +13,10 @@ const ArrowContainer = styled.div`
 const ScrollArrow = styled.img`
   display: flex;
   flex: 0;
+  height: 80px;
   justify-content: space-between;
   margin: 10px;
-  height: 80px;
+  text-align: center;
   width: 60px;
 `
 

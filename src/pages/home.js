@@ -18,6 +18,7 @@ import {
 //import components
 import ScrollIndicator from '../components/ScrollIndicator'
 import Thinker from '../img/thinker-nobg-prism.jpg'
+import MoreArrow from '../img/more-arrow.svg'
 
 //styling
 const Head = styled.h1`
@@ -60,6 +61,17 @@ const Main = styled.div`
   background-color: black;
 `
 
+const More = styled.img`
+  @media (min-width: 700px) {
+    display: none;
+  }
+  @media (max-width: 700px) {
+    height: 50px;
+    margin: 10px 10px 10px 20px;
+    width: 25px;
+  }
+`
+
 const Para = styled.p`
   margin-block-start: 0;
   margin-block-end: 0;
@@ -85,6 +97,7 @@ const Home = () => {
     <ScrollContainer>
       <Main>
         <ScrollPage page={0}>
+          <More src={MoreArrow} alt="more" className="more-arrow" />
           <Animator animation={batch(Fade(), Sticky(), ZoomOut())}>
             <Head className="headerName">Welcome, traveller</Head>
             <ScrollIndicator />

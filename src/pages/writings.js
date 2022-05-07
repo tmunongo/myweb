@@ -30,6 +30,7 @@ const Blurb = styled.p`
 `
 
 const Image = styled.img`
+  border-radius: 10%;
   width: calc(100%);
   height: auto;
   background-position-y: center;

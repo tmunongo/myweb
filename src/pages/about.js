@@ -14,6 +14,7 @@ const Page = styled.div`
 `
 
 const Me = styled.img`
+  border-radius: 50%;
   grid-row: 1;
   grid-column: 1;
   grid-row-start: start;
