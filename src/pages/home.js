@@ -15,15 +15,10 @@ import {
   ZoomOut,
 } from 'react-scroll-motion'
 //import components
-import homeCover from '../img/backstreet-2.jpg'
+import ScrollIndicator from '../components/ScrollIndicator'
+import Thinker from '../img/thinker-nobg-prism.jpg'
 
 //styling
-const CoverImage = styled.div`
-  width: calc(100%);
-  height: auto;
-  background-color: black;
-`
-
 const Head = styled.h1`
   margin: 0px 0px 10px 0px;
   text-align: center;
@@ -47,9 +42,12 @@ const Image = styled.img`
 const Body = styled.div`
   color: white;
   background-color: black;
+  display: flex;
 
   @media (min-width: 700px) {
-    padding: 0px calc(100% - 75%) 0px calc(100% - 75%);
+    padding: 0px calc(25%) 0px calc(25%);
+    justify-content: space-around;
+    margintop: '15%';
   }
 
   @media (max-width: 700px) {
@@ -67,6 +65,16 @@ const Para = styled.p`
   margin: 0px 5px 0px 5px;
 `
 
+const ThinkerImage = styled.img`
+  height: calc(50%);
+  width: calc(30%);
+  display: flex;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+`
+
 const Home = () => {
   useEffect(() => {
     document.title = 'Tawanda Munongo - HomePage'
@@ -79,35 +87,63 @@ const Home = () => {
           <Animator animation={batch(Fade(), Sticky(), ZoomOut())}>
             <Head className="headerName">Welcome, traveller</Head>
           </Animator>
+          <ScrollIndicator />
         </ScrollPage>
-        <ScrollPage page={1}>
+        {/* <ScrollPage page={1}>
           <Animator animation={batch(FadeIn(), MoveOut(0, -200))}>
             <CoverImage>
               <Image src={homeCover} alt="MyCover" />
             </CoverImage>
           </Animator>
-        </ScrollPage>
-        <ScrollPage page={2}>
-          <Animator animation={batch(FadeIn(), MoveIn(0, 200))}>
+        </ScrollPage> */}
+        <ScrollPage page={1}>
+          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
             <Body>
-              <Para className="blogContent">
-                This is my thin slice of the internet pie. I hope you like what
-                you see. <br />
-                <br />
-                I haven’t decided what I love more, reading or telling stories.
-                I like to tell stories about the world, to connect dots, to
-                understand. There’s a piece of me in everything that you’ll read
-                here. It’s okay to not agree with me — half the time I don’t
-                even agree with myself. I do, however, try to be honest. My
-                points of view are constantly changing, evolving, as am I. My
-                story is still being written. Feel free to tag along. <br />
-                <br />I have sought (and am still seeking) wisdom from
-                everywhere, trying to understand my place in this world. I’ll
-                write on everything from philosophy, modern technology, science,
-                religion, and spirituality. I’ll (hopefully) share my fiction
-                more frequently, too.
+              <ThinkerImage src={Thinker} alt="thinker" />
+              <Para className="blogContent" style={{ color: 'bisque' }}>
+                My name is Tawanda.
+                <br />I build websites and cross-platform mobile applications. I
+                write fiction and non-fiction, exploring the intersection of
+                technology and our existent ways of life.{' '}
               </Para>
             </Body>
+            <ScrollIndicator />
+          </Animator>
+        </ScrollPage>
+        <ScrollPage page={2}>
+          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
+            <Body>
+              <Para className="blogContent" style={{ color: 'bisque' }}>
+                <li>
+                  Programming Languages
+                  <ul>- Java</ul>
+                  <ul>- Python</ul>
+                  <ul>- HTML, CSS, JavaScript</ul>
+                </li>
+                <li>
+                  Frameworks
+                  <ul>- NodeJS</ul>
+                  <ul>- React and React Native</ul>
+                  <ul>- Django</ul>
+                </li>
+              </Para>
+            </Body>
+          </Animator>
+          <ScrollIndicator />
+        </ScrollPage>
+        <ScrollPage page={3}>
+          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
+            <Body>
+              <Para className="blogContent" style={{ color: 'bisque' }}>
+                <li>
+                  My fiction has been published in
+                  <ul>- Ab Terra Flash Fiction</ul>
+                  <ul>- Literary Heish Magazine</ul>
+                  <ul>- The Rush Magazine</ul>
+                </li>
+              </Para>
+            </Body>
+            <ScrollIndicator />
           </Animator>
         </ScrollPage>
       </Main>
