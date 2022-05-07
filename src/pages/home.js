@@ -6,6 +6,7 @@ import {
   batch,
   Fade,
   FadeIn,
+  Move,
   MoveIn,
   MoveOut,
   ScrollContainer,
@@ -45,9 +46,9 @@ const Body = styled.div`
   display: flex;
 
   @media (min-width: 700px) {
-    padding: 0px calc(25%) 0px calc(25%);
+    padding: 0px calc(5%) 0px calc(5%);
     justify-content: space-around;
-    margintop: '15%';
+    margin-top: 15%;
   }
 
   @media (max-width: 700px) {
@@ -66,9 +67,9 @@ const Para = styled.p`
 `
 
 const ThinkerImage = styled.img`
+  display: flex;
   height: calc(50%);
   width: calc(30%);
-  display: flex;
 
   @media (max-width: 700px) {
     display: none;
@@ -86,8 +87,8 @@ const Home = () => {
         <ScrollPage page={0}>
           <Animator animation={batch(Fade(), Sticky(), ZoomOut())}>
             <Head className="headerName">Welcome, traveller</Head>
+            <ScrollIndicator />
           </Animator>
-          <ScrollIndicator />
         </ScrollPage>
         {/* <ScrollPage page={1}>
           <Animator animation={batch(FadeIn(), MoveOut(0, -200))}>
@@ -97,23 +98,30 @@ const Home = () => {
           </Animator>
         </ScrollPage> */}
         <ScrollPage page={1}>
-          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
+          <Animator animation={batch(Fade(), Sticky(), Move())}>
             <Body>
               <ThinkerImage src={Thinker} alt="thinker" />
-              <Para className="blogContent" style={{ color: 'bisque' }}>
+              <Para
+                className="blogContent"
+                style={{ color: 'bisque', textAlign: 'right' }}
+              >
                 My name is Tawanda.
-                <br />I build websites and cross-platform mobile applications. I
-                write fiction and non-fiction, exploring the intersection of
-                technology and our existent ways of life.{' '}
+                <br />I build websites and cross-platform mobile applications.
+                <br />
+                <br /> I also write fiction and non-fiction, exploring the
+                intersection of technology and our existent ways of life.{' '}
               </Para>
             </Body>
-            <ScrollIndicator />
           </Animator>
+          <ScrollIndicator />
         </ScrollPage>
         <ScrollPage page={2}>
-          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
+          <Animator animation={batch(Fade(), Move(), Sticky())}>
             <Body>
-              <Para className="blogContent" style={{ color: 'bisque' }}>
+              <Para
+                className="blogContent"
+                style={{ color: 'bisque', justifyContent: 'space-around' }}
+              >
                 <li>
                   Programming Languages
                   <ul>- Java</ul>
@@ -132,19 +140,22 @@ const Home = () => {
           <ScrollIndicator />
         </ScrollPage>
         <ScrollPage page={3}>
-          <Animator animation={batch(FadeIn(), MoveIn(0, 100))}>
+          <Animator animation={batch(Fade(), Move(), Sticky())}>
             <Body>
-              <Para className="blogContent" style={{ color: 'bisque' }}>
+              <Para
+                className="blogContent"
+                style={{ color: 'bisque', justifyContent: 'space-around' }}
+              >
                 <li>
-                  My fiction has been published in
+                  My fiction has been published in:
                   <ul>- Ab Terra Flash Fiction</ul>
                   <ul>- Literary Heish Magazine</ul>
                   <ul>- The Rush Magazine</ul>
                 </li>
               </Para>
             </Body>
-            <ScrollIndicator />
           </Animator>
+          <ScrollIndicator />
         </ScrollPage>
       </Main>
     </ScrollContainer>

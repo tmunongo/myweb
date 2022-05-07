@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import scrollArrow from '../img/scroll-arrow.svg'
+import scrollArrow from '../img/triple-scroll-arrow.svg'
 
 const ArrowContainer = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ const ScrollArrow = styled.img`
   display: flex;
   flex: 0;
   justify-content: space-between;
+  margin: 10px;
   height: 80px;
   width: 60px;
 `
