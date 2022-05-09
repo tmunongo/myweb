@@ -58,7 +58,7 @@ const Footer = () => {
           <a href="https://twitter.com/edtha3rd">
             <Icon src={Twitter} alt="Github" />
           </a>
-          <a href="https://instagram.com/ej_ta1da">
+          <a href="https://instagram.com/ejta1da">
             <Icon src={Instagram} alt="Github" />
           </a>
           <a href="https://thoughtrealm.medium.com">
