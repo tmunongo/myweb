@@ -170,43 +170,43 @@ const Post = ({ post }) => {
         </Fade>
         <Share>
           <EmailShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
             subject={post.title}
             body={post.blurb}
           >
             <EmailIcon size={32} round={true} />
           </EmailShareButton>
           <FacebookShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
             quote={post.blurb}
           >
             {' '}
             <FacebookIcon size={32} round={true} />
           </FacebookShareButton>
           <LinkedinShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
           >
             <LinkedinIcon size={32} round={true} />
           </LinkedinShareButton>
           <PocketShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
           >
             <PocketIcon size={32} round={true} />
           </PocketShareButton>
           <TelegramShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
             title={post.title}
           >
             <TelegramIcon size={32} round={true} />
           </TelegramShareButton>
           <TwitterShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
             related={'@edtha3rd'}
           >
             <TwitterIcon size={32} round={true} />
           </TwitterShareButton>
           <WhatsappShareButton
-            url={`https://tawandamunongo.netlify.app/#/post/${post.slug}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
           >
             <WhatsappIcon size={32} round={true} />
           </WhatsappShareButton>
