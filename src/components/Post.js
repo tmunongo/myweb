@@ -11,8 +11,6 @@ import {
   PocketShareButton,
   TwitterIcon,
   TwitterShareButton,
-  TumblrIcon,
-  TumblrShareButton,
   WhatsappIcon,
   WhatsappShareButton,
   LinkedinShareButton,
@@ -21,7 +19,6 @@ import {
   TelegramIcon,
 } from 'react-share'
 import { Fade } from 'react-reveal'
-import draftjsToHtml from 'draftjs-to-html'
 
 //import query
 //import logged in user UI components
@@ -161,12 +158,7 @@ const Post = ({ post }) => {
         <Image src={post.coverUrl} alt={post.title} />
         <Caption>{post.caption}</Caption>
         <Fade bottom>
-          {/* <Editor
-            editorState={EditorState.createWithContent(post.content)}
-            readOnly={true}
-          /> */}
           <ReactMarkdown className="blogContent">{store()}</ReactMarkdown>
-          {/* <textarea disabled value={draftjsToHtml(post.content)} /> */}
         </Fade>
         <Share>
           <EmailShareButton
