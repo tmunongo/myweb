@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Github from '../img/icons/github.png'
 import Instagram from '../img/icons/instagram.png'
-import Medium from '../img/icons/medium.png'
+import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
 
 const Foot = styled.div`

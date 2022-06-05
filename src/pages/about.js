@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Avatar from '../img/profilepic.jpg'
 import Github from '../img/github.png'
 import Instagram from '../img/icons/instagram.png'
-import Medium from '../img/medium-blue.png'
+import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
 
 
@@ -111,6 +111,7 @@ const About = () => {
             display: 'grid', 
             gridRow: 'two / three', 
             gridColumn: 'second / second',
+            marginBottom: 15,
             paddingLeft: '12%', 
             width: 'auto'
           }}>
