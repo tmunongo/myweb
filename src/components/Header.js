@@ -25,10 +25,10 @@ const HeaderBar = styled.header`
 `
 
 const LogoText = styled.h1`
-  margin: 10px;
-  padding: 20px 0px 0px 0px;
   color: #e4e8e9;
   font-size: 20px;
+  margin: 10px;
+  padding: 20px 0px 0px 0px;
   @media (max-width: 768px) {
     margin: 0px;
     padding: 25px 0px 0px 0px;
@@ -101,7 +101,7 @@ const Header = () => {
           outerContainerId={'outer-container'}
         />
       </Burger>
-      <a href="/">
+      <a href="/" style={{ textDecoration: 'none' }}>
         <LogoText className="headerName">Tawanda Munongo</LogoText>
       </a>
       <Nav>

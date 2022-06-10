@@ -107,9 +107,6 @@ const Left = styled.div`
 
 const Middle = styled.div`
   grid-column: 2;
-  // @media (min-width: 700px){
-  //     border-right: 1px solid white;
-  // }
   @media (max-width: 700px) {
     display: none;
   }

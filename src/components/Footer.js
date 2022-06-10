@@ -7,7 +7,6 @@ import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
 
 const Foot = styled.div`
-  position: relative;
   background-color: #1f1f1f;
   color: white;
   width: 100%;
