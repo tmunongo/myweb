@@ -200,8 +200,10 @@ const Post = ({ post }) => {
             <TelegramIcon size={32} round={true} />
           </TelegramShareButton>
           <TwitterShareButton
-            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
+            hashtags={[`#${post.category}`]}
             related={'@edtha3rd'}
+            title={`${post.title}`}
+            url={`https://tawandamunongo.tech/#/post/${post.slug}`}
           >
             <TwitterIcon size={32} round={true} />
           </TwitterShareButton>
