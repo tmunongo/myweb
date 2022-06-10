@@ -5,14 +5,10 @@ import {
   Animator,
   batch,
   Fade,
-  FadeIn,
   Move,
-  MoveIn,
-  MoveOut,
   ScrollContainer,
   ScrollPage,
   Sticky,
-  ZoomIn,
   ZoomOut,
 } from 'react-scroll-motion'
 //import components
@@ -25,20 +21,6 @@ const Head = styled.h1`
   margin: 0px 0px 10px 0px;
   text-align: center;
   justify-content: center;
-`
-
-const Image = styled.img`
-  margin: 0px;
-  width: calc(100%);
-  height: auto;
-  border-top: solid black;
-  border-bottom: solid black;
-
-  @media (min-width: 700px) {
-    padding-left: 0px;
-    width: calc(100%);
-    height: 70vh;
-  }
 `
 
 const Body = styled.div`
@@ -103,13 +85,6 @@ const Home = () => {
             <ScrollIndicator />
           </Animator>
         </ScrollPage>
-        {/* <ScrollPage page={1}>
-          <Animator animation={batch(FadeIn(), MoveOut(0, -200))}>
-            <CoverImage>
-              <Image src={homeCover} alt="MyCover" />
-            </CoverImage>
-          </Animator>
-        </ScrollPage> */}
         <ScrollPage page={1}>
           <Animator animation={batch(Fade(), Sticky(), Move())}>
             <Body>
