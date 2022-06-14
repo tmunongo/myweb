@@ -10,16 +10,15 @@ export default createGlobalStyle`
 
   body,
   html {
+    color: bisque;
     height: 100%;
     margin: 0;
-    color: bisque;
   }
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
     background-color: #252522;
     line-height: 1.4;
-    background-color: 'black';
   }
 
   a:link,

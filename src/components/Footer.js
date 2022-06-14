@@ -5,9 +5,10 @@ import Github from '../img/icons/github.png'
 import Instagram from '../img/icons/instagram.png'
 import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
+import BG from '../img/bg.jpg'
 
 const Foot = styled.div`
-  background-color: #1f1f1f;
+background: url(${BG}) repeat;
   color: white;
   width: 100%;
   border-top: 4px solid black;

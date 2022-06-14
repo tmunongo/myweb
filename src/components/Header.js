@@ -39,7 +39,6 @@ const Nav = styled.nav`
   padding: 0px 80px 0px 0px;
   height: 72px;
 
-  background-color: black;
 
   @media (max-width: 750px) {
     display: none;

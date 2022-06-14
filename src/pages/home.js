@@ -25,7 +25,6 @@ const Head = styled.h1`
 
 const Body = styled.div`
   color: white;
-  background-color: black;
   display: flex;
 
   @media (min-width: 700px) {
@@ -40,7 +39,6 @@ const Body = styled.div`
 `
 
 const Main = styled.div`
-  background-color: black;
 `
 
 const More = styled.img`

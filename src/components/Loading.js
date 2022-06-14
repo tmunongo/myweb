@@ -3,7 +3,6 @@ import ReactLoading from 'react-loading'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  background-color: black;
   display: flex;
   height: window.innerHeight;
   justify-content: center;
