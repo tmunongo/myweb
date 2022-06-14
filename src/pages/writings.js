@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
 import { Link } from 'react-router-dom'
@@ -11,6 +11,10 @@ import freeWriting from '../img/free-writing.jpg'
 //import gql
 import { GET_POSTS } from '../gql/query'
 
+const Article = styled.article`
+  padding: 0px 0px 10px 5px;
+  border-bottom: 1px solid #7fe3d8;
+`
 const Banner = styled.div`
   color: white;
   padding: 0px 0px 10px 0px;
@@ -34,14 +38,6 @@ const Image = styled.img`
   width: calc(100%);
   height: auto;
   background-position-y: center;
-`
-
-const Wrap = styled.div`
-  display: grid;
-  grid-auto-columns: 1fr 1fr 1fr;
-  gap: 25px;
-  grid-auto-rows: minmax(auto, auto);
-  padding: 25px calc(15%) 0px calc(15%);
 `
 
 const One = styled.div`
@@ -70,16 +66,17 @@ const Three = styled.div`
 `
 
 const Feat = styled.h2`
-  font-style: oblique;
-  padding: 5px 0px 5px 20px;
-  margin: 0px 60px 0px 60px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 17px;
-  text-transform: uppercase;
-  font-weight: bold;
   border: 2px solid #7fe3d8;
   border-radius: 0.375rem;
   color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 17px;
+  font-style: oblique;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0px 60px 0px 60px;
+  padding: 5px 0px 5px 20px;
+  text-align: center;
   @media (max-width: 700px) {
     margin: 0px 0px 10px 0px;
     padding: 10px 0px 10px 20px;
@@ -111,9 +108,20 @@ const Middle = styled.div`
     display: none;
   }
 `
-const Article = styled.article`
-  padding: 0px 0px 10px 5px;
-  border-bottom: 1px solid #7fe3d8;
+const TagBody = styled.div`
+  border: 2px solid #7fe3d8;
+  border-radius: 0.375rem;
+  margin: 10px 80px 0px 80px;
+  padding: 5px;
+`
+
+const Tags = styled.button`
+  background-color: rgb(${Math.random() * 255}, ${Math.random() * 255}, 0);
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
 `
 
 const TimeStamp = styled.h3`
@@ -135,6 +143,13 @@ const Title = styled.h2`
     margin: 0px 0px 5px 0px;
   }
 `
+const Wrap = styled.div`
+  display: grid;
+  grid-auto-columns: 1fr 1fr 1fr;
+  gap: 25px;
+  grid-auto-rows: minmax(auto, auto);
+  padding: 25px calc(15%) 0px calc(15%);
+`
 function readTime(text) {
   const wpm = 225
   const words = text.trim().split(/\s+/).length
@@ -143,6 +158,7 @@ function readTime(text) {
 }
 
 const Writings = () => {
+  const [tag, setTag] = useState('')
   useEffect(() => {
     document.title = 'Tawanda Munongo - Writings'
   })
@@ -168,11 +184,25 @@ const Writings = () => {
     return date
   }
 
+  // let array = []
   //if fetch successful, display in UI
   return (
     <Body>
       <Left>
         <Feat> Featured </Feat>
+        {/* display tags to filter posts */}
+        {/* <TagBody>
+          Tags:
+          {data.PostFeed.posts.map((post) => {
+            array.push(post.category)
+            if (array.length > 0) {
+              return (
+                <Tags>{array.filter((val, ind, arr) => arr.indexOf(val))}</Tags>
+              )
+            }
+            return <Loading />
+          })}
+        </TagBody> */}
         {data.PostFeed.posts.map((post) => (
           <Banner>
             <Article className="postList" key={post.id}>

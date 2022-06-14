@@ -38,8 +38,7 @@ const Body = styled.div`
   }
 `
 
-const Main = styled.div`
-`
+const Main = styled.div``
 
 const More = styled.img`
   @media (min-width: 700px) {
@@ -54,7 +53,7 @@ const More = styled.img`
 
 const Para = styled.p`
   margin-block-start: 0;
-  margin-block-end: 0;
+  margin-block-end: 5;
   margin: 0px 5px 0px 5px;
 `
 

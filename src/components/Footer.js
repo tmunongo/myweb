@@ -8,13 +8,13 @@ import Twitter from '../img/icons/twitter.png'
 import BG from '../img/bg.jpg'
 
 const Foot = styled.div`
-background: url(${BG}) repeat;
-  color: white;
-  width: 100%;
+  background: url(${BG}) repeat;
   border-top: 4px solid black;
-  text-align: centered;
-  margin: 0px 0px 0px 0px;
   bottom: 0;
+  color: white;
+  margin: 0px 0px 0px 0px;
+  text-align: centered;
+  width: 100%;
 `
 
 const Icon = styled.img`
@@ -34,9 +34,10 @@ const Quote = styled.h3`
 `
 
 const License = styled.p`
-  text-align: center;
   font-style: italic;
+  margin-bottom: 0px;
   padding: 20px 45px 20px 45px;
+  text-align: center;
 `
 
 const Footer = () => {

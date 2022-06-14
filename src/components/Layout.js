@@ -8,6 +8,7 @@ import Footer from './Footer'
 // component styles
 const Wrapper = styled.div`
   width: 100%;
+  background-color: black;
 
   @media (min-width: 700px) {
     height: auto;
