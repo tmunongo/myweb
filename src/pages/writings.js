@@ -116,8 +116,8 @@ const TagBody = styled.div`
 `
 
 const Tags = styled.button`
-  background-color: rgb(${Math.random() * 255}, ${Math.random() * 255}, 0);
   border-radius: 50px;
+  border-style: none;
   font-size: 12px;
   font-weight: bold;
   margin: 5px;
@@ -158,13 +158,14 @@ function readTime(text) {
 }
 
 const Writings = () => {
-  const [tag, setTag] = useState('')
+  const [selectedTag, setTag] = useState('')
   useEffect(() => {
     document.title = 'Tawanda Munongo - Writings'
   })
-
+  
   const { data, loading, error } = useQuery(GET_POSTS, {})
-
+    const [filteredList, setFilteredList] = useState([])
+  
   //if data loading, display message
   // if (loading) return <p>Loading...</p>
   if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
@@ -172,8 +173,8 @@ const Writings = () => {
   if (error) return <p>Error!</p> + error.message
   //if there is no data
   if (!data) return <p>Not found</p>
-
-  function formatDate(timestamp) {
+  
+  const formatDate = (timestamp) => {
     const options = {
       weekday: 'long',
       year: 'numeric',
@@ -184,28 +185,61 @@ const Writings = () => {
     return date
   }
 
-  // let array = []
+  //create an array with only the unique categories from the posts object
+  const uniqueTags = () => {
+    const flag = {}
+    let array = []
+    data.PostFeed.posts.forEach(elem => {
+      if (!flag[elem.category]) {
+        flag[elem.category] = true
+        array.push(elem)
+      }
+    })
+    return array
+  }
+
+
+  const handleTagSelection = (x, e) => {
+    e.preventDefault()
+    const selectedCategory = String(e.target.id)
+    if (selectedCategory === x){
+      setTag("")
+    } else {
+      setTag(x)
+      filterByTag(data.PostFeed.posts)
+    }
+  }
+
+  //  function to return filtered posts
+  const filterByTag = (posts) => {
+    if (!selectedTag) {
+      return posts
+    }
+    const filteredPosts = posts.map(
+      (post) => post.category.indexOf(selectedTag) !== -1
+    )
+    console.log(selectedTag, filteredPosts)
+    setFilteredList(filteredPosts)
+    return filteredPosts
+  }
+
   //if fetch successful, display in UI
   return (
     <Body>
       <Left>
         <Feat> Featured </Feat>
         {/* display tags to filter posts */}
-        {/* <TagBody>
+        <TagBody>
           Tags:
-          {data.PostFeed.posts.map((post) => {
-            array.push(post.category)
-            if (array.length > 0) {
+          {uniqueTags().map((post, index) => {
               return (
-                <Tags>{array.filter((val, ind, arr) => arr.indexOf(val))}</Tags>
+                <Tags onClick={e => handleTagSelection(post.category, e)} key={index} style={{ backgroundColor: `rgb(${Math.random() * 255}, ${Math.random() * 255}, 0)` }}>{post.category}</Tags>
               )
-            }
-            return <Loading />
           })}
-        </TagBody> */}
-        {data.PostFeed.posts.map((post) => (
+        </TagBody>
+        {data.PostFeed.posts.map((post, index) => (
           <Banner>
-            <Article className="postList" key={post.id}>
+            <Article className="postList" key={index}>
               <Title>{post.title}</Title>
               <TimeStamp>
                 <span style={{ color: '#8EE0F5' }}>posted</span>(
@@ -222,7 +256,7 @@ const Writings = () => {
         ))}
       </Left>
       <Middle>
-        <h3 style={{ paddingLeft: '10px', marginBottom: '5px' }}>
+        <h3 style={{ paddingLeft: '10px', marginBottom: '5px', textAlign: 'center' }}>
           Categories coming soon...
         </h3>
         <Wrap>
