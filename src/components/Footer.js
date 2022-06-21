@@ -29,7 +29,7 @@ const Quote = styled.h3`
   color: white;
   text-align: center;
   font-style: oblique;
-  font-weight: 250;
+  font-weight: 450;
   font-size: larger;
 `
 
