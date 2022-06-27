@@ -13,12 +13,6 @@ code {
 }
 
 @font-face {
-  font-family: 'Pinball';
-  src: local("Pinball"),
-  url("./assets/pinball-data-font/PinballData-K7mo.ttf") format('truetype');
-}
-
-@font-face {
   font-family: 'Dited';
   src: local("Dited"),
   url("./assets/Dited/Dited.otf");
@@ -58,6 +52,23 @@ code {
   font-family: "AstroSpace";
 }
 
+.js-scroll {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.js-scroll.scrolled {
+  opacity: 1;
+}
+
+.scrolled.fade-in {
+  animation: fade-in 1s ease-in-out both;
+}
+
+.scrolled.slide-left {
+  animation: slide-in-left 1s ease-in-out both;
+}
+
 
 .navItem {
   font-family: 'Dited';
@@ -81,5 +92,27 @@ code {
 @-webkit-keyframes blink-animation {
   to {
     visibility: hidden;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

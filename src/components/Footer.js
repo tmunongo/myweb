@@ -52,7 +52,6 @@ const Footer = () => {
         <strong>The Secret Teachings of All Ages</strong> <br></br>
       </Quote>
       <License>
-        <div>
           <a href="https://github.com/edtha3rd">
             <Icon src={Github} alt="Github" />
           </a>
@@ -65,9 +64,10 @@ const Footer = () => {
           <a href="https://thoughtrealm.medium.com">
             <Icon src={Medium} alt="Github" />
           </a>
-        </div>
-        <Link to="/">Tawanda Munongo</Link> <br /> 2022-2022 All Rights
-        Reserved.
+          <p>
+            <Link to="/">Tawanda Munongo</Link> <br /> 
+            2021-2022 All Rights Reserved.
+          </p>
       </License>
     </Foot>
   )
