@@ -18,10 +18,12 @@ import Thinker from '../img/thinker-nobg-prism.jpg'
 import MoreArrow from '../img/more-arrow.svg'
 import { Link } from 'react-router-dom'
 import ButtonAsLink from '../components/ButtonAsLink'
+import { Fade } from 'react-reveal'
 
 
 //styling
 const Button = styled.span`
+  align-self: center;
   border-radius: 5px; 
   color: white;
   font-weight: bold;
@@ -29,11 +31,17 @@ const Button = styled.span`
   margin-top: 10px;
   padding: 3px 10px;
   text-decoration: none;
-  width: auto;
+  width: 40vw;
 `
 
 const Card = styled.div`
   display: flex;
+  padding: 30px;
+  width: 65vw;
+  @media (max-width: 700px){
+    padding: 10px;
+    width: 95vw;
+  };
 `
 
 const Carousel = styled.ul`
@@ -99,7 +107,7 @@ const PortIntro = styled.p`
   font-size: 18; 
   width: 50vw;
   @media (max-width: 700px) {
-    font-size: 12;
+    font-size: 10;
     text-align: justify;
     width: 95vw;
   }
@@ -188,6 +196,8 @@ const Home = () => {
       {/* first home page section */}
         <Page style={{ backgroundColor: 'black' }}>
           <Head className="headerName">Welcome, traveller</Head>
+          <Fade bottom>
+
             <Para
               className="blogContent"
               style={{ color: 'white', textAlign: 'center' }}
@@ -198,6 +208,7 @@ const Home = () => {
               <br /> I also write fiction and non-fiction, exploring the
               intersection of technology and our existent ways of life.{' '}
             </Para>
+            </Fade>
             <Link style={{ 
               backgroundColor: 'teal', 
               borderRadius: '5px', 
@@ -222,10 +233,14 @@ const Home = () => {
               borderTop: '0.5px solid grey'
               }}>
               <Portfolio1 className='blogContent' style={{  }}>
-                <h2 style={{ textAlign: 'center' }}>My Portfolio</h2>
-                <PortIntro style={{  }}>
-                  My goals, whenever I select a new project to take on, are always to challenge myself and learn something new. For the last 4 years, I have worked on numerous projects in many programming languages, most of them as part of my CS coursework. 
-                </PortIntro>
+                <Fade bottom>
+                  <h2 style={{ textAlign: 'center' }}>My Portfolio</h2>
+                </Fade>
+                <Fade bottom>
+                  <PortIntro style={{  }}>
+                    My goals, whenever I select a new project to take on, are always to challenge myself and learn something new. For the last 4 years, I have worked on numerous projects in many programming languages, most of them as part of my CS coursework. 
+                  </PortIntro>
+                </Fade>
               </Portfolio1>
               <Portfolio2 style={{
                 height: '80vh'
@@ -242,7 +257,7 @@ const Home = () => {
                         </div>
                         <div style={{ flex: 1, marginLeft: '10px' }}>
                           <h2>{project.title}</h2>
-                          <p>{project.details}</p>
+                          <p style={{ marginBottom: '5px' ,textOverflow: 'ellipsis' }}>{project.details}</p>
                           <a href={project.github}>
                             <Button style={{ backgroundColor: 'purple', width: 'auto' }}>
                               Github
@@ -263,24 +278,30 @@ const Home = () => {
                     </li>
                   ))}
                 </Carousel>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <ButtonAsLink onClick={handleCardChange} style={{ 
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <Button onClick={handleCardChange} style={{ 
                     backgroundColor: 'teal',
                     borderRadius: '5px',
                     color: 'white',
                     marginTop: '15vh',
                     padding: '10px',
+                    textAlign: 'center',
                     }}
                   >
                     Next Item
-                  </ButtonAsLink>
+                  </Button>
                   <Link to='/projects' style={{
+                    alignSelf: 'center',
                     backgroundColor: 'darkgoldenrod',
                     borderRadius: '5px',
                     color: 'white',
-                    marginTop: '15vh',
+                    fontWeight: 'bold',
+                    marginTop: '1vh',
                     padding: '10px',
-                  }}>My Projects</Link>
+                    textAlign: 'center',
+                    textDecoration: 'none',
+                    width: '40vw'
+                  }}>All My Projects</Link>
                 </div>
               </Portfolio2>
             </Page>
