@@ -284,7 +284,7 @@ const Home = () => {
                 </div>
               </Portfolio2>
             </Page>
-        <Page style={{ backgroundColor: 'teal' }} >
+        <Page style={{ backgroundColor: 'black', borderTop: '0.5px solid grey' }} >
           <ThinkerImage src={Thinker} alt="thinker" />
         </Page>
           {/* </ScrollContainer> */}
