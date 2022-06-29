@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 //import { useQuery } from '@apollo/client';
 import styled from 'styled-components'
 // import {
@@ -16,12 +16,47 @@ import ScrollIndicator from '../components/ScrollIndicator'
 import Separator from '../components/Separator'
 import Thinker from '../img/thinker-nobg-prism.jpg'
 import MoreArrow from '../img/more-arrow.svg'
+import { Link } from 'react-router-dom'
+import ButtonAsLink from '../components/ButtonAsLink'
+
 
 //styling
-const Body = styled.div`
+const Button = styled.span`
+  border-radius: 5px; 
+  color: white;
+  font-weight: bold;
+  justify-self: center;
+  margin-top: 10px;
+  padding: 3px 10px;
+  text-decoration: none;
+  width: auto;
+`
+
+const Card = styled.div`
+  display: flex;
+`
+
+const Carousel = styled.ul`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  list-style: none;
+  margin: 100px auto;
+  padding: 0;
+  position: relative;
+`
+
+const Head = styled.h1`
+margin: 0px 0px 10px 0px;
+text-align: center;
+  justify-content: center;
+`
+
+const Page = styled.div`
   align-items: center;
   color: white;
-  display: flex;
+  display: grid;
   height: 100vh;
   min-height: 450px;
 
@@ -32,32 +67,6 @@ const Body = styled.div`
 
   @media (max-width: 700px) {
     padding-left: 5px;
-  }
-`
-const Details = styled.p`
-  padding: 0 5%;
-`
-
-const Head = styled.h1`
-margin: 0px 0px 10px 0px;
-text-align: center;
-  justify-content: center;
-`
-
-const LSection3 = styled.div`
-  align-items: center;
-  display: grid;
-`
-
-
-const More = styled.img`
-  @media (min-width: 700px) {
-    display: none;
-  }
-  @media (max-width: 700px) {
-    height: 50px;
-    margin: 10px 10px 10px 20px;
-    width: 25px;
   }
 `
 
@@ -67,79 +76,121 @@ const Para = styled.div`
   margin: 0px 5px 0px 5px;
 `
 
-const RSection3 = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`
-
-const RSubSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  height: calc(30%);
-`
-
-const Section3 = styled.div`
-  align-items: center;
-  color: white;
-  display: grid;
-  grid-template-columns: [first] 50% [second] 25% [third] 25% [end];
-  grid-template-rows: [first] 30% [second] 30% [third] 30% [end];
-  height: 100vh;
-  min-height: 450px;
-
-  @media (min-width: 700px) {
-    padding: 0px calc(5%) 0px calc(5%);
-    justify-content: space-around;
-  }
-
+const Preview = styled.img`
   @media (max-width: 700px) {
-    padding-left: 5px;
+    display: none;
   }
 `
 
-const ScrollContainer = styled.div`
-  height: 100vh;
-  min-height: 450px;
-  display: flex;
+const Portfolio1 = styled.div`
+  height: 20vh; 
+  padding-top: 20px;
+  @media (max-width: 700px){
+    width: 100vw;
+  }
+`
+
+const Portfolio2 = styled.div`
+
+`
+
+const PortIntro = styled.p`
+  color: white; 
+  font-size: 18; 
+  width: 50vw;
+  @media (max-width: 700px) {
+    font-size: 12;
+    text-align: justify;
+    width: 95vw;
+  }
 `
 
 const ThinkerImage = styled.img`
   display: flex;
   height: calc(60%);
   width: calc(15%);
-
   @media (max-width: 700px) {
     display: none;
   }
 `
 
 
+//projects object
+const projects = [
+  {
+    'id': 1,
+    'title': 'Tickets!', 
+    'details': 'Some details about Tickets Please', 
+    'preview': 'https://github.com/edtha3rd/tickets-mob/raw/master/home_page.gif', 
+    'github': 'https://github.com/edtha3rd'
+  },
+  {
+    'id': 2,
+    'title': 'Java Notepad', 
+    'details': 'A simple, lightweight text editor is a programmer\'s best friend. There are many things to take into consideration when designing such a program. The basic functionality of the text editor must allow us to be able to open a new, blank document, save a new text file or update an already saved file, or to open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.', 
+    'preview': 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg', 
+    'github': 'https://github.com/edtha3rd'
+  },
+  {
+    'id': 3,
+    'title': 'Snake Game', 
+    'details': 'This is a web-based snake game in JavaScript. I chose this project to improve my understanding of how vanilla JavaScript refreshes rendered content and how to manually control this to implement something like a game engine.', 
+    'preview': 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg', 
+    'github': 'https://github.com/edtha3rd',
+    'link': 'https://edtha3rd.github.io/snake-game/'
+  }
+]
+
+const determineClasses = (indices, projectIndex) => {
+  if (indices.currentIndex === projectIndex){
+    return 'active'
+  } else if (indices.nextIndex === projectIndex){
+    return 'next'
+  } else if (indices.previousIndex === projectIndex){
+    return 'prev'
+  }
+  return 'inactive'
+}
+
+
 const Home = () => {
+  const [indices, setIndices] = useState({
+    previousIndex: 0,
+    currentIndex: 0,
+    nextIndex: 1
+  })
+
+  const handleCardChange = useCallback(() => {
+    //start again after reaching end but carry prev value over
+    if(indices.currentIndex >= projects.length - 1){
+      setIndices({
+        previousIndex: projects.length - 1,
+        currentIndex: 0,
+        nextIndex: 1
+      })
+    } else {
+      setIndices((prevState) => ({
+        previousIndex: prevState.currentIndex,
+        currentIndex: prevState.currentIndex + 1,
+        nextIndex: prevState.currentIndex + 2 === projects.length ? 0 : prevState.currentIndex + 2
+      }))
+    }
+  }, [indices.currentIndex])
+
   useEffect(() => {
     document.title = 'Tawanda Munongo - HomePage'
   })
-
-  // useEffect(() => {
-  //   const elements = document.querySelectorAll('.js-scroll')
-  //   console.log(elements)
-  // }, [])
-
 
   
   return (
     <React.Fragment>
       {/* <ScrollContainer> */}
-        <Body style={{ flexDirection: 'column',   justifyItems: 'center' }}>
+      {/* first home page section */}
+        <Page style={{ backgroundColor: 'black' }}>
           <Head className="headerName">Welcome, traveller</Head>
-          <ScrollIndicator />
-          {/* <More src={MoreArrow} alt="more" className="more-arrow" /> */}
-        </Body>
-        <Body >
-          <ThinkerImage src={Thinker} alt="thinker" />
             <Para
               className="blogContent"
-              style={{ color: 'bisque', textAlign: 'right' }}
+              style={{ color: 'white', textAlign: 'center' }}
             >
               My name is Tawanda.
               <br />I build websites and cross-platform mobile applications.
@@ -147,35 +198,95 @@ const Home = () => {
               <br /> I also write fiction and non-fiction, exploring the
               intersection of technology and our existent ways of life.{' '}
             </Para>
-        </Body>
-            <Section3>
-              <LSection3 className='blogContent'>
-                What I've Worked On <br />
-                <p style={{ fontSize: 16, color: 'white'}}>
-                  I always choose my projects with the aim of challenging myself.
-                </p>
-              </LSection3>
-              <RSection3>
-                <RSubSection style={{ }}>
-                  Project 1
-                  <img src='https://github.com/edtha3rd/notepad/blob/master/notepad.jpg' alt='notepad' style={{ height: 'calc(20%)', width: 'auto'}} />
-                  <Details>
-                    Here I will write some details about the project
-                  </Details>
-                </RSubSection>
-                <Separator />
-                <RSubSection style={{ }}>
-                  Project 2
-                  <Details>
-                    Here I will write some details about the project
-                  </Details>
-                </RSubSection>
-                <Separator />
-                <RSubSection style={{ }}>
-                  See More
-                </RSubSection>
-              </RSection3>
-            </Section3>
+            <Link style={{ 
+              backgroundColor: 'teal', 
+              borderRadius: '5px', 
+              color: 'white',
+              fontWeight: 'bold',
+              justifySelf: 'center', 
+              padding: '3px 10px', 
+              textAlign: 'center',
+              textDecoration: 'none',
+              width: 'auto'
+              }} 
+              to="/about"
+            >
+                MORE ABOUT ME
+            </Link>
+          <ScrollIndicator />
+          {/* <More src={MoreArrow} alt="more" className="more-arrow" /> */}
+        </Page>
+        {/* second home page section */}
+            <Page style={{ 
+              backgroundColor: 'black',
+              borderTop: '0.5px solid grey'
+              }}>
+              <Portfolio1 className='blogContent' style={{  }}>
+                <h2 style={{ textAlign: 'center' }}>My Portfolio</h2>
+                <PortIntro style={{  }}>
+                  My goals, whenever I select a new project to take on, are always to challenge myself and learn something new. For the last 4 years, I have worked on numerous projects in many programming languages, most of them as part of my CS coursework. 
+                </PortIntro>
+              </Portfolio1>
+              <Portfolio2 style={{
+                height: '80vh'
+              }}>
+                <Carousel className='projects-carousel'>
+                  {projects.map((project, index) => (
+                    <li
+                    key={project.id}
+                    className={`project ${determineClasses(indices, index)}`}
+                    >
+                      <Card>
+                        <div style={{ flex: 0 }}>
+                          <Preview src={project.preview} alt={project.title} style={{ height: '30vh' }}/>
+                        </div>
+                        <div style={{ flex: 1, marginLeft: '10px' }}>
+                          <h2>{project.title}</h2>
+                          <p>{project.details}</p>
+                          <a href={project.github}>
+                            <Button style={{ backgroundColor: 'purple', width: 'auto' }}>
+                              Github
+                            </Button>
+                          </a>
+                          {project.link 
+                            ? <a href={project.link}>
+                                <Button 
+                                  style={{ 
+                                    backgroundColor: 'teal', marginLeft: '5px'
+                                  }}>
+                                    Live Demo
+                                </Button> 
+                              </a>
+                            : <div></div>}
+                        </div>
+                      </Card>
+                    </li>
+                  ))}
+                </Carousel>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <ButtonAsLink onClick={handleCardChange} style={{ 
+                    backgroundColor: 'teal',
+                    borderRadius: '5px',
+                    color: 'white',
+                    marginTop: '15vh',
+                    padding: '10px',
+                    }}
+                  >
+                    Next Item
+                  </ButtonAsLink>
+                  <Link to='/projects' style={{
+                    backgroundColor: 'darkgoldenrod',
+                    borderRadius: '5px',
+                    color: 'white',
+                    marginTop: '15vh',
+                    padding: '10px',
+                  }}>My Projects</Link>
+                </div>
+              </Portfolio2>
+            </Page>
+        <Page style={{ backgroundColor: 'teal' }} >
+          <ThinkerImage src={Thinker} alt="thinker" />
+        </Page>
           {/* </ScrollContainer> */}
         </React.Fragment>
 
