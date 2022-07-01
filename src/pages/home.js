@@ -1,23 +1,8 @@
 import React, { useEffect, useCallback, useState } from 'react'
-//import { useQuery } from '@apollo/client';
 import styled from 'styled-components'
-// import {
-//   Animator,
-//   batch,
-//   Fade,
-//   Move,
-//   ScrollContainer,
-//   ScrollPage,
-//   Sticky,
-//   ZoomOut,
-// } from 'react-scroll-motion'
-//import components
 import ScrollIndicator from '../components/ScrollIndicator'
-import Separator from '../components/Separator'
 import Thinker from '../img/thinker-nobg-prism.jpg'
-import MoreArrow from '../img/more-arrow.svg'
 import { Link } from 'react-router-dom'
-import ButtonAsLink from '../components/ButtonAsLink'
 import { Fade } from 'react-reveal'
 
 
@@ -143,7 +128,7 @@ const projects = [
     'id': 3,
     'title': 'Snake Game', 
     'details': 'This is a web-based snake game in JavaScript. I chose this project to improve my understanding of how vanilla JavaScript refreshes rendered content and how to manually control this to implement something like a game engine.', 
-    'preview': 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg', 
+    'preview': 'https://github.com/edtha3rd/snake-game/raw/master/gameplay.png', 
     'github': 'https://github.com/edtha3rd',
     'link': 'https://edtha3rd.github.io/snake-game/'
   }
