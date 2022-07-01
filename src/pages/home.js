@@ -104,10 +104,10 @@ const Portfolio2 = styled.div`
 
 const PortIntro = styled.p`
   color: white; 
-  font-size: 18; 
+  font-size: 18px; 
   width: 50vw;
   @media (max-width: 700px) {
-    font-size: 10;
+    font-size: 14px;
     text-align: justify;
     width: 95vw;
   }
@@ -130,14 +130,14 @@ const projects = [
     'title': 'Tickets!', 
     'details': 'Some details about Tickets Please', 
     'preview': 'https://github.com/edtha3rd/tickets-mob/raw/master/home_page.gif', 
-    'github': 'https://github.com/edtha3rd'
+    'github': 'https://github.com/edtha3rd/tickets-mob'
   },
   {
     'id': 2,
     'title': 'Java Notepad', 
-    'details': 'A simple, lightweight text editor is a programmer\'s best friend. There are many things to take into consideration when designing such a program. The basic functionality of the text editor must allow us to be able to open a new, blank document, save a new text file or update an already saved file, or to open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.', 
+    'details': 'A simple, lightweight text editor is a programmer\'s best friend. The basic functionality of the text editor must allow a user to open a new text file, save a new text file, update an existing file, or open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.', 
     'preview': 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg', 
-    'github': 'https://github.com/edtha3rd'
+    'github': 'https://github.com/edtha3rd/notepad'
   },
   {
     'id': 3,
@@ -283,6 +283,7 @@ const Home = () => {
                     backgroundColor: 'teal',
                     borderRadius: '5px',
                     color: 'white',
+                    cursor: 'grab',
                     marginTop: '15vh',
                     padding: '10px',
                     textAlign: 'center',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { slide as Menu } from 'react-burger-menu'
+// import { slide as Menu } from 'react-burger-menu'
 import {
   Link,
   //withRouter replacement for v6
@@ -21,31 +21,49 @@ function withRouter(Component) {
 }
 
 const Icon = styled.img`
-  margin-right: 5px;
+  margin-right: 5vw;
   vertical-align: middle;
 `
 
 const ListItem = styled.li`
-  border-bottom: 2px solid black;
-  display: inline;
-  font-size: 20px;
-  font-stretch: regular;
-  font-style: normal;
+  font-size: 30px;
   font-weight: bold;
-  height: 40px;
-  margin: 4px;
-  margin-top: 6px;
+  line-height: 36px;
+  padding: 16px;
   text-transform: capitalize;
+`
+
+const Menu = styled.div`
+  background-color: #423F3F;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0px;
+  position: fixed;
+  align-text: center;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  width: 100vw;
+  z-index: 3;
+  @media (min-width: 768px){
+    top: -100%;
+  }
 `
 
 const SideBar = (props) => {
   return (
-    <Menu>
-      <ListItem className="navItem">
+    <Menu style={{ top: props.nav ? '0px' :'-100%' }}>
+      <ul 
+        style={{ 
+          color: 'white',
+          listStyle: 'none', 
+          paddingTop: '20vh'}}>
+
+      <ListItem className="navItem" >
         <Link to="/">
           <Icon
-            src="https://icongr.am/fontawesome/home.svg?size=25&color=currentColor"
             alt="me"
+            src="https://icongr.am/fontawesome/home.svg?size=25&color=currentColor"
           />
           Home
         </Link>
@@ -55,7 +73,7 @@ const SideBar = (props) => {
           <Icon
             src="https://icongr.am/simple/aboutme.svg?size=25&color=currentColor&colored=false"
             alt="me"
-          />
+            />
           About
         </Link>
       </ListItem>
@@ -64,7 +82,7 @@ const SideBar = (props) => {
           <Icon
             src="https://icongr.am/fontawesome/pencil-square-o.svg?size=25&color=currentColor"
             alt="me"
-          />
+            />
           Writings
         </Link>
       </ListItem>
@@ -73,9 +91,10 @@ const SideBar = (props) => {
         <Icon
           src="https://icongr.am/fontawesome/terminal.svg?size=25&color=currentColor"
           alt="me"
-        />{' '}
+          />{' '}
         Projects
       </ListItem>
+      </ul>
       {/*<ListItem>
                     <Link to="/quickview" >Quick View</Link>
                 </ListItem>

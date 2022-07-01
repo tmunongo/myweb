@@ -1,22 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import SideBar from './SideBar'
+import { IoMenu, IoCloseSharp } from 'react-icons/io5'
 
 const Burger = styled.div`
-  @media (min-width: 700px) {
+  color: white;
+  cursor: pointer;
+  display: block;
+  padding: 20px 0px 0px 20px;
+  z-index: 10;
+  @media (min-width: 768px) {
     display: none;
-    padding-left: 20px;
   }
 `
 
 const HeaderBar = styled.header`
-  height: 72px;
   background-color: #000;
-  width: calc(100%);
-  margin-bottom: 0px;
   display: flex;
+  height: 72px;
   justify-content: space-around;
+  margin-bottom: 0px;
+  width: calc(100%);
 
   @media (max-width: 768px) {
     justify-content: space-between;
@@ -91,15 +96,28 @@ const ListItem = styled.li`
   }
 `
 
+
 const Header = () => {
+  const [nav, setNav] = useState(false)
+
+    const handleNav = (e) => {
+      e.preventDefault()
+      setNav(!nav)
+    }
+
   return (
     <HeaderBar>
-      <Burger>
-        <SideBar
-          pageWrapId={'page-wrap'}
-          outerContainerId={'outer-container'}
-        />
+      <Burger onClick={event => handleNav(event)}>
+        {
+            nav 
+            ? <IoCloseSharp size={35} />
+            : <IoMenu size={35} />
+                     
+        }
       </Burger>
+      <SideBar 
+        nav={nav} 
+      />
       <a href="/" style={{ textDecoration: 'none' }}>
         <LogoText className="headerName">Tawanda Munongo</LogoText>
       </a>

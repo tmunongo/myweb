@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SideBar from './SideBar';
@@ -49,10 +49,11 @@ const ListItem = styled.li`
 `;
 
 const Navigation = () => {
+
     return (
         <Nav>
             <NavList>
-                <SideBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} right />
+                <SideBar nav />
                 <ListItem>
                     <Link to="/">Home</Link>
                 </ListItem>
