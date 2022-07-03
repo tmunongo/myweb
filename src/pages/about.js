@@ -22,6 +22,17 @@ const Body = styled.div`
   }
 `
 
+const Button = styled.a`
+  border: 2px solid #0077cc;
+  border-radius: 0.3rem;
+  color: #0077cc;
+  cursor: grab;
+  margin: 10px 15px 10px 0px;
+  padding: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+`
+
 const ContactForm = styled.div`
   grid-row: two / two;
   grid-column: first / sixth;
@@ -191,7 +202,12 @@ const About = () => {
           <br></br>
           For any web design work, don't hesitate to get in touch with me!
         </Text>
+        <div style={{ marginTop: '25px'}}>
+            <Button href="https://www.dropbox.com/s/cerj0ua9xfrclun/Tawanda%20Munongo%20Resume.pdf?dl=0">My Resume</Button>
+            <Button href='https://www.dropbox.com/s/er33ewam4dm3lfv/Tawanda%20Munongo%20Lebenslauf.pdf?dl=0'>Mein Lebenslauf</Button>
+        </div>
       </Body>
+
       {/* <ContactForm>
         <form ref={form} onSubmit={sendEmail}>
           <FormLabel>Name</FormLabel>

@@ -45,7 +45,7 @@ code {
 .blogContent {
   color: white;
   font-family: "Nixie";
-  font-size: 22px;
+  font-size: 1.5rem;
 }
 
 .headerName {
@@ -119,12 +119,13 @@ code {
 
 .project {
   background: #ffffff;
-  border-radius: 8px;
   border: 1px solid #eeeeee;
+  border-radius: 8px;
   box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
   color: black;
   height: 40vh;
   opacity: 0;
+  overflow-y: auto;
   position: absolute;
   transform: scale(0.85) translateY(50px);
   transition: all 0.75s ease;

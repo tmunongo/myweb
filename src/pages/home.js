@@ -21,6 +21,7 @@ const Button = styled.span`
 
 const Card = styled.div`
   display: flex;
+  overflow: auto;
   padding: 30px;
   width: 65vw;
   @media (max-width: 700px){
@@ -33,11 +34,9 @@ const Carousel = styled.ul`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 200px;
   list-style: none;
   margin: 100px auto;
   padding: 0;
-  position: relative;
 `
 
 const Head = styled.h1`
@@ -84,11 +83,16 @@ const Portfolio1 = styled.div`
 `
 
 const Portfolio2 = styled.div`
+  height: 60vh;
+`
 
+const Portfolio3 = styled.div`
+  height: 20vh;
 `
 
 const PortIntro = styled.p`
-  color: white; 
+  color: white;
+  display: flex;
   font-size: 18px; 
   width: 50vw;
   @media (max-width: 700px) {
@@ -213,14 +217,15 @@ const Home = () => {
                 MORE ABOUT ME
             </Link>
           <ScrollIndicator />
-          {/* <More src={MoreArrow} alt="more" className="more-arrow" /> */}
         </Page>
         {/* second home page section */}
             <Page style={{ 
               backgroundColor: 'black',
-              borderTop: '0.5px solid grey'
+              borderTop: '0.5px solid grey',
+              display: 'flex',
+              flexDirection: 'column',
               }}>
-              <Portfolio1 className='blogContent' style={{  }}>
+              <Portfolio1 className='blogContent'>
                 <Fade bottom>
                   <h2 style={{ textAlign: 'center' }}>My Portfolio</h2>
                 </Fade>
@@ -230,9 +235,7 @@ const Home = () => {
                   </PortIntro>
                 </Fade>
               </Portfolio1>
-              <Portfolio2 style={{
-                height: '80vh'
-              }}>
+              <Portfolio2>
                 <Carousel className='projects-carousel'>
                   {projects.map((project, index) => (
                     <li
@@ -273,94 +276,40 @@ const Home = () => {
                     </li>
                   ))}
                 </Carousel>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  <Button onClick={handleCardChange} style={{ 
-                    backgroundColor: 'teal',
-                    borderRadius: '5px',
-                    color: 'white',
-                    cursor: 'grab',
-                    marginTop: '15vh',
-                    padding: '10px',
-                    textAlign: 'center',
-                    }}
-                  >
-                    Next Item
-                  </Button>
-                  <Link to='/projects' style={{
-                    alignSelf: 'center',
-                    backgroundColor: 'darkgoldenrod',
-                    borderRadius: '5px',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    marginTop: '1vh',
-                    padding: '10px',
-                    textAlign: 'center',
-                    textDecoration: 'none',
-                    width: '40vw'
-                  }}>All My Projects</Link>
-                </div>
-              </Portfolio2>
+                  </Portfolio2>
+                <Portfolio3>
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <Button onClick={handleCardChange} style={{ 
+                      backgroundColor: 'teal',
+                      borderRadius: '5px',
+                      color: 'white',
+                      cursor: 'grab',
+                      padding: '10px',
+                      textAlign: 'center',
+                      }}
+                    >
+                      Next Item
+                    </Button>
+                    <Link to='/projects' style={{
+                      alignSelf: 'center',
+                      backgroundColor: 'darkgoldenrod',
+                      borderRadius: '5px',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      marginTop: '1vh',
+                      padding: '10px',
+                      textAlign: 'center',
+                      textDecoration: 'none',
+                      width: '40vw'
+                    }}>All My Projects</Link>
+                  </div>
+                </Portfolio3>
             </Page>
         <Page style={{ backgroundColor: 'black', borderTop: '0.5px solid grey' }} >
           <ThinkerImage src={Thinker} alt="thinker" />
         </Page>
           {/* </ScrollContainer> */}
         </React.Fragment>
-
-
-    // <ScrollContainer>
-    //   <Main>
-    //     <ScrollPage page={0}>
-    //       <Animator animation={batch(Fade(), Sticky(), ZoomOut())}>
-    //       </Animator>
-    //     </ScrollPage>
-    //     <ScrollPage page={1}>
-    //       <Animator animation={batch(Fade(), Sticky(), Move())}>
-    //       </Animator>
-    //       <ScrollIndicator />
-    //     </ScrollPage>
-    //     <ScrollPage page={2}>
-    //       <Animator animation={batch(Fade(), Move(), Sticky())}>
-    //       </Animator>
-    //       <ScrollIndicator />
-    //     </ScrollPage>
-    //     <ScrollPage page={3}>
-    //       <Animator animation={batch(Fade(), Move(), Sticky())}>
-              // <Para
-              //   className="blogContent"
-              //   style={{ color: 'bisque', justifyContent: 'space-around' }}
-              // >
-              // <li>
-              //   Programming Languages
-              //     <ul>- Java</ul>
-              //     <ul>- Python</ul>
-              //     <ul>- HTML, CSS, JavaScript</ul>
-              //   </li>
-              //   <li>
-              //   Frameworks
-              //     <ul>- NodeJS</ul>
-              //     <ul>- React and React Native</ul>
-              //     <ul>- Django</ul>
-              //   </li>
-              // </Para>
-    //         <Body>
-    //           <Para
-    //             className="blogContent"
-    //             style={{ color: 'bisque', justifyContent: 'space-around' }}
-    //           >
-    //             <li>
-    //               My fiction has been published in:
-    //               <ul>- Ab Terra Flash Fiction</ul>
-    //               <ul>- Literary Heish Magazine</ul>
-    //               <ul>- The Rush Magazine</ul>
-    //             </li>
-    //           </Para>
-    //         </Body>
-    //       </Animator>
-    //       <ScrollIndicator />
-    //     </ScrollPage>
-    //   </Main>
-    // </ScrollContainer>
   )
 }
 

@@ -81,16 +81,14 @@ const NavList = styled.ul`
 `
 
 const ListItem = styled.li`
-  font-style: normal;
-  font-stretch: regular;
+  display: inline;
+  font-size: 18px;
+  letter-spacing: .2rem;
   text-transform: capitalize;
-  font-size: 17px;
-  font-weight: bold;
+  margin: 10px;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
-  display: inline;
-  margin: 10px;
   @media screen(max-width: 768px) {
     font-size: 10px;
   }

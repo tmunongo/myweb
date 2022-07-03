@@ -37,15 +37,16 @@ const NavList = styled.ul`
 `;
 
 const ListItem = styled.li`
+    display: inline;
+    font-size: 16px;
     font-style: normal;
     font-stretch: regular;
-    text-transform: capitalize;
     font-weight: bold;
+    margin: 10px;
     text-decoration: underline;
     text-decoration-thickness: 3px;
+    text-transform: capitalize;
     text-underline-offset: 8px;
-    display: inline;
-    margin: 10px;
 `;
 
 const Navigation = () => {
