@@ -27,6 +27,7 @@ const Button = styled.a`
   border-radius: 0.3rem;
   color: #0077cc;
   cursor: grab;
+  font-weight: bold;
   margin: 10px 15px 10px 0px;
   padding: 10px;
   text-decoration: none;
