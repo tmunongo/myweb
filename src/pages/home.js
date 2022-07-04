@@ -24,7 +24,7 @@ const Card = styled.div`
   overflow: auto;
   padding: 30px;
   width: 65vw;
-  @media (max-width: 700px){
+  @media (max-width: 768px){
     padding: 10px;
     width: 95vw;
   };
@@ -40,9 +40,17 @@ const Carousel = styled.ul`
 `
 
 const Head = styled.h1`
-margin: 0px 0px 10px 0px;
-text-align: center;
+  margin: 0px 0px 10px 0px;
+  text-align: center;
   justify-content: center;
+`
+
+const Heading2 = styled.h2`
+  text-align: center; 
+  width: 100vw; 
+  @media (max-width: 768px){
+    margin: 0 0;
+  }
 `
 
 const Page = styled.div`
@@ -52,13 +60,12 @@ const Page = styled.div`
   height: 100vh;
   min-height: 450px;
 
-  @media (min-width: 700px) {
-    padding: 0px calc(5%) 0px calc(5%);
+  @media (min-width: 768px) {
+    padding: 0px 5% 0px 5%;
     justify-content: space-around;
   }
 
-  @media (max-width: 700px) {
-    padding-left: 5px;
+  @media (max-width: 768px) {
   }
 `
 
@@ -69,15 +76,18 @@ const Para = styled.div`
 `
 
 const Preview = styled.img`
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `
 
 const Portfolio1 = styled.div`
-  height: 20vh; 
-  padding-top: 20px;
-  @media (max-width: 700px){
+  align-items: center;  
+  display: flex;
+  flex-direction: column;
+  height: 25vh; 
+  justify-content: center;
+  @media (max-width: 768px){
     width: 100vw;
   }
 `
@@ -87,15 +97,16 @@ const Portfolio2 = styled.div`
 `
 
 const Portfolio3 = styled.div`
-  height: 20vh;
+  height: 15vh;
 `
 
 const PortIntro = styled.p`
   color: white;
   display: flex;
   font-size: 18px; 
+  margin: 0px 0px;
   width: 50vw;
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     font-size: 14px;
     text-align: justify;
     width: 95vw;
@@ -186,7 +197,7 @@ const Home = () => {
     <React.Fragment>
       {/* <ScrollContainer> */}
       {/* first home page section */}
-        <Page style={{ backgroundColor: 'black' }}>
+        <Page style={{ backgroundColor: 'black', height: 'calc(100vh - 72px)' }}>
           <Head className="headerName">Welcome, traveller</Head>
           <Fade bottom>
 
@@ -227,7 +238,9 @@ const Home = () => {
               }}>
               <Portfolio1 className='blogContent'>
                 <Fade bottom>
-                  <h2 style={{ textAlign: 'center' }}>My Portfolio</h2>
+                  <div>
+                    <Heading2 style={{ }}>My Portfolio</Heading2>
+                  </div>
                 </Fade>
                 <Fade bottom>
                   <PortIntro style={{  }}>

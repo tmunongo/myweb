@@ -33,13 +33,13 @@ const ListItem = styled.li`
 `
 
 const Menu = styled.div`
-  background-color: #423F3F;
+  align-text: center;
+  background-color: black;
   display: flex;
   height: 100vh;
   justify-content: center;
   left: 0px;
   position: fixed;
-  align-text: center;
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
   width: 100vw;

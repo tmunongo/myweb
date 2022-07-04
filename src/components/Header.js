@@ -21,7 +21,7 @@ const HeaderBar = styled.header`
   height: 72px;
   justify-content: space-around;
   margin-bottom: 0px;
-  width: calc(100%);
+  width: 100vw;
 
   @media (max-width: 768px) {
     justify-content: space-between;
@@ -113,6 +113,7 @@ const Header = () => {
                      
         }
       </Burger>
+      {/* Drop down nav menu */}
       <SideBar 
         nav={nav} 
       />
