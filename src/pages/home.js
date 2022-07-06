@@ -127,6 +127,14 @@ const ThinkerImage = styled.img`
 const projects = [
   {
     'id': 1,
+    'title': 'Twitch UI',
+    'topics': 'NextJS', 
+    'details': 'I built the UI for the Twitch live-streaming site using NextJS and Tailwind CSS. Working authentication is implemented using NextAuth allowing users to log in with a Google or Github account.', 
+    'preview': 'https://github.com/edtha3rd/twitch-next/raw/master/home_page.png', 
+    'github': 'https://github.com/edtha3rd/twitch-next'
+  },
+  {
+    'id': 2,
     'title': 'Tickets!',
     'topics': 'React Native', 
     'details': 'The app allows a user to register an account and view all the available movies in the db. A user can customize their reservation by picking a location, watch time, day, and a seat. The app connects to an Express server running Apollo GraphQL. MongoDB is used for document storage while objects are stored on Cloudinary.', 
@@ -134,7 +142,7 @@ const projects = [
     'github': 'https://github.com/edtha3rd/tickets-mob'
   },
   {
-    'id': 2,
+    'id': 3,
     'title': 'Java Notepad',
     'topics': 'Java', 
     'details': 'A simple, lightweight text editor is a programmer\'s best friend. The basic functionality of the text editor must allow a user to open a new text file, save a new text file, update an existing file, or open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.', 
@@ -142,7 +150,7 @@ const projects = [
     'github': 'https://github.com/edtha3rd/notepad'
   },
   {
-    'id': 3,
+    'id': 4,
     'title': 'Snake Game',
     'topics': 'JavaScript',  
     'details': 'This is a web-based snake game in JavaScript. I chose this project to improve my understanding of how vanilla JavaScript refreshes rendered content and how to manually control this to implement something like a game engine.', 
