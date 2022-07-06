@@ -131,7 +131,8 @@ const projects = [
     'topics': 'NextJS', 
     'details': 'I built the UI for the Twitch live-streaming site using NextJS and Tailwind CSS. Working authentication is implemented using NextAuth allowing users to log in with a Google or Github account.', 
     'preview': 'https://github.com/edtha3rd/twitch-next/raw/master/home_page.png', 
-    'github': 'https://github.com/edtha3rd/twitch-next'
+    'github': 'https://github.com/edtha3rd/twitch-next',
+    'link': 'https://twitch-next-nu.vercel.app/'
   },
   {
     'id': 2,
