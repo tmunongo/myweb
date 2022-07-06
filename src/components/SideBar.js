@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { slide as Menu } from 'react-burger-menu'
 import {
   Link,
@@ -50,6 +50,8 @@ const Menu = styled.div`
 `
 
 const SideBar = (props) => {
+  // const [nav, setNav] = useState(props.nav)
+
   return (
     <Menu style={{ top: props.nav ? '0px' :'-100%' }}>
       <ul 
@@ -58,7 +60,11 @@ const SideBar = (props) => {
           listStyle: 'none', 
           paddingTop: '20vh'}}>
 
-      <ListItem className="navItem" >
+      <ListItem onClick={(e) => {
+        e.preventDefault()
+        props.setNav(false)
+        }}  
+        className="navItem" >
         <Link to="/">
           <Icon
             alt="me"
@@ -67,7 +73,10 @@ const SideBar = (props) => {
           Home
         </Link>
       </ListItem>
-      <ListItem className="navItem">
+      <ListItem onClick={(e) => {
+        e.preventDefault()
+        props.setNav(false)
+        }} className="navItem">
         <Link to="/about">
           <Icon
             src="https://icongr.am/simple/aboutme.svg?size=25&color=currentColor&colored=false"
@@ -76,7 +85,10 @@ const SideBar = (props) => {
           About
         </Link>
       </ListItem>
-      <ListItem className="navItem">
+      <ListItem onClick={(e) => {
+        e.preventDefault()
+        props.setNav(false)
+        }} className="navItem">
         <Link to="/writings">
           <Icon
             src="https://icongr.am/fontawesome/pencil-square-o.svg?size=25&color=currentColor"
@@ -86,7 +98,10 @@ const SideBar = (props) => {
         </Link>
       </ListItem>
 
-      <ListItem className="navItem">
+      <ListItem onClick={(e) => {
+        e.preventDefault()
+        props.setNav(false)
+        }} className="navItem">
         <Icon
           src="https://icongr.am/fontawesome/terminal.svg?size=25&color=currentColor"
           alt="me"

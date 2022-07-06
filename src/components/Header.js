@@ -15,7 +15,7 @@ const Burger = styled.div`
   }
 `
 
-const HeaderBar = styled.header`
+const HeaderBar = styled.div`
   background-color: #000;
   display: flex;
   height: 72px;
@@ -115,25 +115,27 @@ const Header = () => {
       </Burger>
       {/* Drop down nav menu */}
       <SideBar 
-        nav={nav} 
+        nav={nav} setNav={setNav}
       />
       <a href="/" style={{ textDecoration: 'none' }}>
         <LogoText className="headerName">Tawanda Munongo</LogoText>
       </a>
       <Nav>
         <NavList>
-          <ListItem>
+          <ListItem >
             <Link className="navItem" to="/">
               Home
             </Link>
           </ListItem>
-          <ListItem className="navItem">
+          <ListItem  className="navItem">
             <Link to="/about">About</Link>
           </ListItem>
-          <ListItem className="navItem">
+          <ListItem  className="navItem">
             <Link to="/writings">Writings</Link>
           </ListItem>
-          <ListItem className="navItem">Projects</ListItem>
+          <ListItem  className="navItem">
+            Projects
+          </ListItem>
         </NavList>
       </Nav>
     </HeaderBar>

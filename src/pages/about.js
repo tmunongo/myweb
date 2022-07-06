@@ -203,7 +203,7 @@ const About = () => {
           <br></br>
           For any web design work, don't hesitate to get in touch with me!
         </Text>
-        <div style={{ marginTop: '25px'}}>
+        <div style={{ margin: '25px 0px'}}>
             <Button href="https://www.dropbox.com/s/cerj0ua9xfrclun/Tawanda%20Munongo%20Resume.pdf?dl=0">My Resume</Button>
             <Button href='https://www.dropbox.com/s/er33ewam4dm3lfv/Tawanda%20Munongo%20Lebenslauf.pdf?dl=0'>Mein Lebenslauf</Button>
         </div>
