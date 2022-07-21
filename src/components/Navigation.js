@@ -65,7 +65,7 @@ const Navigation = () => {
                     <Link to="/writings">Writings</Link>
                 </ListItem>
                 <ListItem>
-                    Projects
+                    <Link to="/projects">Projects</Link>
                 </ListItem>
             </NavList>
         </Nav>
