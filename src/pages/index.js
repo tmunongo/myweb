@@ -10,6 +10,7 @@ import About from './about'
 import Writings from './writings'
 import QuickView from './quickview'
 import PostPage from './post'
+import Projects from './projects'
 import SignUp from './signup'
 import SignIn from './signin'
 
@@ -26,6 +27,7 @@ const Pages = () => {
           <Route path="post/:slug" element={<PostPage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="signin" element={<SignIn />}></Route>
+          <Route path='projects' element={<Projects />}></Route>
         </Routes>
       </Layout>
     </Router>

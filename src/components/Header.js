@@ -134,7 +134,7 @@ const Header = () => {
             <Link to="/writings">Writings</Link>
           </ListItem>
           <ListItem  className="navItem">
-            Projects
+            <Link to="/projects">Projects</Link>
           </ListItem>
         </NavList>
       </Nav>

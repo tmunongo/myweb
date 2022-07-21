@@ -91,6 +91,7 @@ const Page = styled.div`
   display: grid;
   grid-template-rows: [start] auto [one] auto [two] auto [end];
   grid-template-columns: [start] 20% [first] 8% [second] 8% [third] 28% [fourth] 8% [fifth] 8% [sixth] 20% [end];
+  min-height: 100vh;
   padding-top: 10px;
 `
 

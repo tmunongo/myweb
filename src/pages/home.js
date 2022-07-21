@@ -139,7 +139,7 @@ const projects = [
     'title': 'Tickets!',
     'topics': 'React Native', 
     'details': 'The app allows a user to register an account and view all the available movies in the db. A user can customize their reservation by picking a location, watch time, day, and a seat. The app connects to an Express server running Apollo GraphQL. MongoDB is used for document storage while objects are stored on Cloudinary.', 
-    'preview': 'https://github.com/edtha3rd/tickets-mob/raw/master/home_page.gif', 
+    'preview': 'https://github.com/edtha3rd/tickets-mob/raw/master/live/home_page.gif', 
     'github': 'https://github.com/edtha3rd/tickets-mob'
   },
   {
