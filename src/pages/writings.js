@@ -23,8 +23,10 @@ const Banner = styled.div`
     padding: 0px calc(10%) 0px calc(10%);
   }
 
-  @media (max-width: 700px) {
-    padding-left: 5px;
+  @media (max-width: 768px) {
+    margin-left: 2%;
+    padding: 5px;
+    max-width: 95vw;
   }
 `
 
@@ -111,7 +113,7 @@ const Middle = styled.div`
 const TagBody = styled.div`
   border: 2px solid #7fe3d8;
   border-radius: 0.375rem;
-  margin: 10px 80px 0px 80px;
+  margin: 10px 80px 10px 80px;
   padding: 5px;
 `
 

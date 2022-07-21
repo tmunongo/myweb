@@ -88,11 +88,16 @@ const Me = styled.img`
   }
 `
 const Page = styled.div`
+  background-color: #252522;
   display: grid;
   grid-template-rows: [start] auto [one] auto [two] auto [end];
   grid-template-columns: [start] 20% [first] 8% [second] 8% [third] 28% [fourth] 8% [fifth] 8% [sixth] 20% [end];
+  margin: 0px 10%;
   min-height: 100vh;
   padding-top: 10px;
+  @media (max-width: 768px){
+    margin: 0px 5%;
+  }
 `
 
 const Text = styled.span`

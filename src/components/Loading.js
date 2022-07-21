@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;
-  height: window.innerHeight;
+  height: 60vh;
   justify-content: center;
   width: window.innerWidth;
   @media (min-width: 700px) {

@@ -26,7 +26,7 @@ const Card = styled.div`
   width: 65vw;
   @media (max-width: 768px){
     padding: 10px;
-    width: 95vw;
+    width: 90vw;
   };
 `
 

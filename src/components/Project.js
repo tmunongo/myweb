@@ -13,6 +13,7 @@ const Container = styled.div`
     width: 300px;
     @media (max-width: 768px) {
         height: 340px;
+        margin-y: 8px;
     }
     :hover {
         box-shadow: 12px 12px 2px 1px black;
