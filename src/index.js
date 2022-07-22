@@ -51,6 +51,7 @@ window.addEventListener('scroll', () => {
 })
 
 setToLS('all-themes', themes.default)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
