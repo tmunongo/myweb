@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 
-import styled from 'styled-components'
+import { Fade } from 'react-reveal'
 import {
   EmailIcon,
   EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
   PocketIcon,
   PocketShareButton,
+  TelegramIcon,
+  TelegramShareButton,
   TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-  LinkedinShareButton,
-  LinkedinIcon,
-  TelegramShareButton,
-  TelegramIcon,
 } from 'react-share'
-import { Fade } from 'react-reveal'
+import styled from 'styled-components'
 
 //import query
 //import logged in user UI components
@@ -29,13 +29,14 @@ import { Fade } from 'react-reveal'
 
 //styling
 const StyledPost = styled.article`
+  background-color: ${({ theme }) => theme.colors.body};
   display: inline-grid;
   grid-template-columns: [first] calc(20%) [second] calc(60%) [third] calc(20%);
   max-width: calc(100%);
   margin: 0 auto;
-  @media (max-width: 700px) {
+  padding: 8px;
+  @media (max-width: 768px) {
     grid-template-columns: [first] calc(5%) [second] calc(90%) [third] calc(5%);
-    background: black;
   }
 `
 //post metadata
@@ -43,7 +44,7 @@ const MetaData = styled.div`
   @media (min-width: 700px) {
     align-items: top;
   }
-  border: 2px solid #7fe3d8;
+  border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : 'black')};
   border-radius: 0.375rem;
   grid-column-start: second;
   grid-column-end: third;
@@ -53,11 +54,11 @@ const MetaData = styled.div`
 `
 //add space b/w avatar and metaInfo
 const MetaInfo = styled.div`
+  color: ${({ theme }) => (theme.dark ? '#b4b4b4' : '##5C6365')};
   grid-column-start: first;
   grid-column-end: third;
   grid-row-start: first;
   grid-row-end: rowend;
-  color: #b4b4b4;
   padding: 0px 30px 10px 30px;
   @media (max-width: 700px) {
     padding: 0px 10px 10px 20px;
@@ -68,21 +69,18 @@ const Name = styled.h3`
   margin: 5px 0px 5px 0px;
   text-transform: capitalize;
   font-size: 20px;
-  color: white;
+  color: ${({ theme }) => (theme.dark ? 'white' : 'black')};
 `
 
 const Body = styled.div`
   color: #b4b4b4;
+  border-bottom: 2px solid ${({ theme }) => (theme.dark ? 'white' : 'black')};
   grid-column-start: second;
   grid-column-end: third;
   margin-top: 0;
   @media (min-width: 700px) {
-    border-bottom: 2px solid white;
     margin: 0px 0px 10px 0px;
     padding-bottom: 5px;
-  }
-  @media (max-width: 700px) {
-    border-bottom: 2px solid white;
   }
 `
 
@@ -105,7 +103,7 @@ const Share = styled.div`
 `
 
 const Title = styled.h2`
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   grid-column-start: second;
   grid-column-end: third;
@@ -148,7 +146,7 @@ const Post = ({ post }) => {
   }
   return (
     <StyledPost>
-      <Title className="headerName">{post.title}</Title> <br />
+      <Title className="welcome">{post.title}</Title> <br />
       <Body>
         <TimeStamp>
           <span style={{ color: '#8EE0F5' }}>posted</span>({date}),{' '}

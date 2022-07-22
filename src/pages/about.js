@@ -1,11 +1,11 @@
+import emailjs from '@emailjs/browser'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import Avatar from '../img/profilepic.jpg'
 import Github from '../img/github.png'
 import Instagram from '../img/icons/instagram.png'
 import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
-import emailjs from '@emailjs/browser'
+import Avatar from '../img/profilepic.jpg'
 
 const Body = styled.div`
   align-items: flex-end;
@@ -88,19 +88,21 @@ const Me = styled.img`
   }
 `
 const Page = styled.div`
-  background-color: #252522;
+  background-color: ${({ theme }) => theme.colors.secondary}; //#252522
+  border-radius: 0.3rem;
   display: grid;
   grid-template-rows: [start] auto [one] auto [two] auto [end];
   grid-template-columns: [start] 20% [first] 8% [second] 8% [third] 28% [fourth] 8% [fifth] 8% [sixth] 20% [end];
-  margin: 0px 10%;
+  margin: 4% 8%;
   min-height: 100vh;
   padding-top: 10px;
-  @media (max-width: 768px){
-    margin: 0px 5%;
+  @media (max-width: 768px) {
+    margin: 5% 5%;
   }
 `
 
 const Text = styled.span`
+  color: ${({ theme }) => theme.colors.text};
   height: 100%;
 `
 
@@ -209,9 +211,13 @@ const About = () => {
           <br></br>
           For any web design work, don't hesitate to get in touch with me!
         </Text>
-        <div style={{ margin: '25px 0px'}}>
-            <Button href="https://www.dropbox.com/s/cerj0ua9xfrclun/Tawanda%20Munongo%20Resume.pdf?dl=0">My Resume</Button>
-            <Button href='https://www.dropbox.com/s/er33ewam4dm3lfv/Tawanda%20Munongo%20Lebenslauf.pdf?dl=0'>Mein Lebenslauf</Button>
+        <div style={{ margin: '25px 0px' }}>
+          <Button href="https://www.dropbox.com/s/cerj0ua9xfrclun/Tawanda%20Munongo%20Resume.pdf?dl=0">
+            My Resume
+          </Button>
+          <Button href="https://www.dropbox.com/s/er33ewam4dm3lfv/Tawanda%20Munongo%20Lebenslauf.pdf?dl=0">
+            Mein Lebenslauf
+          </Button>
         </div>
       </Body>
 

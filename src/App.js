@@ -1,5 +1,5 @@
 // require('dotenv').config()
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 //import Apollo Client libraries
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
@@ -8,7 +8,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import Pages from './pages'
 
 //import components
+import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './components/GlobalStyle'
+import { useTheme } from './theme/useTheme'
 
 const cache = new InMemoryCache()
 
@@ -26,10 +28,21 @@ const client = new ApolloClient({
 })
 
 const App = () => {
+  const { theme, themeLoaded } = useTheme()
+  const [selectedTheme, setSelectedTheme] = useState(theme)
+
+  useEffect(() => {
+    setSelectedTheme(theme)
+  }, [themeLoaded])
+
   return (
     <ApolloProvider client={client}>
-      <GlobalStyle />
-      <Pages />
+      {themeLoaded && (
+        <ThemeProvider theme={selectedTheme}>
+          <GlobalStyle />
+          <Pages />
+        </ThemeProvider>
+      )}
     </ApolloProvider>
   )
 }

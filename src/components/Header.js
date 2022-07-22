@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import { IoCloseSharp, IoMenu } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import SideBar from './SideBar'
-import { IoMenu, IoCloseSharp } from 'react-icons/io5'
+import Switch from './Switch'
 
 const Burger = styled.div`
-  color: white;
+  color: #0077cc;
   cursor: pointer;
   display: block;
   padding: 20px 0px 0px 20px;
@@ -16,7 +17,7 @@ const Burger = styled.div`
 `
 
 const HeaderBar = styled.div`
-  background-color: #000;
+  background-color: ${({ theme }) => theme.colors.header};
   display: flex;
   height: 72px;
   justify-content: space-around;
@@ -30,7 +31,6 @@ const HeaderBar = styled.div`
 `
 
 const LogoText = styled.h1`
-  color: #e4e8e9;
   font-size: 20px;
   margin: 10px;
   padding: 20px 0px 0px 0px;
@@ -43,7 +43,6 @@ const LogoText = styled.h1`
 const Nav = styled.nav`
   padding: 0px 80px 0px 0px;
   height: 72px;
-
 
   @media (max-width: 750px) {
     display: none;
@@ -83,7 +82,7 @@ const NavList = styled.ul`
 const ListItem = styled.li`
   display: inline;
   font-size: 18px;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   text-transform: capitalize;
   margin: 10px;
   text-decoration: underline;
@@ -94,46 +93,39 @@ const ListItem = styled.li`
   }
 `
 
-
 const Header = () => {
   const [nav, setNav] = useState(false)
 
-    const handleNav = (e) => {
-      e.preventDefault()
-      setNav(!nav)
-    }
+  const handleNav = (e) => {
+    e.preventDefault()
+    setNav(!nav)
+  }
 
   return (
     <HeaderBar>
-      <Burger onClick={event => handleNav(event)}>
-        {
-            nav 
-            ? <IoCloseSharp size={35} />
-            : <IoMenu size={35} />
-                     
-        }
+      <Burger onClick={(event) => handleNav(event)}>
+        {nav ? <IoCloseSharp size={35} /> : <IoMenu size={35} />}
       </Burger>
       {/* Drop down nav menu */}
-      <SideBar 
-        nav={nav} setNav={setNav}
-      />
+      <SideBar nav={nav} setNav={setNav} />
       <a href="/" style={{ textDecoration: 'none' }}>
         <LogoText className="headerName">Tawanda Munongo</LogoText>
       </a>
+      <Switch />
       <Nav>
         <NavList>
-          <ListItem >
+          <ListItem>
             <Link className="navItem" to="/">
               Home
             </Link>
           </ListItem>
-          <ListItem  className="navItem">
+          <ListItem className="navItem">
             <Link to="/about">About</Link>
           </ListItem>
-          <ListItem  className="navItem">
+          <ListItem className="navItem">
             <Link to="/writings">Writings</Link>
           </ListItem>
-          <ListItem  className="navItem">
+          <ListItem className="navItem">
             <Link to="/projects">Projects</Link>
           </ListItem>
         </NavList>

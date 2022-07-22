@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { useQuery } from '@apollo/client'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 //import components
 import Loading from '../components/Loading'
 import essays from '../img/essays.jpg'
@@ -13,10 +13,10 @@ import { GET_POSTS } from '../gql/query'
 
 const Article = styled.article`
   padding: 0px 0px 10px 5px;
-  border-bottom: 1px solid #7fe3d8;
+  border-bottom: 1px solid ${({ theme }) => (theme.dark ? 'white' : 'black')};
 `
 const Banner = styled.div`
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   padding: 0px 0px 10px 0px;
 
   @media (min-width: 700px) {
@@ -68,9 +68,11 @@ const Three = styled.div`
 `
 
 const Feat = styled.h2`
-  border: 2px solid #7fe3d8;
+  @media (min-width: 768px) {
+    border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : '#0077cc')};
+  }
   border-radius: 0.375rem;
-  color: white;
+  color: ${({ theme }) => theme.colors.text};
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 17px;
   font-style: oblique;
@@ -86,15 +88,19 @@ const Feat = styled.h2`
 `
 
 const Body = styled.div`
-  @media (min-width: 700px) {
+  border-radius: 0.3rem;
+  @media (min-width: 768px) {
     columns: 2;
     display: grid;
+    margin: 4% 8%;
     max-width: calc(90%);
     grid-auto-columns: 75% 25%;
     padding: 50px 5px 25px 5px;
-    margin: 0px calc(100% - 95%) 0px calc(100% - 95%);
   }
-  background: #1f1f1f;
+  @media (max-width: 768px) {
+    margin: 5% 5%;
+  }
+  // background: #1f1f1f;
 `
 
 const Left = styled.div`
@@ -110,8 +116,13 @@ const Middle = styled.div`
     display: none;
   }
 `
+
+const SpanText = styled.span`
+  color: ${({ theme }) => (theme.dark ? '#8EE0F5' : '#48C0DE')};
+`
+
 const TagBody = styled.div`
-  border: 2px solid #7fe3d8;
+  border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : '#0077cc')};
   border-radius: 0.375rem;
   margin: 10px 80px 10px 80px;
   padding: 5px;
@@ -127,19 +138,20 @@ const Tags = styled.button`
 `
 
 const TimeStamp = styled.h3`
-  margin: 0px 15px 2px 15px;
-  color: #95d779;
+  margin: 0px 15px 2px 0px;
+  color: ${({ theme }) => (theme.dark ? '#95d779' : '#4C6E3E')};
   font-size: 13px;
   width: calc(100%);
-  @screen (max-width: 700px) {
+  @media (max-width: 700px) {
     width: calc(100%);
   }
 `
 
 const Title = styled.h2`
-  text-decoration: underline;
+  color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
   margin-bottom: 5px;
+  text-decoration: underline;
   text-transform: capitalize;
   @media (max-width: 700px) {
     margin: 0px 0px 5px 0px;
@@ -164,10 +176,10 @@ const Writings = () => {
   useEffect(() => {
     document.title = 'Tawanda Munongo - Writings'
   })
-  
+
   const { data, loading, error } = useQuery(GET_POSTS, {})
-    const [filteredList, setFilteredList] = useState([])
-  
+  const [filteredList, setFilteredList] = useState([])
+
   //if data loading, display message
   // if (loading) return <p>Loading...</p>
   if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
@@ -175,7 +187,7 @@ const Writings = () => {
   if (error) return <p>Error!</p> + error.message
   //if there is no data
   if (!data) return <p>Not found</p>
-  
+
   const formatDate = (timestamp) => {
     const options = {
       weekday: 'long',
@@ -191,7 +203,7 @@ const Writings = () => {
   const uniqueTags = () => {
     const flag = {}
     let array = []
-    data.PostFeed.posts.forEach(elem => {
+    data.PostFeed.posts.forEach((elem) => {
       if (!flag[elem.category]) {
         flag[elem.category] = true
         array.push(elem)
@@ -200,12 +212,11 @@ const Writings = () => {
     return array
   }
 
-
   const handleTagSelection = (x, e) => {
     e.preventDefault()
     const selectedCategory = String(e.target.id)
-    if (selectedCategory === x){
-      setTag("")
+    if (selectedCategory === x) {
+      setTag('')
     } else {
       setTag(x)
       filterByTag(data.PostFeed.posts)
@@ -227,16 +238,26 @@ const Writings = () => {
 
   //if fetch successful, display in UI
   return (
-    <Body>
+    <Body className="wifeBeater">
       <Left>
         <Feat> Featured </Feat>
         {/* display tags to filter posts */}
         <TagBody>
           Tags:
           {uniqueTags().map((post, index) => {
-              return (
-                <Tags onClick={e => handleTagSelection(post.category, e)} key={index} style={{ backgroundColor: `rgb(${Math.random() * 255}, ${Math.random() * 255}, 0)` }}>{post.category}</Tags>
-              )
+            return (
+              <Tags
+                onClick={(e) => handleTagSelection(post.category, e)}
+                key={index}
+                style={{
+                  backgroundColor: `rgb(${Math.random() * 255}, ${
+                    Math.random() * 255
+                  }, 0)`,
+                }}
+              >
+                {post.category}
+              </Tags>
+            )
           })}
         </TagBody>
         {data.PostFeed.posts.map((post, index) => (
@@ -244,10 +265,9 @@ const Writings = () => {
             <Article className="postList" key={index}>
               <Title>{post.title}</Title>
               <TimeStamp>
-                <span style={{ color: '#8EE0F5' }}>posted</span>(
-                {formatDate(post.createdAt)}),{' '}
-                <span style={{ color: '#8EE0F5' }}>readTime</span>(
-                {readTime(post.content)} min)
+                {/* #48C0DE */}
+                <SpanText>posted</SpanText>({formatDate(post.createdAt)}),{' '}
+                <SpanText>readTime</SpanText>({readTime(post.content)} min)
               </TimeStamp>
               <div>
                 <Blurb>{post.blurb}</Blurb> <br />
@@ -258,7 +278,13 @@ const Writings = () => {
         ))}
       </Left>
       <Middle>
-        <h3 style={{ paddingLeft: '10px', marginBottom: '5px', textAlign: 'center' }}>
+        <h3
+          style={{
+            paddingLeft: '10px',
+            marginBottom: '5px',
+            textAlign: 'center',
+          }}
+        >
           Categories coming soon...
         </h3>
         <Wrap>

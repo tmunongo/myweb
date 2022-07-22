@@ -2,22 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 //import components
-import Header from './Header'
 import Footer from './Footer'
+import Header from './Header'
 
 // component styles
 const Wrapper = styled.div`
   width: 100%;
-  background-color: black;
 
   @media (min-width: 700px) {
     height: auto;
     flex: auto;
     flex-direction: column;
-    padding: 0px 0px 64px 0px;
-
-    /* visual */
-    background-color: black;
+    padding: 0px 0px 0px 0px;
   }
 `
 

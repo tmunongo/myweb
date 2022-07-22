@@ -1,0 +1,32 @@
+{
+  "data": {
+    "light": {
+      "id": "T1",
+      "colors": {
+        "body": "whitesmoke",
+        "secondary": "lightgrey",
+        "header": "#4B4848",
+        "headerText": "white",
+        "text": "black",
+        "link": {
+          "text": "#0077cc",
+          "opacity": 1
+        }
+      }
+    },
+    "dark": {
+      "id": "T2",
+      "colors": {
+        "body": "black",
+        "secondary": "#1b1b1b",
+        "header": "black",
+        "headerText": "white",
+        "text": "white",
+        "link": {
+          "text": "#0077cc",
+          "opacity": 1
+        }
+      }
+    }
+  }
+}
