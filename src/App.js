@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 //import Apollo Client libraries
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import * as themes from './theme/schema.json'
-import { setToLS } from './utils/storage'
 
 //import routes
 import Pages from './pages'
@@ -30,7 +28,6 @@ const client = new ApolloClient({
 })
 
 const App = () => {
-  setToLS('all-themes', themes.default)
   const { theme, themeLoaded } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(theme)
 

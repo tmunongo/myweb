@@ -50,7 +50,7 @@ window.addEventListener('scroll', () => {
   handleScrollAnimation()
 })
 
-setToLS('all-themes', themes.default)
+setToLS('all-themes', themes)
 
 ReactDOM.render(
   <React.StrictMode>
