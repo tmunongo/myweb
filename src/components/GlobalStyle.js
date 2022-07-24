@@ -82,6 +82,9 @@ ${normalize}
     position: relative;
     transition: background-color .2s;
     top: 30px;
+    @media screen(max-width: 768px){
+      top: 10px;
+    }
   }
 
   .switch-label .switch-button {
