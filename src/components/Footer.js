@@ -1,16 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import BG from '../img/bg.jpg'
 import Github from '../img/icons/github.png'
 import Instagram from '../img/icons/instagram.png'
 import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
-import BG from '../img/bg.jpg'
 
 const Foot = styled.div`
   background: url(${BG}) repeat;
   border-top: 4px solid black;
-  bottom: 0;
   color: white;
   margin: 0px 0px 0px 0px;
   text-align: centered;
@@ -52,22 +51,22 @@ const Footer = () => {
         <strong>The Secret Teachings of All Ages</strong> <br></br>
       </Quote>
       <License>
-          <a href="https://github.com/edtha3rd">
-            <Icon src={Github} alt="Github" />
-          </a>
-          <a href="https://twitter.com/edtha3rd">
-            <Icon src={Twitter} alt="Github" />
-          </a>
-          <a href="https://instagram.com/ejta1da">
-            <Icon src={Instagram} alt="Github" />
-          </a>
-          <a href="https://thoughtrealm.medium.com">
-            <Icon src={Medium} alt="Github" />
-          </a>
-          <p>
-            <Link to="/">Tawanda Munongo</Link> <br /> 
-            2021-2022 All Rights Reserved.
-          </p>
+        <a href="https://github.com/edtha3rd">
+          <Icon src={Github} alt="Github" />
+        </a>
+        <a href="https://twitter.com/edtha3rd">
+          <Icon src={Twitter} alt="Github" />
+        </a>
+        <a href="https://instagram.com/ejta1da">
+          <Icon src={Instagram} alt="Github" />
+        </a>
+        <a href="https://thoughtrealm.medium.com">
+          <Icon src={Medium} alt="Github" />
+        </a>
+        <p>
+          <Link to="/">Tawanda Munongo</Link> <br />
+          2021-2022 All Rights Reserved.
+        </p>
       </License>
     </Foot>
   )

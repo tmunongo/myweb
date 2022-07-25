@@ -20,7 +20,6 @@ const client = new ApolloClient({
   uri: API_URI,
   cache,
   headers: {
-    //authorization: localStorage.getItem('token') || '',
     resolvers: {},
     connectToDevTools: true,
   },

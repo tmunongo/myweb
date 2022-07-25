@@ -103,6 +103,16 @@ const Body = styled.div`
   // background: #1f1f1f;
 `
 
+const Error = styled.div`
+  height: 60vh;
+  text-align: center;
+`
+
+const ErrorMessage = styled.span`
+  font-size: 18px;
+  font-weight: bolder;
+`
+
 const Left = styled.div`
   grid-column: 1;
   @media (min-width: 700px) {
@@ -184,7 +194,18 @@ const Writings = () => {
   // if (loading) return <p>Loading...</p>
   if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
   //if there is an error, display error message
-  if (error) return <p>Error!</p> + error.message
+  if (error)
+    return (
+      <Error
+        className="wifeBeater"
+        style={{ margin: '4% 8%', borderRadius: '0.375rem', padding: '12px' }}
+      >
+        <ErrorMessage>Oops! {error.message}</ErrorMessage>
+        <Link to="/">
+          <p>Return Home</p>
+        </Link>
+      </Error>
+    )
   //if there is no data
   if (!data) return <p>Not found</p>
 
