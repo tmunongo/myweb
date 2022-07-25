@@ -76,7 +76,7 @@ ${normalize}
   }
 
   .switch-button {
-    background: ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.button};
   }
 
   .switch-label {
@@ -87,15 +87,15 @@ ${normalize}
     display: flex;
     height: 25px;
     justify-content: space-between;
-    left: 48vw;
+    left: 33vw;
     position: absolute;
     top: 33px;
     transition: background-color .2s;
     width: 50px;
-    @media (max-width: 768px){
+    @media (max-width: 960px){
       height: 20px;
-      left: 72px;
-      top: 30px;
+      left: 17vw;
+      top: 3.2vh;
       width: 40px;
     }
   }
@@ -111,7 +111,7 @@ ${normalize}
     transition: 0.2s;
     color: ${({ theme }) => theme.colors.headerText};
     box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
-    @media (max-width: 768px){
+    @media (max-width: 960px){
       height: 15px;
       width: 20px;
     }
@@ -142,6 +142,6 @@ ${normalize}
 
 
   .wifeBeater {
-    background-color: ${({ theme }) => theme.colors.secondary}
+    background-color: ${({ theme }) => theme.colors.secondary};
   }
   `

@@ -27,7 +27,15 @@ const PostPage = () => {
     { fetchPolicy: 'no-cache' }
   )
 
-  if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
+  if (loading)
+    return (
+      <Error
+        className="wifeBeater"
+        style={{ margin: '4% 8%', borderRadius: '0.375rem', padding: '12px' }}
+      >
+        <Loading type={'cubes'} color={'#0077cc'} />
+      </Error>
+    )
   if (error)
     return (
       <Error

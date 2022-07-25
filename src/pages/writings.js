@@ -192,7 +192,7 @@ const Writings = () => {
 
   //if data loading, display message
   // if (loading) return <p>Loading...</p>
-  if (loading) return <Loading type={'cubes'} color={'#8EE0F5'} />
+  if (loading) return <Loading type={'cubes'} color={'#0077cc'} />
   //if there is an error, display error message
   if (error)
     return (

@@ -43,7 +43,7 @@ const Menu = styled.div`
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
   width: 100vw;
   z-index: 3;
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     top: -100vh;
   }
 `
@@ -69,8 +69,8 @@ const SideBar = (props) => {
         >
           <Link to="/">
             <Icon
-              alt="me"
-              src="https://icongr.am/fontawesome/home.svg?size=25&color=currentColor"
+              alt="home"
+              src="https://icongr.am/fontawesome/home.svg?size=25&color=0077cc"
             />
             Home
           </Link>
@@ -84,7 +84,7 @@ const SideBar = (props) => {
         >
           <Link to="/about">
             <Icon
-              src="https://icongr.am/simple/aboutme.svg?size=25&color=currentColor&colored=false"
+              src="https://icongr.am/simple/aboutme.svg?size=25&color=0077cc"
               alt="me"
             />
             About
@@ -99,7 +99,7 @@ const SideBar = (props) => {
         >
           <Link to="/writings">
             <Icon
-              src="https://icongr.am/fontawesome/pencil-square-o.svg?size=25&color=currentColor"
+              src="https://icongr.am/fontawesome/pencil-square-o.svg?size=25&color=0077cc"
               alt="me"
             />
             Writings
@@ -115,7 +115,7 @@ const SideBar = (props) => {
         >
           <Link to="/projects">
             <Icon
-              src="https://icongr.am/fontawesome/terminal.svg?size=25&color=currentColor"
+              src="https://icongr.am/fontawesome/terminal.svg?size=25&color=0077cc"
               alt="me"
             />{' '}
             Projects

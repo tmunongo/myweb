@@ -32,6 +32,10 @@ const Button = styled.a`
   padding: 10px;
   text-decoration: none;
   text-transform: uppercase;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 6px;
+  }
 `
 
 const ContactForm = styled.div`

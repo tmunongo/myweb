@@ -2,9 +2,10 @@ export const light = {
   name: 'light',
   colors: {
     body: 'whitesmoke',
-    secondary: 'lightgrey',
+    button: 'grey',
     header: '#4B4848',
     headerText: 'white',
+    secondary: 'lightgrey',
     text: 'black',
     link: {
       text: '#0077cc',
@@ -14,9 +15,10 @@ export const light = {
 }
 
 export const dark = {
+  name: 'dark',
   colors: {
-    name: 'dark',
     body: 'black',
+    button: 'black',
     secondary: '#1b1b1b',
     header: 'black',
     headerText: 'white',

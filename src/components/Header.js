@@ -8,23 +8,22 @@ const Burger = styled.div`
   color: #0077cc;
   cursor: pointer;
   display: block;
-  padding: 20px 0px 0px 20px;
+  padding: 25px 0px 0px 20px;
   z-index: 10;
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     display: none;
     padding: 15px 0px 0px 20px;
   }
 `
 
 const HeaderBar = styled.div`
-  background-color: ${({ theme }) => theme.colors.header};
+  background-color: black; //${({ theme }) => theme.colors.text}
   display: flex;
   height: 72px;
   justify-content: space-around;
   margin-bottom: 0px;
   width: 100vw;
-
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     justify-content: space-between;
     padding-right: calc(5%);
   }
@@ -34,22 +33,19 @@ const LogoText = styled.h1`
   font-size: 20px;
   margin: 10px;
   padding: 20px 0px 0px 0px;
-  @media (max-width: 768px) {
+  @media (max-width: 960px) {
     margin: 0px;
-    padding: 25px 0px 0px 0px;
+    padding: 31px 0px 0px 0px;
+    text-wrap: nowrap;
   }
 `
 
 const Nav = styled.nav`
-  padding: 0px 80px 0px 0px;
   height: 72px;
+  padding: 0px 70px 0px 0px;
 
-  @media (max-width: 750px) {
+  @media (max-width: 960px) {
     display: none;
-  }
-
-  @media (min-width: 750px) {
-    padding: 0px 0px 0px 0px;
   }
 `
 
