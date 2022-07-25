@@ -95,7 +95,7 @@ ${normalize}
     @media (max-width: 960px){
       height: 20px;
       left: 17vw;
-      top: 3.2vh;
+      top: 35px;
       width: 40px;
     }
   }
