@@ -44,7 +44,7 @@ const Menu = styled.div`
   width: 100vw;
   z-index: 3;
   @media (min-width: 768px) {
-    top: -100%;
+    top: -100vh;
   }
 `
 
