@@ -51,7 +51,7 @@ ${normalize}
   }
 
   .dropMenu {
-    background-color: ${({ theme }) => theme.colors.body};
+    background: ${({ theme }) => theme.colors.body};
   }
   
   .postList:hover,

@@ -52,7 +52,7 @@ const SideBar = (props) => {
   // const [nav, setNav] = useState(props.nav)
 
   return (
-    <Menu className="dropMenu" style={{ top: props.nav ? '0px' : '-100%' }}>
+    <Menu className="dropMenu" style={{ top: props.nav ? '0px' : '-100vh' }}>
       <ul
         style={{
           listStyle: 'none',
