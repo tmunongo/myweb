@@ -70,20 +70,33 @@ ${normalize}
     visibility: hidden;
   }
 
+  .switch-bar {
+    background: ${({ theme }) => theme.colors.header};
+    height: 1px;
+  }
+
+  .switch-button {
+    background: ${({ theme }) => theme.colors.secondary};
+  }
+
   .switch-label {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    width: 50px;
-    height: 25px;
     background: white;
     border-radius: 100px;
-    position: relative;
+    cursor: pointer;
+    display: flex;
+    height: 25px;
+    justify-content: space-between;
+    left: 48vw;
+    position: absolute;
+    top: 33px;
     transition: background-color .2s;
-    top: 30px;
-    @media screen(max-width: 768px){
-      top: 10px;
+    width: 50px;
+    @media (max-width: 768px){
+      height: 20px;
+      left: 72px;
+      top: 30px;
+      width: 40px;
     }
   }
 
@@ -98,6 +111,10 @@ ${normalize}
     transition: 0.2s;
     color: ${({ theme }) => theme.colors.headerText};
     box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+    @media (max-width: 768px){
+      height: 15px;
+      width: 20px;
+    }
   }
 
   .switch:checked + .switch-label .switch-button {

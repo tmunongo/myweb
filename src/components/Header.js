@@ -3,7 +3,6 @@ import { IoCloseSharp, IoMenu } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SideBar from './SideBar'
-import Switch from './Switch'
 
 const Burger = styled.div`
   color: #0077cc;
@@ -13,6 +12,7 @@ const Burger = styled.div`
   z-index: 10;
   @media (min-width: 768px) {
     display: none;
+    padding: 15px 0px 0px 20px;
   }
 `
 
@@ -111,7 +111,7 @@ const Header = () => {
       <a href="/" style={{ textDecoration: 'none' }}>
         <LogoText className="headerName">Tawanda Munongo</LogoText>
       </a>
-      <Switch />
+      {/* <Switch /> */}
       <Nav>
         <NavList>
           <ListItem>

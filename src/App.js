@@ -1,5 +1,5 @@
 // require('dotenv').config()
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 //import Apollo Client libraries
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
@@ -10,7 +10,8 @@ import Pages from './pages'
 //import components
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './components/GlobalStyle'
-import { useTheme } from './theme/useTheme'
+import Switch from './components/Switch'
+import { dark, light } from './theme/themes.styled'
 
 const cache = new InMemoryCache()
 
@@ -27,21 +28,40 @@ const client = new ApolloClient({
 })
 
 const App = () => {
-  const { theme, themeLoaded } = useTheme()
-  const [selectedTheme, setSelectedTheme] = useState(theme)
+  // const { theme, themeLoaded } = useTheme()
+  const [selectedTheme, setSelectedTheme] = useState(light)
 
-  useEffect(() => {
-    setSelectedTheme(theme)
-  }, [themeLoaded])
+  const themeState = {
+    selectedTheme,
+    setSelectedTheme,
+  }
+
+  // useEffect(() => {
+  //   setSelectedTheme(theme)
+  // }, [themeLoaded])
+
+  const handleThemeChange = (e) => {
+    selectedTheme.name === 'light'
+      ? setSelectedTheme(dark)
+      : setSelectedTheme(light)
+  }
+
+  const updateState = () => {
+    console.log('theme changed')
+    selectedTheme === light ? setSelectedTheme(dark) : setSelectedTheme(light)
+  }
 
   return (
     <ApolloProvider client={client}>
-      {themeLoaded && (
+      {
         <ThemeProvider theme={selectedTheme}>
+          <div className="switch-bar">
+            <Switch handleThemeChange={updateState} />
+          </div>
           <GlobalStyle />
           <Pages />
         </ThemeProvider>
-      )}
+      }
     </ApolloProvider>
   )
 }
