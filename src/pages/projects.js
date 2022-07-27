@@ -16,6 +16,17 @@ const projects = [
   },
   {
     id: 2,
+    title: 'Country Query',
+    topics: ['JavaScript', 'Bootstrap'],
+    details:
+      'This is a simple website for finding out information about different countries around the world. It uses the REST Countries API to retrieve details like country name, capital city, region, population, currency, flag, and more.',
+    preview:
+      'https://github.com/edtha3rd/countries-web/raw/master/screenshots/countries.png',
+    github: 'https://github.com/edtha3rd/countries-web',
+    link: 'https://country-query.surge.sh/',
+  },
+  {
+    id: 3,
     title: 'Tickets!',
     topics: ['React Native'],
     details:
@@ -25,7 +36,7 @@ const projects = [
     github: 'https://github.com/edtha3rd/tickets-mob',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Java Notepad',
     topics: ['Java'],
     details:
@@ -34,7 +45,7 @@ const projects = [
     github: 'https://github.com/edtha3rd/notepad',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Snake Game',
     topics: ['JavaScript'],
     details:
