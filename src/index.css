@@ -120,7 +120,7 @@ code {
   background: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 8px;
-  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 5px rgba(79, 79, 79, 1);
   color: black;
   height: 40vh;
   opacity: 0;

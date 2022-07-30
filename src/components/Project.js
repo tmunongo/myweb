@@ -7,16 +7,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 450px;
-  margin: 4px;
+  margin: 8px;
   overflow: scroll;
   padding: 16px;
   width: 300px;
   @media (max-width: 768px) {
     height: 340px;
-    margin-y: 8px;
+    margin: 0px 10px;
   }
   :hover {
-    box-shadow: 6px 6px 2px 1px black;
+    box-shadow: 6px 6px 2px 1px #595959;
     transition: all 0.5s;
     translate: 0px -10px;
   }
@@ -40,10 +40,12 @@ const MainText = styled.span`
 `
 
 const TitleText = styled.span`
-  color: black;
-  font-size: 16px;
+  color: #288a8a;
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 5px;
   text-align: center;
+  text-decoration: underline;
 `
 
 const Tops = styled.div`

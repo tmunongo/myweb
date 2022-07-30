@@ -31,23 +31,7 @@ const App = () => {
   // const { theme, themeLoaded } = useTheme()
   const [selectedTheme, setSelectedTheme] = useState(light)
 
-  const themeState = {
-    selectedTheme,
-    setSelectedTheme,
-  }
-
-  // useEffect(() => {
-  //   setSelectedTheme(theme)
-  // }, [themeLoaded])
-
-  const handleThemeChange = (e) => {
-    selectedTheme.name === 'light'
-      ? setSelectedTheme(dark)
-      : setSelectedTheme(light)
-  }
-
   const updateState = () => {
-    console.log('theme changed')
     selectedTheme === light ? setSelectedTheme(dark) : setSelectedTheme(light)
   }
 

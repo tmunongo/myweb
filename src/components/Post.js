@@ -44,7 +44,7 @@ const MetaData = styled.div`
   @media (min-width: 700px) {
     align-items: top;
   }
-  border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : 'black')};
+  border: 2px solid ${({ theme }) => (theme.dark ? 'black' : '#7fe3d8')};
   border-radius: 0.375rem;
   grid-column-start: second;
   grid-column-end: third;
@@ -54,7 +54,6 @@ const MetaData = styled.div`
 `
 //add space b/w avatar and metaInfo
 const MetaInfo = styled.div`
-  color: ${({ theme }) => (theme.dark ? '#b4b4b4' : '##5C6365')};
   grid-column-start: first;
   grid-column-end: third;
   grid-row-start: first;
@@ -66,15 +65,15 @@ const MetaInfo = styled.div`
 `
 
 const Name = styled.h3`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 20px;
   margin: 5px 0px 5px 0px;
   text-transform: capitalize;
-  font-size: 20px;
-  color: ${({ theme }) => (theme.dark ? 'white' : 'black')};
 `
 
 const Body = styled.div`
   color: #b4b4b4;
-  border-bottom: 2px solid ${({ theme }) => (theme.dark ? 'white' : 'black')};
+  border-bottom: 2px solid ${({ theme }) => (theme.dark ? 'black' : '#7fe3d8')};
   grid-column-start: second;
   grid-column-end: third;
   margin-top: 0;

@@ -120,12 +120,27 @@ const ThinkerImage = styled.img`
   }
 `
 
+const Tops = styled.div`
+  flex: row;
+`
+
 //projects object
 const projects = [
   {
     id: 1,
+    title: 'Country Query',
+    topics: ['JavaScript', 'Bootstrap'],
+    details:
+      'This is a simple website for finding out information about different countries around the world. It uses the REST Countries API to retrieve details like country name, capital city, region, population, currency, flag, and more.',
+    preview:
+      'https://github.com/edtha3rd/countries-web/raw/master/screenshots/countries.png',
+    github: 'https://github.com/edtha3rd/countries-web',
+    link: 'https://country-query.surge.sh/',
+  },
+  {
+    id: 3,
     title: 'Twitch UI',
-    topics: 'NextJS',
+    topics: ['NextJS', 'Tailwind CSS'],
     details:
       'I built the UI for the Twitch live-streaming site using NextJS and Tailwind CSS. Working authentication is implemented using NextAuth allowing users to log in with a Google or Github account.',
     preview: 'https://github.com/edtha3rd/twitch-next/raw/main/home_page.png',
@@ -135,7 +150,7 @@ const projects = [
   {
     id: 2,
     title: 'Tickets!',
-    topics: 'React Native',
+    topics: ['React Native'],
     details:
       'The app allows a user to register an account and view all the available movies in the db. A user can customize their reservation by picking a location, watch time, day, and a seat. The app connects to an Express server running Apollo GraphQL. MongoDB is used for document storage while objects are stored on Cloudinary.',
     preview:
@@ -143,9 +158,9 @@ const projects = [
     github: 'https://github.com/edtha3rd/tickets-mob',
   },
   {
-    id: 3,
+    id: 5,
     title: 'Java Notepad',
-    topics: 'Java',
+    topics: ['Java'],
     details:
       "A simple, lightweight text editor is a programmer's best friend. The basic functionality of the text editor must allow a user to open a new text file, save a new text file, update an existing file, or open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.",
     preview: 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg',
@@ -154,7 +169,7 @@ const projects = [
   {
     id: 4,
     title: 'Snake Game',
-    topics: 'JavaScript',
+    topics: ['JavaScript'],
     details:
       'This is a web-based snake game in JavaScript. I chose this project to improve my understanding of how vanilla JavaScript refreshes rendered content and how to manually control this to implement something like a game engine.',
     preview: 'https://github.com/edtha3rd/snake-game/raw/master/gameplay.png',
@@ -278,17 +293,24 @@ const Home = () => {
                   </div>
                   <div style={{ flex: 1, marginLeft: '10px' }}>
                     <h2>{project.title}</h2>
-                    <p
-                      style={{
-                        borderRadius: '0.5rem',
-                        backgroundColor: 'pink',
-                        color: 'black',
-                        padding: '5px',
-                        width: 'fit-content',
-                      }}
-                    >
-                      {project.topics}
-                    </p>
+                    <Tops>
+                      {project.topics.map((item, index) => (
+                        <span
+                          key={index}
+                          style={{
+                            borderRadius: '0.5rem',
+                            backgroundColor: 'pink',
+                            color: 'black',
+                            fontSize: '12px',
+                            margin: '1px 1px',
+                            padding: '5px',
+                            width: 'fit-content',
+                          }}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </Tops>
                     <p
                       style={{ marginBottom: '5px', textOverflow: 'ellipsis' }}
                     >

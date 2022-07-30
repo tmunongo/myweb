@@ -12,8 +12,8 @@ import freeWriting from '../img/free-writing.jpg'
 import { GET_POSTS } from '../gql/query'
 
 const Article = styled.article`
-  padding: 0px 0px 10px 5px;
   border-bottom: 1px solid ${({ theme }) => (theme.dark ? 'white' : 'black')};
+  padding: 0px 0px 10px 5px;
 `
 const Banner = styled.div`
   color: ${({ theme }) => theme.colors.text};

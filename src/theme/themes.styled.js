@@ -6,6 +6,7 @@ export const light = {
     header: '#4B4848',
     headerText: 'white',
     secondary: 'lightgrey',
+    article: '#A5A5A5',
     text: 'black',
     link: {
       text: '#0077cc',
@@ -20,6 +21,7 @@ export const dark = {
     body: 'black',
     button: 'black',
     secondary: '#1b1b1b',
+    article: '#3A3A3A',
     header: 'black',
     headerText: 'white',
     text: 'white',

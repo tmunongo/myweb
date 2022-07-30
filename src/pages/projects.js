@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Project from '../components/Project'
 
@@ -85,6 +85,9 @@ const Page = styled.div`
 `
 
 const Projects = () => {
+  useEffect(() => {
+    document.title = 'Tawanda Munongo - Projects'
+  })
   return (
     <Page className="wifeBeater">
       <Head>

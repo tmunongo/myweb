@@ -56,10 +56,9 @@ ${normalize}
   
   .postList:hover,
   .postList:focus {
-    background-color: ${({ theme }) => (theme.light ? '#e3e3e3' : '#757575')};
+    background-color: ${({ theme }) => theme.colors.article};
     border-radius: 0.375rem;
     box-shadow: 3px 3px 5px black;
-    color: black;
     z-index: 35;
     transition: all 0.5s;
   }
