@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Fade } from 'react-reveal'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import ScrollIndicator from '../components/ScrollIndicator'
 import Thinker from '../img/thinker-nobg-prism.jpg'
+import ThinkerLight from '../img/thinker-prism.jpg'
 
 //styling
 const Button = styled.span`
@@ -190,6 +191,7 @@ const determineClasses = (indices, projectIndex) => {
 }
 
 const Home = () => {
+  const theme = useContext(ThemeContext)
   const [indices, setIndices] = useState({
     previousIndex: 0,
     currentIndex: 0,
@@ -268,7 +270,7 @@ const Home = () => {
             </div>
           </Fade>
           <Fade bottom>
-            <PortIntro>
+            <PortIntro className="blogContent">
               My goals, whenever I select a new project to take on, are always
               to challenge myself and learn something new. For the last 4 years,
               I have worked on numerous projects in many programming languages,
@@ -312,7 +314,10 @@ const Home = () => {
                       ))}
                     </Tops>
                     <p
-                      style={{ marginBottom: '5px', textOverflow: 'ellipsis' }}
+                      style={{
+                        marginBottom: '5px',
+                        textOverflow: 'ellipsis',
+                      }}
                     >
                       {project.details}
                     </p>
@@ -384,8 +389,12 @@ const Home = () => {
           </div>
         </Portfolio3>
       </Page>
-      <Page style={{ background: 'black', borderTop: '0.5px solid grey' }}>
-        <ThinkerImage src={Thinker} alt="thinker" />
+      <Page style={{ borderTop: '0.5px solid grey' }}>
+        {theme.name === 'dark' ? (
+          <ThinkerImage src={Thinker} alt="thinker" />
+        ) : (
+          <ThinkerImage src={ThinkerLight} alt="thinker light" />
+        )}
       </Page>
       {/* </ScrollContainer> */}
     </React.Fragment>

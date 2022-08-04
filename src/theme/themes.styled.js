@@ -1,7 +1,7 @@
 export const light = {
   name: 'light',
   colors: {
-    body: 'whitesmoke',
+    body: 'white',
     button: 'grey',
     header: '#4B4848',
     headerText: 'white',
