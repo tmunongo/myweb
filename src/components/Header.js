@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoCloseSharp, IoMenu } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -22,7 +22,10 @@ const HeaderBar = styled.div`
   height: 72px;
   justify-content: space-around;
   margin-bottom: 0px;
+  position: sticky;
+  top: 0;
   width: 100vw;
+  z-index: 999;
   @media (max-width: 960px) {
     justify-content: space-between;
     padding-right: calc(5%);
@@ -92,13 +95,24 @@ const ListItem = styled.li`
 const Header = () => {
   const [nav, setNav] = useState(false)
 
+  useEffect(() => {
+    window.addEventListener('scroll', (e) => {
+      const nav = document.querySelector('#nav-bar')
+      if (window.scrollY > 0) {
+        nav.classList.add('add-shadow')
+      } else {
+        nav.classList.remove('add-shadow')
+      }
+    })
+  })
+
   const handleNav = (e) => {
     e.preventDefault()
     setNav(!nav)
   }
 
   return (
-    <HeaderBar>
+    <HeaderBar id="nav-bar">
       <Burger onClick={(event) => handleNav(event)}>
         {nav ? <IoCloseSharp size={35} /> : <IoMenu size={35} />}
       </Burger>

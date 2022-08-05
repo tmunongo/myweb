@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div``
+const Container = styled.div`
+  position: fixed;
+  z-index: 1000;
+`
 
 const SwitchLabel = styled.label`
   @media (max-width: 768px) {
