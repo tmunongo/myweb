@@ -29,7 +29,7 @@ const client = new ApolloClient({
 
 const App = () => {
   // const { theme, themeLoaded } = useTheme()
-  const [selectedTheme, setSelectedTheme] = useState(light)
+  const [selectedTheme, setSelectedTheme] = useState(dark)
 
   const updateState = () => {
     selectedTheme === light ? setSelectedTheme(dark) : setSelectedTheme(light)

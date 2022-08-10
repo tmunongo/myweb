@@ -8,6 +8,18 @@ import Thinker from '../img/thinker-nobg-prism.jpg'
 import ThinkerLight from '../img/thinker-prism.jpg'
 
 //styling
+const Button = styled.button`
+  background-color: #28dc2e;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  justify-self: center;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  width: auto;
+`
+
 const Head = styled.h1`
   margin: 0px 0px 10px 0px;
   text-align: center;
@@ -91,6 +103,7 @@ const ProjectContainer = styled.div`
   padding: 10px;
   width: 60vw;
   @media (max-width: 768px) {
+    margin: 15px 0px;
     width: 95vw;
   }
 `
@@ -100,6 +113,16 @@ const ProjectInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+`
+
+const ProjectLast = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: end;
+  @media (max-width: 768px) {
+    max-width: 100vw;
+    justify-content: center;
+  }
 `
 
 const ProjectPreview = styled.div`
@@ -201,9 +224,9 @@ const Home = () => {
         </Fade>
         <Link
           style={{
-            backgroundColor: '#2b4856',
+            backgroundColor: '#07c',
             borderRadius: '5px',
-            color: 'white',
+            color: 'black',
             fontWeight: 'bold',
             justifySelf: 'center',
             padding: '3px 10px',
@@ -367,6 +390,27 @@ const Home = () => {
               </ProjectPreview>
             </ProjectContainer>
           </Fade>
+          <ProjectLast>
+            <Link to="/Projects">
+              <Button
+                style={{
+                  backgroundColor: '#07c',
+                  border: 'none',
+                  borderRadius: '5px',
+                  color: 'black',
+                  cursor: 'grab',
+                  fontWeight: 'bold',
+                  justifySelf: 'center',
+                  padding: '3px 10px',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  width: 'auto',
+                }}
+              >
+                See More
+              </Button>
+            </Link>
+          </ProjectLast>
         </Portfolio2>
       </Page>
       <Page>
