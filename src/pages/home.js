@@ -1,4 +1,5 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
+import { IoLinkOutline, IoLogoGithub } from 'react-icons/io5'
 import { Fade } from 'react-reveal'
 import { Link } from 'react-router-dom'
 import styled, { ThemeContext } from 'styled-components'
@@ -7,38 +8,6 @@ import Thinker from '../img/thinker-nobg-prism.jpg'
 import ThinkerLight from '../img/thinker-prism.jpg'
 
 //styling
-const Button = styled.span`
-  align-self: center;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  justify-self: center;
-  margin-top: 10px;
-  padding: 3px 10px;
-  text-decoration: none;
-  width: 40vw;
-`
-
-const Card = styled.div`
-  display: flex;
-  overflow: auto;
-  padding: 30px;
-  width: 65vw;
-  @media (max-width: 768px) {
-    padding: 10px;
-    width: 90vw;
-  } ;
-`
-
-const Carousel = styled.ul`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 100px auto;
-  padding: 0;
-`
-
 const Head = styled.h1`
   margin: 0px 0px 10px 0px;
   text-align: center;
@@ -53,11 +22,14 @@ const Heading2 = styled.h2`
   }
 `
 
+const Links = styled.div`
+  display: flex;
+`
+
 const Page = styled.div`
   align-items: center;
   color: white;
   display: grid;
-  height: 100vh;
   min-height: 450px;
 
   @media (min-width: 768px) {
@@ -76,6 +48,9 @@ const Para = styled.div`
 `
 
 const Preview = styled.img`
+  border-radius: 0.375rem;
+  height: auto;
+  width: 100%;
   @media (max-width: 768px) {
     display: none;
   }
@@ -92,13 +67,7 @@ const Portfolio1 = styled.div`
   }
 `
 
-const Portfolio2 = styled.div`
-  height: 60vh;
-`
-
-const Portfolio3 = styled.div`
-  height: 15vh;
-`
+const Portfolio2 = styled.div``
 
 const PortIntro = styled.p`
   display: flex;
@@ -112,6 +81,34 @@ const PortIntro = styled.p`
   }
 `
 
+const ProjectContainer = styled.div`
+  background: ${({ theme }) => theme.colors.secondary};
+  border-radius: 0.375rem;
+  color: ${({ theme }) => theme.colors.text};
+  display: flex;
+  height: 360px;
+  margin: 15px 20px;
+  padding: 10px;
+  width: 60vw;
+  @media (max-width: 768px) {
+    width: 95vw;
+  }
+`
+
+const ProjectInfo = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const ProjectPreview = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0px 5px;
+`
+
 const ThinkerImage = styled.img`
   display: flex;
   height: calc(60%);
@@ -123,6 +120,7 @@ const ThinkerImage = styled.img`
 
 const Tops = styled.div`
   flex: row;
+  margin: 15px;
 `
 
 //projects object
@@ -179,44 +177,8 @@ const projects = [
   },
 ]
 
-const determineClasses = (indices, projectIndex) => {
-  if (indices.currentIndex === projectIndex) {
-    return 'active'
-  } else if (indices.nextIndex === projectIndex) {
-    return 'next'
-  } else if (indices.previousIndex === projectIndex) {
-    return 'prev'
-  }
-  return 'inactive'
-}
-
 const Home = () => {
   const theme = useContext(ThemeContext)
-  const [indices, setIndices] = useState({
-    previousIndex: 0,
-    currentIndex: 0,
-    nextIndex: 1,
-  })
-
-  const handleCardChange = useCallback(() => {
-    //start again after reaching end but carry prev value over
-    if (indices.currentIndex >= projects.length - 1) {
-      setIndices({
-        previousIndex: projects.length - 1,
-        currentIndex: 0,
-        nextIndex: 1,
-      })
-    } else {
-      setIndices((prevState) => ({
-        previousIndex: prevState.currentIndex,
-        currentIndex: prevState.currentIndex + 1,
-        nextIndex:
-          prevState.currentIndex + 2 === projects.length
-            ? 0
-            : prevState.currentIndex + 2,
-      }))
-    }
-  }, [indices.currentIndex])
 
   useEffect(() => {
     document.title = 'Tawanda Munongo - HomePage'
@@ -239,7 +201,7 @@ const Home = () => {
         </Fade>
         <Link
           style={{
-            backgroundColor: 'teal',
+            backgroundColor: '#2b4856',
             borderRadius: '5px',
             color: 'white',
             fontWeight: 'bold',
@@ -258,7 +220,7 @@ const Home = () => {
       {/* second home page section */}
       <Page
         style={{
-          borderTop: '0.5px solid grey',
+          // backgroundColor: '#121713',
           display: 'flex',
           flexDirection: 'column',
         }}
@@ -279,117 +241,135 @@ const Home = () => {
           </Fade>
         </Portfolio1>
         <Portfolio2>
-          <Carousel className="projects-carousel">
-            {projects.map((project, index) => (
-              <li
-                key={project.id}
-                className={`project ${determineClasses(indices, index)}`}
-              >
-                <Card>
-                  <div style={{ flex: 0 }}>
-                    <Preview
-                      src={project.preview}
-                      alt={project.title}
-                      style={{ height: '30vh', maxWidth: '400px' }}
-                    />
-                  </div>
-                  <div style={{ flex: 1, marginLeft: '10px' }}>
-                    <h2>{project.title}</h2>
-                    <Tops>
-                      {project.topics.map((item, index) => (
-                        <span
-                          key={index}
-                          style={{
-                            borderRadius: '0.5rem',
-                            backgroundColor: 'pink',
-                            color: 'black',
-                            fontSize: '12px',
-                            margin: '1px 1px',
-                            padding: '5px',
-                            width: 'fit-content',
-                          }}
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </Tops>
-                    <p
+          <Fade left>
+            <ProjectContainer>
+              <ProjectInfo style={{ textAlign: 'left' }}>
+                <p
+                  style={{
+                    color: '#07c',
+                    fontStyle: 'italic',
+                    marginBottom: '0px',
+                  }}
+                >
+                  FEATURED PROJECT
+                </p>
+                <h2 style={{ marginTop: '0px' }}>{projects[0].title}</h2>
+                <p className="blogContent" style={{ fontSize: '14px' }}>
+                  {projects[0].details}
+                </p>
+                <Tops>
+                  {projects[0].topics.map((item, index) => (
+                    <span
+                      key={index}
                       style={{
-                        marginBottom: '5px',
-                        textOverflow: 'ellipsis',
+                        borderRadius: '0.5rem',
+                        backgroundColor: 'cyan',
+                        color: 'black',
+                        fontSize: '12px',
+                        margin: '1px 1px',
+                        padding: '5px',
+                        width: 'fit-content',
                       }}
                     >
-                      {project.details}
-                    </p>
-                    <a href={project.github}>
-                      <Button
-                        style={{ backgroundColor: 'purple', width: 'auto' }}
-                      >
-                        Github
-                      </Button>
-                    </a>
-                    {project.link ? (
-                      <a href={project.link}>
-                        <Button
-                          style={{
-                            backgroundColor: 'teal',
-                            marginLeft: '5px',
-                          }}
-                        >
-                          Live Demo
-                        </Button>
-                      </a>
-                    ) : (
-                      <div></div>
-                    )}
-                  </div>
-                </Card>
-              </li>
-            ))}
-          </Carousel>
+                      {item}
+                    </span>
+                  ))}
+                </Tops>
+                <Links>
+                  <a href={projects[0].github}>
+                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                  </a>
+                  <a href={projects[0].link}>
+                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                  </a>
+                </Links>
+              </ProjectInfo>
+              <ProjectPreview>
+                <Preview src={projects[0].preview} />{' '}
+              </ProjectPreview>
+            </ProjectContainer>
+          </Fade>
+          <Fade right>
+            <ProjectContainer>
+              <ProjectPreview>
+                <Preview src={projects[1].preview} />{' '}
+              </ProjectPreview>
+              <ProjectInfo style={{ textAlign: 'right' }}>
+                <h2>{projects[1].title}</h2>
+                <p className="blogContent" style={{ fontSize: '14px' }}>
+                  {projects[1].details}
+                </p>
+                <Tops>
+                  {projects[1].topics.map((item, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        borderRadius: '0.5rem',
+                        backgroundColor: 'cyan',
+                        color: 'black',
+                        fontSize: '12px',
+                        margin: '1px 1px',
+                        padding: '5px',
+                        width: 'fit-content',
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </Tops>
+                <Links>
+                  <a href={projects[1].github}>
+                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                  </a>
+                  <a href={projects[1].link}>
+                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                  </a>
+                </Links>
+              </ProjectInfo>
+            </ProjectContainer>
+          </Fade>
+          <Fade left>
+            <ProjectContainer>
+              <ProjectInfo style={{ textAlign: 'left' }}>
+                <h2>{projects[4].title}</h2>
+                <p className="blogContent" style={{ fontSize: '14px' }}>
+                  {projects[4].details}
+                </p>
+                <Tops>
+                  {projects[4].topics.map((item, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        borderRadius: '0.5rem',
+                        backgroundColor: 'cyan',
+                        color: 'black',
+                        fontSize: '12px',
+                        margin: '1px 1px',
+                        padding: '5px',
+                        width: 'fit-content',
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </Tops>
+                <Links>
+                  <a href={projects[4].github}>
+                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                  </a>
+                  <a href={projects[4].link}>
+                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                  </a>
+                </Links>
+              </ProjectInfo>
+              <ProjectPreview>
+                <Preview src={projects[4].preview} />{' '}
+              </ProjectPreview>
+            </ProjectContainer>
+          </Fade>
         </Portfolio2>
-        <Portfolio3>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Button
-              onClick={handleCardChange}
-              style={{
-                backgroundColor: 'teal',
-                borderRadius: '5px',
-                color: 'white',
-                cursor: 'grab',
-                padding: '10px',
-                textAlign: 'center',
-              }}
-            >
-              Next Item
-            </Button>
-            <Link
-              to="/projects"
-              style={{
-                alignSelf: 'center',
-                backgroundColor: 'darkgoldenrod',
-                borderRadius: '5px',
-                color: 'white',
-                fontWeight: 'bold',
-                marginTop: '1vh',
-                padding: '10px',
-                textAlign: 'center',
-                textDecoration: 'none',
-                width: '40vw',
-              }}
-            >
-              All My Projects
-            </Link>
-          </div>
-        </Portfolio3>
       </Page>
-      <Page style={{ borderTop: '0.5px solid grey' }}>
+      <Page>
         {theme.name === 'dark' ? (
           <ThinkerImage src={Thinker} alt="thinker" />
         ) : (

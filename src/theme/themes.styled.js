@@ -18,11 +18,11 @@ export const light = {
 export const dark = {
   name: 'dark',
   colors: {
-    body: 'black',
-    button: 'black',
+    body: '#121713',
+    button: '#121713',
     secondary: '#1b1b1b',
     article: '#3A3A3A',
-    header: 'black',
+    header: '#121713',
     headerText: 'white',
     text: 'white',
     link: {

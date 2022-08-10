@@ -1,14 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import BG from '../img/bg.jpg'
 import Github from '../img/icons/github.png'
 import Instagram from '../img/icons/instagram.png'
 import Medium from '../img/icons/medium-blue.png'
 import Twitter from '../img/icons/twitter.png'
 
 const Foot = styled.div`
-  background: url(${BG}) repeat;
+  background: black;
   border-top: 4px solid black;
   color: white;
   margin: 0px 0px 0px 0px;

@@ -56,7 +56,7 @@ const NavList = styled.ul`
   margin: 10px;
   list-style-type: none;
   float: right;
-  padding: 15px 40px 0px 0px;
+  padding: 15px 20px 0px 0px;
   color: #333;
 
   /* We can nest styles in styled-components */
@@ -74,7 +74,11 @@ const NavList = styled.ul`
 
   a:hover,
   a:focus {
-    color: #0077cc;
+    background: white;
+    border-radius: 0.375rem;
+    color: #584f4e;
+    padding: 5px;
+    transition: all 500ms;
   }
 `
 
@@ -84,9 +88,6 @@ const ListItem = styled.li`
   letter-spacing: 0.2rem;
   text-transform: capitalize;
   margin: 10px;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
   @media screen(max-width: 768px) {
     font-size: 10px;
   }
