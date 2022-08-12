@@ -54,6 +54,7 @@ const Page = styled.div`
 `
 
 const Para = styled.div`
+  font-size: 1.5rem;
   margin-block-start: 0;
   margin-block-end: 5;
   margin: 0px 5px 0px 5px;

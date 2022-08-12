@@ -155,7 +155,9 @@ const Post = ({ post }) => {
         <Image src={post.coverUrl} alt={post.title} />
         <Caption>{post.caption}</Caption>
         <Fade bottom>
-          <ReactMarkdown className="blogContent">{store()}</ReactMarkdown>
+          <ReactMarkdown className="blogContent" style={{ fontSize: '1rem' }}>
+            {store()}
+          </ReactMarkdown>
         </Fade>
         <Share>
           <EmailShareButton

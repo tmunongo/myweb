@@ -19,7 +19,6 @@ ${normalize}
   .blogContent {
       color: ${({ theme }) => theme.colors.text};
       font-family: 'Nixie';
-      font-size: 1.5rem;
       @media (max-width: 768px){
         font-size: 1rem;
         text-justify: auto;
