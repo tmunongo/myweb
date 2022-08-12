@@ -54,7 +54,7 @@ code {
 
 .blogContent {
   font-family: Nixie;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .js-scroll {
@@ -79,6 +79,7 @@ code {
 }
 
 .scroll-arrow {
+  color: #288a8a;
   animation: blink-animation 0.5s ease-in-out steps(5, start) infinite;
   -webkit-animation: blink-animation 2s steps(5, start) infinite;
 }

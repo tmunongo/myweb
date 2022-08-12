@@ -18,7 +18,7 @@ export const light = {
 export const dark = {
   name: 'dark',
   colors: {
-    body: '#121713',
+    body: 'black', //'#121713'
     button: '#121713',
     secondary: '#1b1b1b',
     article: '#3A3A3A',

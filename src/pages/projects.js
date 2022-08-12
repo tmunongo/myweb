@@ -28,9 +28,9 @@ const projects = [
   {
     id: 3,
     title: 'Tickets!',
-    topics: ['React Native'],
+    topics: ['React Native', 'GraphQL', 'MongoDB'],
     details:
-      'The app allows a user to register an account and view all the available movies in the db. A user can customize their reservation by picking a location, watch time, day, and a seat. The app connects to an Express server running Apollo GraphQL. MongoDB is used for document storage while objects are stored on Cloudinary.',
+      'The app allows a user to register an account and view all the available movies in the database. A user can customize their reservation by picking a location, watch time, day, and a seat.',
     preview:
       'https://github.com/edtha3rd/tickets-mob/raw/master/live/home_page.gif',
     github: 'https://github.com/edtha3rd/tickets-mob',
@@ -40,7 +40,7 @@ const projects = [
     title: 'Java Notepad',
     topics: ['Java'],
     details:
-      "A simple, lightweight text editor is a programmer's best friend. The basic functionality of the text editor must allow a user to open a new text file, save a new text file, update an existing file, or open a file from the device. This is my implementation, in Java, of a notepad that checks the above mentioned boxes.",
+      "A simple, lightweight text editor is a programmer's best friend. The basic functionality of the text editor must allow a user to open a new text file, save a new text file, update an existing file, or open a file from the device.",
     preview: 'https://github.com/edtha3rd/notepad/raw/master/notepad.jpg',
     github: 'https://github.com/edtha3rd/notepad',
   },
@@ -54,6 +54,16 @@ const projects = [
     github: 'https://github.com/edtha3rd',
     link: 'https://edtha3rd.github.io/snake-game/',
   },
+  {
+    id: 6,
+    title: 'Hair By X',
+    topics: ['GatsbyJS', 'Styled Components'],
+    details:
+      'A static site landing page designed and built for a fashion brand selling hair pieces.',
+    preview: 'https://github.com/edtha3rd/snake-game/raw/master/gameplay.png',
+    github: 'https://github.com/edtha3rd/hair-by-a',
+    link: 'https://hairbya.gatsbyjs.io/',
+  },
 ]
 
 //styles
@@ -62,17 +72,33 @@ const Container = styled.div`
 `
 
 const Head = styled.div`
-  text-align: center;
+  align-items: center;
+  display: flex;
+  text-align: left;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const HeaderText = styled.h1`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 26px;
+  margin-left: 20px;
   margin-top: 0px;
+`
+
+const Line = styled.div`
+  background: #288a8a;
+  height: 1px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 280px;
 `
 
 const Main = styled.h1`
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: 100vh;
 `
 const Page = styled.div`
@@ -91,7 +117,8 @@ const Projects = () => {
   return (
     <Page className="wifeBeater">
       <Head>
-        <HeaderText>My Projects</HeaderText>
+        <HeaderText className="headerName">Some of My Work</HeaderText>
+        <Line style={{}}></Line>
       </Head>
       <Main>
         {projects.map((item, index) => (

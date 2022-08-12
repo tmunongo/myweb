@@ -102,7 +102,7 @@ const ProjectContainer = styled.div`
   margin: 15px 20px;
   padding: 10px;
   width: 60vw;
-  @media (max-width: 768px) {
+  @media (max-width: 1280px) {
     margin: 15px 0px;
     width: 95vw;
   }
@@ -214,9 +214,12 @@ const Home = () => {
       <Page style={{ height: 'calc(100vh - 72px)' }}>
         <Head className="welcome">Welcome, traveller</Head>
         <Fade bottom>
-          <Para className="blogContent" style={{ textAlign: 'center' }}>
-            My name is Tawanda.
-            <br />I build websites and cross-platform mobile applications.
+          <Para className="blogContent" style={{ textAlign: 'left' }}>
+            I'm Tawanda.
+            <br />I contribute to this shared wonderland that we call the web.
+            <br />
+            I believe that function doesn't always have to eclipse form. Useful
+            things can be beautiful, too.
             <br />
             <br /> I also write fiction and non-fiction, exploring the
             intersection of technology and our existent ways of life.{' '}
@@ -224,13 +227,12 @@ const Home = () => {
         </Fade>
         <Link
           style={{
-            backgroundColor: '#07c',
+            backgroundColor: '#288a8a',
             borderRadius: '5px',
             color: 'black',
             fontWeight: 'bold',
-            justifySelf: 'center',
+            justifySelf: 'start',
             padding: '3px 10px',
-            textAlign: 'center',
             textDecoration: 'none',
             width: 'auto',
           }}
@@ -257,9 +259,7 @@ const Home = () => {
           <Fade bottom>
             <PortIntro className="blogContent">
               My goals, whenever I select a new project to take on, are always
-              to challenge myself and learn something new. For the last 4 years,
-              I have worked on numerous projects in many programming languages,
-              most of them as part of my CS coursework.
+              to challenge myself and learn something new.
             </PortIntro>
           </Fade>
         </Portfolio1>
@@ -269,9 +269,12 @@ const Home = () => {
               <ProjectInfo style={{ textAlign: 'left' }}>
                 <p
                   style={{
-                    color: '#07c',
+                    borderRadius: '0.375rem',
+                    background: 'whitesmoke',
+                    color: '#288a8a',
                     fontStyle: 'italic',
                     marginBottom: '0px',
+                    padding: '6px 12px',
                   }}
                 >
                   FEATURED PROJECT
@@ -286,7 +289,7 @@ const Home = () => {
                       key={index}
                       style={{
                         borderRadius: '0.5rem',
-                        backgroundColor: 'cyan',
+                        backgroundColor: '#288a8a',
                         color: 'black',
                         fontSize: '12px',
                         margin: '1px 1px',
@@ -300,10 +303,16 @@ const Home = () => {
                 </Tops>
                 <Links>
                   <a href={projects[0].github}>
-                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                    <IoLogoGithub
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                   <a href={projects[0].link}>
-                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                    <IoLinkOutline
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                 </Links>
               </ProjectInfo>
@@ -328,7 +337,7 @@ const Home = () => {
                       key={index}
                       style={{
                         borderRadius: '0.5rem',
-                        backgroundColor: 'cyan',
+                        backgroundColor: '#288a8a',
                         color: 'black',
                         fontSize: '12px',
                         margin: '1px 1px',
@@ -342,10 +351,16 @@ const Home = () => {
                 </Tops>
                 <Links>
                   <a href={projects[1].github}>
-                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                    <IoLogoGithub
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                   <a href={projects[1].link}>
-                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                    <IoLinkOutline
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                 </Links>
               </ProjectInfo>
@@ -364,7 +379,7 @@ const Home = () => {
                       key={index}
                       style={{
                         borderRadius: '0.5rem',
-                        backgroundColor: 'cyan',
+                        backgroundColor: '#288a8a',
                         color: 'black',
                         fontSize: '12px',
                         margin: '1px 1px',
@@ -378,10 +393,16 @@ const Home = () => {
                 </Tops>
                 <Links>
                   <a href={projects[4].github}>
-                    <IoLogoGithub size={20} style={{ margin: '5px' }} />
+                    <IoLogoGithub
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                   <a href={projects[4].link}>
-                    <IoLinkOutline size={20} style={{ margin: '5px' }} />
+                    <IoLinkOutline
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
                   </a>
                 </Links>
               </ProjectInfo>
@@ -394,7 +415,7 @@ const Home = () => {
             <Link to="/Projects">
               <Button
                 style={{
-                  backgroundColor: '#07c',
+                  backgroundColor: '#288a8a',
                   border: 'none',
                   borderRadius: '5px',
                   color: 'black',

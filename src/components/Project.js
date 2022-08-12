@@ -1,22 +1,24 @@
 import React from 'react'
+import { FaGithubAlt, FaLink } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  background-color: whitesmoke;
-  border-radius: 0.375rem;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  border-radius: 1rem;
+  border: 3px solid #288a8a;
+  // box-shadow: 4px 4px 2px 1px black, -4px -4px 2px 1px black;
   display: flex;
   flex-direction: column;
-  height: 450px;
-  margin: 8px;
-  overflow: scroll;
-  padding: 16px;
+  justify-content: space-between;
+  height: 350px;
+  margin: 10px;
+  padding: 12px 12px;
   width: 300px;
   @media (max-width: 768px) {
     height: 340px;
-    margin: 10px 10px;
+    margin: 15px 0px;
   }
   :hover {
-    box-shadow: 6px 6px 2px 1px #595959;
     transition: all 0.5s;
     translate: 0px -10px;
   }
@@ -34,9 +36,19 @@ const Link = styled.span`
   margin-right: 5px;
 `
 
+const LinkContainer = styled.div`
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  justify-content: space-between;
+  text-align: center;
+  width: 100%;
+`
+
 const MainText = styled.span`
   font-size: 14px;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
 `
 
 const TitleText = styled.span`
@@ -49,33 +61,23 @@ const TitleText = styled.span`
 `
 
 const Tops = styled.div`
-  flex: row;
+  flex-direction: row;
+  justify-content: center;
 `
 
 const Project = ({ title, topics, details, preview, github, link }) => {
   return (
     <Container>
       <TitleText>{title}</TitleText>
-      <Image src={preview} alt="preview" />
-      <div style={{ textAlign: 'center', flex: 'row', fontSize: '14px' }}>
-        <Link>
-          <a href={github}>Github</a>
-        </Link>
-        {link ? (
-          <Link>
-            <a href={link}>Link</a>
-          </Link>
-        ) : (
-          <span></span>
-        )}
-      </div>
+      {/* <Image src={preview} alt="preview" /> */}
+      <MainText className="blogContent">{details}</MainText>
       <Tops>
         {topics.map((item, index) => (
           <span
             key={index}
             style={{
               borderRadius: '0.5rem',
-              backgroundColor: 'cyan',
+              backgroundColor: '#288a8a',
               color: 'black',
               fontSize: '12px',
               margin: '1px 1px',
@@ -87,7 +89,22 @@ const Project = ({ title, topics, details, preview, github, link }) => {
           </span>
         ))}
       </Tops>
-      <MainText>{details}</MainText>
+      <LinkContainer>
+        <Link>
+          <a href={github}>
+            <FaGithubAlt size={35} color={'#288a8a'} />
+          </a>
+        </Link>
+        {link ? (
+          <Link>
+            <a href={link}>
+              <FaLink size={35} color={'#288a8a'} />
+            </a>
+          </Link>
+        ) : (
+          <span></span>
+        )}
+      </LinkContainer>
     </Container>
   )
 }
