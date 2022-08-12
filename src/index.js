@@ -7,7 +7,6 @@ import * as themes from './theme/schema.json'
 import { setToLS } from './utils/storage'
 
 const scrollElements = document.querySelectorAll('.js-scroll')
-console.log(scrollElements)
 // scrollElements.forEach((el) => {
 //   el.style.opacity = 0
 // })
@@ -39,7 +38,6 @@ const handleScrollAnimation = () => {
   scrollElements.forEach((el) => {
     if (elementInView(el, 1.25)) {
       displayScrollElement(el)
-      console.log(el)
     } else if (elementOutofView(el)) {
       hideScrollElement(el)
     }

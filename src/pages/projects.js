@@ -100,6 +100,9 @@ const Main = styled.h1`
   flex-flow: row wrap;
   justify-content: space-between;
   min-height: 100vh;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `
 const Page = styled.div`
   border-radius: 0.3rem;
