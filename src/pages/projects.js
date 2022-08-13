@@ -96,11 +96,17 @@ const Line = styled.div`
 `
 
 const Main = styled.h1`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   min-height: 100vh;
+  @media (max-width: 1560px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
   @media (max-width: 768px) {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 `
