@@ -40,7 +40,7 @@ const App = () => {
       {
         <ThemeProvider theme={selectedTheme}>
           <div className="switch-bar">
-            <Switch handleThemeChange={updateState} />
+            <Switch handleThemeChange={updateState} theme={selectedTheme} />
           </div>
           <GlobalStyle />
           <Pages />

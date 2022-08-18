@@ -233,7 +233,8 @@ const Home = () => {
             color: 'black',
             fontWeight: 'bold',
             justifySelf: 'start',
-            padding: '3px 10px',
+            marginLeft: '5px',
+            padding: '10px 10px',
             textDecoration: 'none',
             width: 'auto',
           }}

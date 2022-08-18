@@ -41,6 +41,9 @@ const LogoText = styled.h1`
     padding: 31px 0px 0px 0px;
     text-wrap: nowrap;
   }
+  @media (max-width: 360px) {
+    font-size: 14px;
+  }
 `
 
 const Nav = styled.nav`
