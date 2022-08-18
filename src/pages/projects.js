@@ -102,6 +102,7 @@ const Main = styled.h1`
   @media (max-width: 1560px) {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
   @media (max-width: 768px) {
     align-items: center;
@@ -126,7 +127,7 @@ const Projects = () => {
   return (
     <Page className="wifeBeater">
       <Head>
-        <HeaderText className="headerName">Some of My Work</HeaderText>
+        <HeaderText className="heading">Some of My Work</HeaderText>
         <Line style={{}}></Line>
       </Head>
       <Main>

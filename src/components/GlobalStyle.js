@@ -129,6 +129,10 @@ ${normalize}
     font-family: 'AstroSpace';
   }
 
+  .heading {
+    font-family: 'AstroSpace';
+  }
+
   .navItem {
     color: ${({ theme }) => theme.colors.headerText};
   }
