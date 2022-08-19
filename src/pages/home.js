@@ -4,8 +4,6 @@ import { Fade } from 'react-reveal'
 import { Link } from 'react-router-dom'
 import styled, { ThemeContext } from 'styled-components'
 import ScrollIndicator from '../components/ScrollIndicator'
-import Thinker from '../img/thinker-nobg-prism.jpg'
-import ThinkerLight from '../img/thinker-prism.jpg'
 
 //styling
 const Button = styled.button`
@@ -436,13 +434,13 @@ const Home = () => {
           </ProjectLast>
         </Portfolio2>
       </Page>
-      <Page>
+      {/* <Page>
         {theme.name === 'dark' ? (
           <ThinkerImage src={Thinker} alt="thinker" />
         ) : (
           <ThinkerImage src={ThinkerLight} alt="thinker light" />
         )}
-      </Page>
+      </Page> */}
       {/* </ScrollContainer> */}
     </React.Fragment>
   )
