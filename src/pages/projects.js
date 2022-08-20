@@ -76,15 +76,20 @@ const Head = styled.div`
   display: flex;
   text-align: left;
   @media (max-width: 768px) {
-    display: none;
+    font-size: 16px;
+    // display: none;
   }
 `
 
 const HeaderText = styled.h1`
   color: ${({ theme }) => theme.colors.text};
   font-size: 26px;
-  margin-left: 20px;
-  margin-top: 0px;
+  margin: 0px 0px 0px 20px;
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin: 0px 0px 0px 10px;
+    // display: none;
+  }
 `
 
 const Line = styled.div`
@@ -93,6 +98,9 @@ const Line = styled.div`
   margin-left: 20px;
   margin-bottom: 20px;
   width: 280px;
+  @media (max-width: 768px) {
+    width: 140px;
+  }
 `
 
 const Main = styled.h1`

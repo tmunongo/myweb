@@ -87,7 +87,7 @@ const NavList = styled.ul`
 
 const ListItem = styled.li`
   display: inline;
-  font-size: 18px;
+  font-size: 13px;
   letter-spacing: 0.2rem;
   text-transform: capitalize;
   margin: 10px;

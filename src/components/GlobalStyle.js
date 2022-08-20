@@ -18,7 +18,6 @@ ${normalize}
   }
   .blogContent {
       color: ${({ theme }) => theme.colors.text};
-      font-family: 'Nixie';
       @media (max-width: 768px){
         font-size: 1rem;
         text-justify: auto;
@@ -55,7 +54,7 @@ ${normalize}
   
   .postList:hover,
   .postList:focus {
-    background-color: ${({ theme }) => theme.colors.article};
+    background-color: ${({ theme }) => theme.colors.wifeBeater};
     border-radius: 0.375rem;
     box-shadow: 3px 3px 5px black;
     z-index: 35;

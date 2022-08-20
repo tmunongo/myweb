@@ -131,15 +131,6 @@ const ProjectPreview = styled.div`
   margin: 0px 5px;
 `
 
-const ThinkerImage = styled.img`
-  display: flex;
-  height: calc(60%);
-  width: calc(15%);
-  @media (max-width: 700px) {
-    display: none;
-  }
-`
-
 const Tops = styled.div`
   flex: row;
   margin: 15px;

@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 //import components
 import Loading from '../components/Loading'
-import essays from '../img/essays.jpg'
-import fiction from '../img/fiction.jpg'
-import freeWriting from '../img/free-writing.jpg'
 
 //import gql
 import { GET_POSTS } from '../gql/query'
@@ -24,77 +21,56 @@ const Banner = styled.div`
   }
 
   @media (max-width: 768px) {
-    margin-left: 2%;
-    padding: 5px;
     max-width: 95vw;
   }
 `
 
 const Blurb = styled.p`
-  margin: 5px 15px 0px 15px;
+  margin: 5px 15px 0px 0px;
   padding: 0px 0px 0px 0px;
 `
 
-const Image = styled.img`
-  border-radius: 10%;
-  width: calc(100%);
-  height: auto;
-  background-position-y: center;
-`
-
-const One = styled.div`
-  grid-column: 1;
-  grid-row: 1;
-  flex: auto;
-  @media (max-width: 700px) {
-    border: 2px solid white;
+const Head = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    // display: none;
   }
 `
 
-const Two = styled.div`
-  grid-column: 1;
-  grid-row: 2;
-  @media (max-width: 700px) {
-    border: 2px solid white;
-  }
-`
-
-const Three = styled.div`
-  grid-column: 1;
-  grid-row: 3;
-  @media (max-width: 700px) {
-    border: 2px solid white;
-  }
-`
-
-const Feat = styled.h2`
-  @media (min-width: 768px) {
-    border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : '#0077cc')};
-  }
-  border-radius: 0.375rem;
+const HeaderText = styled.h1`
   color: ${({ theme }) => theme.colors.text};
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 17px;
-  font-style: oblique;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 0px 60px 0px 60px;
-  padding: 5px 0px 5px 20px;
-  text-align: center;
-  @media (max-width: 700px) {
-    margin: 0px 0px 10px 0px;
-    padding: 10px 0px 10px 20px;
+  font-size: 26px;
+  margin: 0px 0px 0px 20px;
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin: 0px 10px 0px 0px;
+    // display: none;
+  }
+`
+
+const Line = styled.div`
+  background: #288a8a;
+  height: 1px;
+  margin-left: 20px;
+  margin-bottom: 0.5rem;
+  width: 480px;
+  @media (max-width: 768px) {
+    width: 140px;
   }
 `
 
 const Body = styled.div`
   border-radius: 0.3rem;
+  padding: 16px;
   @media (min-width: 768px) {
     columns: 2;
-    display: grid;
+    display: flex;
     margin: 4% 8%;
     max-width: calc(90%);
-    grid-auto-columns: 75% 25%;
     padding: 50px 5px 25px 5px;
   }
   @media (max-width: 768px) {
@@ -113,29 +89,18 @@ const ErrorMessage = styled.span`
   font-weight: bolder;
 `
 
-const Left = styled.div`
-  grid-column: 1;
-  @media (min-width: 700px) {
-    border-right: 1px solid white;
-  }
-`
-
-const Middle = styled.div`
-  grid-column: 2;
-  @media (max-width: 700px) {
-    display: none;
-  }
-`
-
-const SpanText = styled.span`
-  color: ${({ theme }) => (theme.dark ? '#8EE0F5' : '#48C0DE')};
-`
+const Left = styled.div``
 
 const TagBody = styled.div`
-  border: 2px solid ${({ theme }) => (theme.dark ? '#7fe3d8' : '#0077cc')};
+  border: 2px solid #288a8a;
   border-radius: 0.375rem;
   margin: 10px 80px 10px 80px;
   padding: 5px;
+  width: 60vw;
+  @media (max-width: 768px) {
+    margin: 10px 20px 10px 0px;
+    width: 80vw;
+  }
 `
 
 const Tags = styled.button`
@@ -149,8 +114,8 @@ const Tags = styled.button`
 
 const TimeStamp = styled.h3`
   margin: 0px 15px 2px 0px;
-  color: ${({ theme }) => (theme.dark ? '#95d779' : '#4C6E3E')};
-  font-size: 13px;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 14px;
   width: calc(100%);
   @media (max-width: 700px) {
     width: calc(100%);
@@ -161,18 +126,10 @@ const Title = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
   margin-bottom: 5px;
-  text-decoration: underline;
   text-transform: capitalize;
   @media (max-width: 700px) {
     margin: 0px 0px 5px 0px;
   }
-`
-const Wrap = styled.div`
-  display: grid;
-  grid-auto-columns: 1fr 1fr 1fr;
-  gap: 25px;
-  grid-auto-rows: minmax(auto, auto);
-  padding: 25px calc(15%) 0px calc(15%);
 `
 function readTime(text) {
   const wpm = 225
@@ -211,7 +168,6 @@ const Writings = () => {
 
   const formatDate = (timestamp) => {
     const options = {
-      weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -261,65 +217,48 @@ const Writings = () => {
   return (
     <Body className="wifeBeater">
       <Left>
-        <Feat> Featured </Feat>
+        <Head>
+          <HeaderText className="heading">My Writings</HeaderText>
+          <Line style={{}}></Line>
+        </Head>
         {/* display tags to filter posts */}
-        <TagBody>
-          Tags:
-          {uniqueTags().map((post, index) => {
-            return (
-              <Tags
-                onClick={(e) => handleTagSelection(post.category, e)}
-                key={index}
-                style={{
-                  backgroundColor: `rgb(${Math.random() * 255}, ${
-                    Math.random() * 255
-                  }, 0)`,
-                }}
-              >
-                {post.category}
-              </Tags>
-            )
-          })}
-        </TagBody>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <TagBody>
+            Tags:
+            {uniqueTags().map((post, index) => {
+              return (
+                <Tags
+                  onClick={(e) => handleTagSelection(post.category, e)}
+                  key={index}
+                  style={{
+                    backgroundColor: `rgb(${Math.random() * 255}, ${
+                      Math.random() * 255
+                    }, 0)`,
+                  }}
+                >
+                  {post.category}
+                </Tags>
+              )
+            })}
+          </TagBody>
+        </div>
         {data.PostFeed.posts.map((post, index) => (
-          <Banner>
-            <Article className="postList" key={index}>
-              <Title>{post.title}</Title>
-              <TimeStamp>
-                {/* #48C0DE */}
-                <SpanText>posted</SpanText>({formatDate(post.createdAt)}),{' '}
-                <SpanText>readTime</SpanText>({readTime(post.content)} min)
-              </TimeStamp>
-              <div>
-                <Blurb>{post.blurb}</Blurb> <br />
-                <Link to={`/post/${post.slug}`}>Read More</Link>
-              </div>
-            </Article>
-          </Banner>
+          <Link to={`/post/${post.slug}`} style={{ textDecoration: 'none' }}>
+            <Banner>
+              <Article className="postList" key={index}>
+                <Title>{post.title}</Title>
+                <div>
+                  <Blurb>{post.blurb}</Blurb> <br />
+                  <TimeStamp>
+                    {/* #48C0DE */}
+                    {formatDate(post.createdAt)} | {readTime(post.content)} min
+                  </TimeStamp>
+                </div>
+              </Article>
+            </Banner>
+          </Link>
         ))}
       </Left>
-      <Middle>
-        <h3
-          style={{
-            paddingLeft: '10px',
-            marginBottom: '5px',
-            textAlign: 'center',
-          }}
-        >
-          Categories coming soon...
-        </h3>
-        <Wrap>
-          <One>
-            <Image src={essays} alt="essays" />
-          </One>
-          <Two>
-            <Image src={fiction} alt="fiction" />
-          </Two>
-          <Three>
-            <Image src={freeWriting} alt="freeWriting" />
-          </Three>
-        </Wrap>
-      </Middle>
     </Body>
   )
 }
