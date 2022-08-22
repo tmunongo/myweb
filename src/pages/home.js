@@ -185,8 +185,19 @@ const projects = [
     details:
       'This is a web-based snake game in JavaScript. I chose this project to improve my understanding of how vanilla JavaScript refreshes rendered content and how to manually control this to implement something like a game engine.',
     preview: 'https://github.com/edtha3rd/snake-game/raw/master/gameplay.png',
-    github: 'https://github.com/edtha3rd',
+    github: 'https://github.com/edtha3rd/snake-game',
     link: 'https://edtha3rd.github.io/snake-game/',
+  },
+  {
+    id: 5,
+    title: 'Hair By A',
+    topics: ['GatsbyJS', 'Styled Components'],
+    details:
+      'A landing site for a fashion brand specializing in top-of-the-range hair products.',
+    preview:
+      'https://github.com/edtha3rd/hair-by-a/blob/master/src/images/hairbya-sc.png',
+    github: 'https://github.com/edtha3rd/hair-by-a',
+    link: 'https://hairbya.gatsbyjs.io/',
   },
 ]
 
@@ -315,15 +326,15 @@ const Home = () => {
           <Fade right>
             <ProjectContainer>
               <ProjectPreview>
-                <Preview src={projects[1].preview} />{' '}
+                <Preview src={projects[5].preview} />{' '}
               </ProjectPreview>
               <ProjectInfo style={{ textAlign: 'right' }}>
-                <h2>{projects[1].title}</h2>
+                <h2>{projects[5].title}</h2>
                 <p className="blogContent" style={{ fontSize: '14px' }}>
-                  {projects[1].details}
+                  {projects[5].details}
                 </p>
                 <Tops>
-                  {projects[1].topics.map((item, index) => (
+                  {projects[5].topics.map((item, index) => (
                     <span
                       key={index}
                       style={{
@@ -341,13 +352,13 @@ const Home = () => {
                   ))}
                 </Tops>
                 <Links>
-                  <a href={projects[1].github}>
+                  <a href={projects[5].github}>
                     <IoLogoGithub
                       size={20}
                       style={{ margin: '5px', color: '#288a8a' }}
                     />
                   </a>
-                  <a href={projects[1].link}>
+                  <a href={projects[5].link}>
                     <IoLinkOutline
                       size={20}
                       style={{ margin: '5px', color: '#288a8a' }}
