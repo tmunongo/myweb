@@ -61,6 +61,7 @@ const Para = styled.div`
 const Preview = styled.img`
   border-radius: 0.375rem;
   height: auto;
+  max-width: 450px;
   width: 100%;
   @media (max-width: 768px) {
     display: none;
@@ -112,6 +113,10 @@ const ProjectInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%;
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `
 
 const ProjectLast = styled.div`
@@ -129,6 +134,10 @@ const ProjectPreview = styled.div`
   display: flex;
   justify-content: center;
   margin: 0px 5px;
+  width: 50%;
+  @media (max-width: 980px) {
+    display: none;
+  }
 `
 
 const Tops = styled.div`
@@ -195,7 +204,7 @@ const projects = [
     details:
       'A landing site for a fashion brand specializing in top-of-the-range hair products.',
     preview:
-      'https://github.com/edtha3rd/hair-by-a/blob/master/src/images/hairbya-sc.png',
+      'https://github.com/edtha3rd/hair-by-a/raw/master/src/images/hairbya-sc.png',
     github: 'https://github.com/edtha3rd/hair-by-a',
     link: 'https://hairbya.gatsbyjs.io/',
   },
@@ -281,55 +290,7 @@ const Home = () => {
                 >
                   FEATURED PROJECT
                 </p>
-                <h2 style={{ marginTop: '0px' }}>{projects[0].title}</h2>
-                <p className="blogContent" style={{ fontSize: '14px' }}>
-                  {projects[0].details}
-                </p>
-                <Tops>
-                  {projects[0].topics.map((item, index) => (
-                    <span
-                      key={index}
-                      style={{
-                        borderRadius: '0.5rem',
-                        backgroundColor: '#288a8a',
-                        color: 'black',
-                        fontSize: '12px',
-                        margin: '1px 1px',
-                        padding: '5px',
-                        width: 'fit-content',
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </Tops>
-                <Links>
-                  <a href={projects[0].github}>
-                    <IoLogoGithub
-                      size={20}
-                      style={{ margin: '5px', color: '#288a8a' }}
-                    />
-                  </a>
-                  <a href={projects[0].link}>
-                    <IoLinkOutline
-                      size={20}
-                      style={{ margin: '5px', color: '#288a8a' }}
-                    />
-                  </a>
-                </Links>
-              </ProjectInfo>
-              <ProjectPreview>
-                <Preview src={projects[0].preview} />{' '}
-              </ProjectPreview>
-            </ProjectContainer>
-          </Fade>
-          <Fade right>
-            <ProjectContainer>
-              <ProjectPreview>
-                <Preview src={projects[5].preview} />{' '}
-              </ProjectPreview>
-              <ProjectInfo style={{ textAlign: 'right' }}>
-                <h2>{projects[5].title}</h2>
+                <h2 style={{ marginTop: '0px' }}>{projects[5].title}</h2>
                 <p className="blogContent" style={{ fontSize: '14px' }}>
                   {projects[5].details}
                 </p>
@@ -359,6 +320,54 @@ const Home = () => {
                     />
                   </a>
                   <a href={projects[5].link}>
+                    <IoLinkOutline
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
+                  </a>
+                </Links>
+              </ProjectInfo>
+              <ProjectPreview>
+                <Preview src={projects[5].preview} />{' '}
+              </ProjectPreview>
+            </ProjectContainer>
+          </Fade>
+          <Fade right>
+            <ProjectContainer>
+              <ProjectPreview>
+                <Preview src={projects[0].preview} />{' '}
+              </ProjectPreview>
+              <ProjectInfo style={{ textAlign: 'right' }}>
+                <h2>{projects[0].title}</h2>
+                <p className="blogContent" style={{ fontSize: '14px' }}>
+                  {projects[0].details}
+                </p>
+                <Tops>
+                  {projects[0].topics.map((item, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        borderRadius: '0.5rem',
+                        backgroundColor: '#288a8a',
+                        color: 'black',
+                        fontSize: '12px',
+                        margin: '1px 1px',
+                        padding: '5px',
+                        width: 'fit-content',
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </Tops>
+                <Links>
+                  <a href={projects[0].github}>
+                    <IoLogoGithub
+                      size={20}
+                      style={{ margin: '5px', color: '#288a8a' }}
+                    />
+                  </a>
+                  <a href={projects[0].link}>
                     <IoLinkOutline
                       size={20}
                       style={{ margin: '5px', color: '#288a8a' }}
