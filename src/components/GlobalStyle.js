@@ -34,7 +34,6 @@ ${normalize}
   }
 
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: ${({ theme }) => theme.colors.body};
     line-height: 1.4;
   }
