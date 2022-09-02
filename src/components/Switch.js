@@ -5,10 +5,10 @@ import styled from 'styled-components'
 const Container = styled.div`
   color: ${({ theme }) => theme.colors.headerText};
   cursor: pointer;
-  left: 540px;
+  left: 530px;
   position: fixed;
   transition: all 500ms;
-  top: 32px;
+  top: 28px;
   z-index: 1000;
   @media (max-width: 1160px) {
     left: 330px;

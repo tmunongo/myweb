@@ -30,6 +30,9 @@ const ListItem = styled.li`
   line-height: 36px;
   padding: 16px;
   text-transform: capitalize;
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
 `
 
 const Menu = styled.div`
@@ -44,6 +47,7 @@ const Menu = styled.div`
   width: 100vw;
   z-index: 3;
   @media (min-width: 960px) {
+    display: none;
     top: -100vh;
   }
 `

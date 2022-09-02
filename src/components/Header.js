@@ -8,7 +8,7 @@ const Burger = styled.div`
   color: #0077cc;
   cursor: pointer;
   display: block;
-  padding: 25px 0px 0px 20px;
+  padding: 22px 0px 0px 20px;
   z-index: 10;
   @media (min-width: 960px) {
     display: none;
@@ -35,10 +35,10 @@ const HeaderBar = styled.div`
 const LogoText = styled.h1`
   font-size: 20px;
   margin: 10px;
-  padding: 20px 0px 0px 0px;
+  padding: 15px 0px 0px 0px;
   @media (max-width: 960px) {
     margin: 0px;
-    padding: 31px 0px 0px 0px;
+    padding: 25px 0px 0px 0px;
     text-wrap: nowrap;
   }
   @media (max-width: 360px) {
@@ -48,7 +48,7 @@ const LogoText = styled.h1`
 
 const Nav = styled.nav`
   height: 72px;
-  padding: 0px 70px 0px 0px;
+  padding: 0px 20px 0px 0px;
 
   @media (max-width: 960px) {
     display: none;
