@@ -569,10 +569,10 @@ const Home = () => {
       <Page>
         <Body
           style={{
-            // alignItems: 'center',
+            alignItems: 'center',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
+            // justifyContent: 'center',
             marginBottom: '20px',
             padding: '16px',
           }}
