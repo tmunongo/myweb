@@ -1,11 +1,8 @@
 import { useQuery } from '@apollo/client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-//import components
 import Loading from '../components/Loading'
-
-//import gql
 import { GET_POSTS } from '../gql/query'
 
 const Article = styled.article`
@@ -28,6 +25,16 @@ const Banner = styled.div`
 const Blurb = styled.p`
   margin: 5px 15px 0px 0px;
   padding: 0px 0px 0px 0px;
+`
+
+const Error = styled.div`
+  height: 60vh;
+  text-align: center;
+`
+
+const ErrorMessage = styled.span`
+  font-size: 18px;
+  font-weight: bolder;
 `
 
 const Head = styled.div`
@@ -63,53 +70,14 @@ const Line = styled.div`
   }
 `
 
-const Body = styled.div`
+const Page = styled.div`
   border-radius: 0.3rem;
+  margin: 4% 8%;
+  min-height: 60vh;
   padding: 16px;
-  @media (min-width: 768px) {
-    columns: 2;
-    display: flex;
-    margin: 4% 8%;
-    max-width: calc(90%);
-    padding: 50px 5px 25px 5px;
-  }
   @media (max-width: 768px) {
     margin: 5% 5%;
   }
-  // background: #1f1f1f;
-`
-
-const Error = styled.div`
-  height: 60vh;
-  text-align: center;
-`
-
-const ErrorMessage = styled.span`
-  font-size: 18px;
-  font-weight: bolder;
-`
-
-const Left = styled.div``
-
-const TagBody = styled.div`
-  border: 2px solid #288a8a;
-  border-radius: 0.375rem;
-  margin: 10px 80px 10px 80px;
-  padding: 5px;
-  width: 60vw;
-  @media (max-width: 768px) {
-    margin: 10px 20px 10px 0px;
-    width: 80vw;
-  }
-`
-
-const Tags = styled.button`
-  border-radius: 50px;
-  border-style: none;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 5px;
-  padding: 5px;
 `
 
 const TimeStamp = styled.h3`
@@ -131,6 +99,7 @@ const Title = styled.h2`
     margin: 0px 0px 5px 0px;
   }
 `
+
 function readTime(text) {
   const wpm = 225
   const words = text.trim().split(/\s+/).length
@@ -138,14 +107,12 @@ function readTime(text) {
   return time
 }
 
-const Writings = () => {
-  const [selectedTag, setTag] = useState('')
+const Tutorials = () => {
   useEffect(() => {
-    document.title = 'Tawanda Munongo - Blog'
+    document.title = 'Tawanda Munongo - Tutorials'
   })
 
   const { data, loading, error } = useQuery(GET_POSTS, {})
-  const [filteredList, setFilteredList] = useState([])
 
   //if data loading, display message
   // if (loading) return <p>Loading...</p>
@@ -164,7 +131,7 @@ const Writings = () => {
       </Error>
     )
   //if there is no data
-  if (!data) return <p>Not found</p>
+  if (!data) return <p>Coming Soon</p>
 
   const formatDate = (timestamp) => {
     const options = {
@@ -175,74 +142,17 @@ const Writings = () => {
     let date = new Date(timestamp).toLocaleDateString(undefined, options)
     return date
   }
-
-  //create an array with only the unique categories from the posts object
-  const uniqueTags = () => {
-    const flag = {}
-    let array = []
-    data.PostFeed.posts.forEach((elem) => {
-      if (!flag[elem.category]) {
-        flag[elem.category] = true
-        array.push(elem)
-      }
-    })
-    return array
-  }
-
-  const handleTagSelection = (x, e) => {
-    e.preventDefault()
-    const selectedCategory = String(e.target.id)
-    if (selectedCategory === x) {
-      setTag('')
-    } else {
-      setTag(x)
-      filterByTag(data.PostFeed.posts)
-    }
-  }
-
-  //  function to return filtered posts
-  const filterByTag = (posts) => {
-    if (!selectedTag) {
-      return posts
-    }
-    const filteredPosts = posts.map(
-      (post) => post.category.indexOf(selectedTag) !== -1
-    )
-    console.log(selectedTag, filteredPosts)
-    setFilteredList(filteredPosts)
-    return filteredPosts
-  }
-
-  //if fetch successful, display in UI
+  const tutorials = data.PostFeed.posts
+    .filter((post) => post.category === 'Tutorial')
+    .map((post) => post)
   return (
-    <Body className="wifeBeater">
-      <Left>
-        <Head>
-          <HeaderText className="heading">My Writings</HeaderText>
-          <Line style={{}}></Line>
-        </Head>
-        {/* display tags to filter posts */}
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <TagBody>
-            Tags:
-            {uniqueTags().map((post, index) => {
-              return (
-                <Tags
-                  onClick={(e) => handleTagSelection(post.category, e)}
-                  key={index}
-                  style={{
-                    backgroundColor: `rgb(${Math.random() * 255}, ${
-                      Math.random() * 255
-                    }, 0)`,
-                  }}
-                >
-                  {post.category}
-                </Tags>
-              )
-            })}
-          </TagBody>
-        </div>
-        {data.PostFeed.posts.map((post, index) => (
+    <Page className="wifeBeater">
+      <Head>
+        <HeaderText className="heading">Tutorials</HeaderText>
+        <Line style={{}}></Line>
+      </Head>
+      <div>
+        {tutorials.map((post, index) => (
           <Link to={`/post/${post.slug}`} style={{ textDecoration: 'none' }}>
             <Banner>
               <Article className="postList" key={index}>
@@ -258,9 +168,9 @@ const Writings = () => {
             </Banner>
           </Link>
         ))}
-      </Left>
-    </Body>
+      </div>
+    </Page>
   )
 }
 
-export default Writings
+export default Tutorials

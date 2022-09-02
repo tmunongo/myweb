@@ -5,14 +5,15 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout'
 
 //import routes
-import Home from './home'
 import About from './about'
-import Writings from './writings'
-import QuickView from './quickview'
+import Home from './home'
 import PostPage from './post'
 import Projects from './projects'
-import SignUp from './signup'
+import QuickView from './quickview'
 import SignIn from './signin'
+import SignUp from './signup'
+import Tutorials from './tutorials'
+import Writings from './writings'
 
 //define routes
 const Pages = () => {
@@ -27,7 +28,8 @@ const Pages = () => {
           <Route path="post/:slug" element={<PostPage />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="signin" element={<SignIn />}></Route>
-          <Route path='projects' element={<Projects />}></Route>
+          <Route path="projects" element={<Projects />}></Route>
+          <Route path="tutorials" element={<Tutorials />}></Route>
         </Routes>
       </Layout>
     </Router>

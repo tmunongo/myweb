@@ -109,7 +109,21 @@ const SideBar = (props) => {
             Writings
           </Link>
         </ListItem>
-
+        <ListItem
+          onClick={(e) => {
+            e.preventDefault()
+            props.setNav(false)
+          }}
+          className="navItem"
+        >
+          <Link to="/tutorials">
+            <Icon
+              src="https://icongr.am/fontawesome/book.svg?size=25&color=0077cc"
+              alt="me"
+            />
+            Tutorials
+          </Link>
+        </ListItem>
         <ListItem
           onClick={(e) => {
             e.preventDefault()
@@ -126,33 +140,6 @@ const SideBar = (props) => {
           </Link>
         </ListItem>
       </ul>
-      {/*<ListItem>
-                    <Link to="/quickview" >Quick View</Link>
-                </ListItem>
-                if logged in display logout, else sign in options 
-                <UserState>
-                    {data.isLoggedIn ? (
-                        <ButtonAsLink
-                            onClick={() => {
-                                //remove token
-                                localStorage.removeItem('token');
-                                //clear app cache
-                                client.resetStore();
-                                //update local state
-                                client.modify({ data: { isLoggedIn: false } });
-                                //redirect to home
-                                props.history.push('/');
-                            }}
-                        >
-                            Log Out
-                        </ButtonAsLink>
-                    ) : (
-                        <ButtonAsLink>
-                            <Link to={'/signin'}>Sign In</Link> || {' '}
-                        </ButtonAsLink>
-                    )}
-                </UserState>
-                */}
     </Menu>
   )
 }

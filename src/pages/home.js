@@ -1,11 +1,45 @@
-import React, { useContext, useEffect } from 'react'
-import { IoLinkOutline, IoLogoGithub } from 'react-icons/io5'
+import { useQuery } from '@apollo/client'
+import React, { useEffect } from 'react'
+import {
+  IoArrowForwardOutline,
+  IoLinkOutline,
+  IoLogoGithub,
+} from 'react-icons/io5'
 import { Fade } from 'react-reveal'
 import { Link } from 'react-router-dom'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
+import Loading from '../components/Loading'
 import ScrollIndicator from '../components/ScrollIndicator'
+import { GET_POSTS } from '../gql/query'
 
 //styling
+const Article = styled.article`
+  border-bottom: 1px solid ${({ theme }) => (theme.dark ? 'white' : 'black')};
+  padding: 0px 0px 10px 5px;
+`
+const Banner = styled.div`
+  color: ${({ theme }) => theme.colors.text};
+  padding: 0px 0px 10px 0px;
+  max-width: 80vw;
+
+  @media (min-width: 700px) {
+    padding: 0px calc(10%) 0px calc(10%);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 95vw;
+  }
+`
+
+const Blurb = styled.p`
+  margin: 5px 15px 0px 0px;
+  padding: 0px 0px 0px 0px;
+`
+const Body = styled.div`
+  border-radius: 0.375rem;
+  color: ${({ theme }) => theme.colors.text};
+`
+
 const Button = styled.button`
   background-color: #28dc2e;
   border-radius: 5px;
@@ -18,6 +52,16 @@ const Button = styled.button`
   width: auto;
 `
 
+const Error = styled.div`
+  height: 60vh;
+  text-align: center;
+`
+
+const ErrorMessage = styled.span`
+  font-size: 18px;
+  font-weight: bolder;
+`
+
 const Head = styled.h1`
   margin: 0px 0px 10px 0px;
   text-align: center;
@@ -28,8 +72,14 @@ const Heading2 = styled.h2`
   text-align: center;
   width: 100vw;
   @media (max-width: 768px) {
-    margin: 0 0;
+    margin: 0px 0px;
   }
+`
+
+const HeadingContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `
 
 const Links = styled.div`
@@ -93,6 +143,10 @@ const PortIntro = styled.p`
   }
 `
 
+const PostContainer = styled.div`
+  background: ${({ theme }) => theme.colors.secondary};
+`
+
 const ProjectContainer = styled.div`
   background: ${({ theme }) => theme.colors.secondary};
   border-radius: 0.375rem;
@@ -122,7 +176,7 @@ const ProjectInfo = styled.div`
 const ProjectLast = styled.div`
   align-items: center;
   display: flex;
-  justify-content: end;
+  justify-content: center;
   @media (max-width: 768px) {
     max-width: 100vw;
     justify-content: center;
@@ -137,6 +191,26 @@ const ProjectPreview = styled.div`
   width: 50%;
   @media (max-width: 980px) {
     display: none;
+  }
+`
+
+const TimeStamp = styled.h3`
+  margin: 0px 15px 2px 0px;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 14px;
+  width: calc(100%);
+  @media (max-width: 700px) {
+    width: calc(100%);
+  }
+`
+
+const Title = styled.h2`
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 18px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  @media (max-width: 700px) {
+    margin: 0px 0px 5px 0px;
   }
 `
 
@@ -211,11 +285,46 @@ const projects = [
 ]
 
 const Home = () => {
-  const theme = useContext(ThemeContext)
-
+  const { data, loading, error } = useQuery(GET_POSTS, {})
   useEffect(() => {
     document.title = 'Tawanda Munongo - HomePage'
   })
+
+  //if data loading, display message
+  // if (loading) return <p>Loading...</p>
+  if (loading) return <Loading type={'cubes'} color={'#0077cc'} />
+  //if there is an error, display error message
+  if (error)
+    return (
+      <Error
+        className="wifeBeater"
+        style={{ margin: '4% 8%', borderRadius: '0.375rem', padding: '12px' }}
+      >
+        <ErrorMessage>Oops! {error.message}</ErrorMessage>
+        <Link to="/">
+          <p>Return Home</p>
+        </Link>
+      </Error>
+    )
+  //if there is no data
+  if (!data) return <p>Not found</p>
+
+  function readTime(text) {
+    const wpm = 225
+    const words = text.trim().split(/\s+/).length
+    const time = Math.ceil(words / wpm)
+    return time
+  }
+
+  const formatDate = (timestamp) => {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+    let date = new Date(timestamp).toLocaleDateString(undefined, options)
+    return date
+  }
 
   return (
     <React.Fragment>
@@ -263,16 +372,16 @@ const Home = () => {
       >
         <Portfolio1 className="blogContent">
           <Fade bottom>
-            <div>
-              <Heading2>My Portfolio</Heading2>
-            </div>
+            <HeadingContainer>
+              <Heading2 className="heading">My Portfolio</Heading2>
+            </HeadingContainer>
           </Fade>
-          <Fade bottom>
+          {/* <Fade bottom>
             <PortIntro className="blogContent">
               My goals, whenever I select a new project to take on, are always
               to challenge myself and learn something new.
             </PortIntro>
-          </Fade>
+          </Fade> */}
         </Portfolio1>
         <Portfolio2>
           <Fade left>
@@ -426,32 +535,121 @@ const Home = () => {
             <Link to="/Projects">
               <Button
                 style={{
+                  alignItems: 'center',
                   backgroundColor: '#288a8a',
                   border: 'none',
                   borderRadius: '5px',
                   color: 'black',
                   cursor: 'grab',
+                  display: 'flex',
                   fontWeight: 'bold',
-                  justifySelf: 'center',
+                  height: '50px',
+                  justifyContent: 'center',
                   padding: '3px 10px',
                   textAlign: 'center',
                   textDecoration: 'none',
-                  width: 'auto',
+                  width: '150px',
                 }}
               >
-                See More
+                <span
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 'normal',
+                    marginRight: '5px',
+                  }}
+                >
+                  See More
+                </span>
+                <IoArrowForwardOutline size={20} />
               </Button>
             </Link>
           </ProjectLast>
         </Portfolio2>
       </Page>
-      {/* <Page>
-        {theme.name === 'dark' ? (
+      <Page>
+        <Body
+          style={{
+            // alignItems: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            marginBottom: '20px',
+            padding: '16px',
+          }}
+        >
+          <Fade bottom>
+            <HeadingContainer style={{ marginTop: '20px' }}>
+              <Heading2 className="heading">Featured Writings</Heading2>
+            </HeadingContainer>
+          </Fade>
+          {data.PostFeed.posts.map((post, index) => {
+            while (index < 3) {
+              return (
+                <Link
+                  key={index}
+                  to={`/post/${post.slug}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Fade left>
+                    <Banner>
+                      <Article className="postList" key={index}>
+                        <Title>{post.title}</Title>
+                        <div>
+                          <Blurb>{post.blurb}</Blurb> <br />
+                          <TimeStamp>
+                            {/* #48C0DE */}
+                            {formatDate(post.createdAt)} |{' '}
+                            {readTime(post.content)} min
+                          </TimeStamp>
+                        </div>
+                      </Article>
+                    </Banner>
+                  </Fade>
+                </Link>
+              )
+            }
+          })}
+          <ProjectLast>
+            <Link to="/Projects">
+              <Button
+                style={{
+                  alignItems: 'center',
+                  backgroundColor: '#288a8a',
+                  border: 'none',
+                  borderRadius: '5px',
+                  color: 'black',
+                  cursor: 'grab',
+                  display: 'flex',
+                  fontWeight: 'bold',
+                  height: '50px',
+                  justifyContent: 'center',
+                  marginTop: '20px',
+                  padding: '3px 10px',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  width: '150px',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '18px',
+                    fontWeight: 'normal',
+                    marginRight: '5px',
+                  }}
+                >
+                  Read More
+                </span>
+                <IoArrowForwardOutline size={20} />
+              </Button>
+            </Link>
+          </ProjectLast>
+        </Body>
+        {/* {theme.name === 'dark' ? (
           <ThinkerImage src={Thinker} alt="thinker" />
         ) : (
           <ThinkerImage src={ThinkerLight} alt="thinker light" />
-        )}
-      </Page> */}
+        )} */}
+      </Page>
       {/* </ScrollContainer> */}
     </React.Fragment>
   )

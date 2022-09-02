@@ -21,11 +21,9 @@ const ErrorMessage = styled.span`
 const PostPage = () => {
   let { slug } = useParams()
 
-  const { loading, error, data } = useQuery(
-    GET_POST_BY_SLUG,
-    { variables: { slug } },
-    { fetchPolicy: 'no-cache' }
-  )
+  const { loading, error, data } = useQuery(GET_POST_BY_SLUG, {
+    variables: { slug },
+  })
 
   if (loading)
     return (

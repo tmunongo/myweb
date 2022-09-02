@@ -55,7 +55,7 @@ ${normalize}
   .postList:focus {
     background-color: ${({ theme }) => theme.colors.wifeBeater};
     border-radius: 0.375rem;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 3px 3px 5px black, -3px -3px 5px black;
     z-index: 35;
     transition: all 0.5s;
   }

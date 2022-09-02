@@ -137,7 +137,10 @@ const Header = () => {
             <Link to="/about">About</Link>
           </ListItem>
           <ListItem className="navItem">
-            <Link to="/writings">Writings</Link>
+            <Link to="/writings">Blog</Link>
+          </ListItem>
+          <ListItem className="navItem">
+            <Link to="/tutorials">Tutorials</Link>
           </ListItem>
           <ListItem className="navItem">
             <Link to="/projects">Projects</Link>
