@@ -48,7 +48,7 @@ const LogoText = styled.h1`
 
 const Nav = styled.nav`
   height: 72px;
-  padding: 0px 20px 0px 0px;
+  padding: 0px 0px;
 
   @media (max-width: 960px) {
     display: none;
