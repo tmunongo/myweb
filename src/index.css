@@ -127,3 +127,9 @@ body {
   visibility: hidden;
   z-index: 2;
 }
+
+@media screen and (max-width: 980px) {
+  .aboutLink {
+    display: none;
+  }
+}

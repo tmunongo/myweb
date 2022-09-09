@@ -82,7 +82,7 @@ const Me = styled.img`
   margin: 10px 0px 10px 0px;
   padding-bottom: 10px;
   width: 40%;
-  @media (max-width: 700px) {
+  @media (max-width: 980px) {
     grid-row-start: start / start;
     grid-column: first / sixth;
     height: 200px;
@@ -154,7 +154,7 @@ const About = () => {
           gridColumn: "first / first",
         }}
       >
-        <AiFillGithub size={60} />
+        <AiFillGithub size={60} className="aboutLink" />
       </Link>
       <Link
         href="https://twitter.com/edtha3rd"
@@ -165,7 +165,7 @@ const About = () => {
           justifyItems: "right",
         }}
       >
-        <AiFillTwitterCircle size={80} />
+        <AiFillTwitterCircle size={80} className="aboutLink" />
       </Link>
       <Me src={Avatar} alt="my-avatar" />
       <Link
@@ -177,7 +177,7 @@ const About = () => {
           justifyItems: "left",
         }}
       >
-        <AiFillInstagram size={80} />
+        <AiFillInstagram size={80} className="aboutLink" />
       </Link>
       <Link
         href="https://thoughtrealm.medium.com"
@@ -188,7 +188,7 @@ const About = () => {
           gridColumn: "fifth / fifth",
         }}
       >
-        <AiFillMediumCircle size={60} />
+        <AiFillMediumCircle size={60} className="aboutLink" />
       </Link>
       <Body>
         <Text style={{ fontSize: 18 }}>
