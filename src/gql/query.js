@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
 const GET_POSTS = gql`
   query PostFeed($cursor: String) {
@@ -26,7 +26,7 @@ const GET_POSTS = gql`
       }
     }
   }
-`
+`;
 
 const GET_POST = gql`
   query post($id: ID!) {
@@ -49,7 +49,7 @@ const GET_POST = gql`
       }
     }
   }
-`
+`;
 
 const GET_POST_BY_SLUG = gql`
   query postBySlug($slug: String!) {
@@ -72,12 +72,40 @@ const GET_POST_BY_SLUG = gql`
       }
     }
   }
-`
+`;
+
+const GET_POSTS_BY_TAG = gql`
+  query PostsByTag($tag: String!) {
+    postsByTag(tag: $tag) {
+      title
+      id
+      slug
+      blurb
+      caption
+      category
+      content
+      author {
+        fullname
+        id
+        username
+      }
+      coverUrl
+      createdAt
+      updatedAt
+    }
+  }
+`;
 
 const IS_LOGGED_IN = gql`
   {
     isLoggedIn @client
   }
-`
+`;
 
-export { GET_POSTS, GET_POST, GET_POST_BY_SLUG, IS_LOGGED_IN }
+export {
+  GET_POSTS,
+  GET_POST,
+  GET_POST_BY_SLUG,
+  GET_POSTS_BY_TAG,
+  IS_LOGGED_IN,
+};

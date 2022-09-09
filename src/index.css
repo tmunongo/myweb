@@ -6,16 +6,16 @@
 body {
   margin: 0;
   /* min-height: 100vh; */
-  font-family: 'montserrat', sans-serif;
+  font-family: "montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* fonts */
 @font-face {
-  font-family: 'AstroSpace';
+  font-family: "AstroSpace";
   src: local(AstroSpace),
-    url('/src/assets/a-astro-space-font/AstroSpace.ttf') format('truetype');
+    url("/src/assets/a-astro-space-font/AstroSpace.ttf") format("truetype");
 }
 
 .headerName {
@@ -44,7 +44,7 @@ body {
 }
 
 .navItem {
-  font-family: 'AstroSpace';
+  font-family: "AstroSpace";
 }
 
 .scroll-arrow {
