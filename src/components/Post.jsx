@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
+import React, { useEffect } from "react";
+import ReactMarkdown from "react-markdown";
 
-import { Fade } from 'react-reveal'
+import { Fade } from "react-reveal";
 import {
   EmailIcon,
   EmailShareButton,
@@ -17,8 +17,8 @@ import {
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-} from 'react-share'
-import styled from 'styled-components'
+} from "react-share";
+import styled from "styled-components";
 
 //import query
 //import logged in user UI components
@@ -38,20 +38,20 @@ const StyledPost = styled.article`
   @media (max-width: 768px) {
     grid-template-columns: [first] calc(5%) [second] calc(90%) [third] calc(5%);
   }
-`
+`;
 //post metadata
 const MetaData = styled.div`
   @media (min-width: 700px) {
     align-items: top;
   }
-  border: 2px solid ${({ theme }) => (theme.dark ? 'black' : '#7fe3d8')};
+  border: 2px solid ${({ theme }) => (theme.dark ? "black" : "#7fe3d8")};
   border-radius: 0.375rem;
   grid-column-start: second;
   grid-column-end: third;
   display: grid;
   grid-template-columns: [first] calc(15%) [second] 85% [end];
   grid-template-rows: [first] 33% [second] 33% [third] 33% [rowend];
-`
+`;
 //add space b/w avatar and metaInfo
 const MetaInfo = styled.div`
   grid-column-start: first;
@@ -62,18 +62,18 @@ const MetaInfo = styled.div`
   @media (max-width: 700px) {
     padding: 0px 10px 10px 20px;
   }
-`
+`;
 
 const Name = styled.h3`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   margin: 5px 0px 5px 0px;
   text-transform: capitalize;
-`
+`;
 
 const Body = styled.div`
   color: #b4b4b4;
-  border-bottom: 2px solid ${({ theme }) => (theme.dark ? 'black' : '#7fe3d8')};
+  border-bottom: 2px solid ${({ theme }) => (theme.dark ? "black" : "#7fe3d8")};
   grid-column-start: second;
   grid-column-end: third;
   margin-top: 0;
@@ -81,7 +81,7 @@ const Body = styled.div`
     margin: 0px 0px 10px 0px;
     padding-bottom: 5px;
   }
-`
+`;
 
 const Caption = styled.span`
   align-items: center;
@@ -89,17 +89,17 @@ const Caption = styled.span`
   flex: 0;
   justify-content: center;
   color: grey;
-`
+`;
 
 const Image = styled.img`
   max-width: calc(100%);
   align-items: center;
-`
+`;
 
 const Share = styled.div`
   display: flex;
   justify-content: space-evenly;
-`
+`;
 
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.text};
@@ -107,7 +107,7 @@ const Title = styled.h2`
   grid-column-start: second;
   grid-column-end: third;
   margin-bottom: 0px;
-`
+`;
 
 const TimeStamp = styled.h3`
   margin: 0px 0px 10px 0px;
@@ -117,45 +117,61 @@ const TimeStamp = styled.h3`
   @media (max-width: 700px) {
     width: calc(100%);
   }
-`
+`;
 
 function readTime(text) {
-  const wpm = 225
-  const words = text.trim().split(/\s+/).length
-  const time = Math.ceil(words / wpm)
-  return time
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  return time;
 }
 
 const Post = ({ post }) => {
   useEffect(() => {
-    document.title = `${post.title} - Tawanda Munongo`
-  })
+    document.title = `${post.title} - Tawanda Munongo`;
+  });
   var options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-  let date = new Date(post.createdAt).toLocaleDateString(undefined, options)
-  let txt = post.content
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  let date = new Date(post.createdAt).toLocaleDateString(undefined, options);
+  let txt = post.content;
   function store() {
-    var txttostore = txt.replace(/\n/g, '\n\n')
+    var txttostore = txt.replace(/\n/g, "\n\n");
 
-    return txttostore
+    return txttostore;
   }
   return (
     <StyledPost>
       <Title className="welcome">{post.title}</Title> <br />
       <Body>
         <TimeStamp>
-          <span style={{ color: '#8EE0F5' }}>posted</span>({date}),{' '}
-          <span style={{ color: '#8EE0F5' }}>readTime</span>(
+          <span style={{ color: "#8EE0F5" }}>posted</span>({date}),{" "}
+          <span style={{ color: "#8EE0F5" }}>readTime</span>(
           {readTime(post.content)} min)
         </TimeStamp>
         <Image src={post.coverUrl} alt={post.title} />
         <Caption>{post.caption}</Caption>
         <Fade bottom>
-          <ReactMarkdown className="blogContent" style={{ fontSize: '1rem' }}>
+          <ReactMarkdown
+            className="blogContent"
+            style={{ fontSize: "1rem" }}
+            components={{
+              // Map `h1` (`# heading`) to use `h2`s.
+              img: ({ node, ...props }) => (
+                <img
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "80%",
+                  }}
+                  {...props}
+                />
+              ),
+            }}
+          >
             {store()}
           </ReactMarkdown>
         </Fade>
@@ -171,7 +187,7 @@ const Post = ({ post }) => {
             url={`https://tawandamunongo.tech/#/post/${post.slug}`}
             quote={post.blurb}
           >
-            {' '}
+            {" "}
             <FacebookIcon size={32} round={true} />
           </FacebookShareButton>
           <LinkedinShareButton
@@ -192,7 +208,7 @@ const Post = ({ post }) => {
           </TelegramShareButton>
           <TwitterShareButton
             hashtags={[`#${post.category}`]}
-            related={'@edtha3rd'}
+            related={"@edtha3rd"}
             title={`${post.title}`}
             url={`https://tawandamunongo.tech/#/post/${post.slug}`}
           >
@@ -218,14 +234,14 @@ const Post = ({ post }) => {
               <strong
                 style={{
                   fontSize: 10,
-                  color: 'purple',
-                  fontStyle: 'oblique',
+                  color: "purple",
+                  fontStyle: "oblique",
                 }}
               >
-                {' '}
-                AUTHOR{' '}
+                {" "}
+                AUTHOR{" "}
               </strong>
-            </Name>{' '}
+            </Name>{" "}
             Seeking truth, wisdom, and, above all, enlightenment | Lover of
             fiction | Computer Scientist | My short fiction has been published
             in Ab Terra Flash Fiction, The Rush Magazine, and Literary Heist
@@ -238,7 +254,7 @@ const Post = ({ post }) => {
         </MetaInfo>
       </MetaData>
     </StyledPost>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
