@@ -218,11 +218,11 @@ const About = () => {
           For any web design work, don't hesitate to get in touch with me!
         </Text>
         <div style={{ margin: "25px 0px" }}>
-          <Button href="https://www.dropbox.com/s/v2ektkg2nbyk777/Tawanda%20Munongo%20Resume.pdf?dl=0">
-            My Resume
+          <Button href="https://www.dropbox.com/s/x5b45bycvni412c/Tawanda_Eddie%20Junior%20Munongo_Resume.pdf?dl=0">
+            Resume
           </Button>
-          <Button href="https://www.dropbox.com/s/er33ewam4dm3lfv/Tawanda%20Munongo%20Lebenslauf.pdf?dl=0">
-            Mein Lebenslauf
+          <Button href="https://www.dropbox.com/s/399u3g47cm59g1l/Tawanda%20Eddie%20Junior%20Munongo%20CV%20Europass.pdf?dl=0">
+            Europass CV
           </Button>
         </div>
       </Body>
