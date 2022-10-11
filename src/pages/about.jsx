@@ -4,22 +4,22 @@ import {
   AiFillGithub,
   AiFillInstagram,
   AiFillMediumCircle,
+  AiFillTool,
   AiFillTwitterCircle,
 } from "react-icons/ai";
 import styled from "styled-components";
+import Skill from "../components/Skill";
+import { skillData } from "../data/skills";
 import Avatar from "../img/profilepic.jpg";
 
 const Body = styled.div`
-  align-items: flex-end;
+  align-items: center;
   color: #b4b4b4;
-  grid-row: 2;
-  grid-column: 2;
-  grid-row: one / one;
-  grid-column: first / sixth;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 0px 10px 0px 10px;
   @media (max-width: 700px) {
-    grid-row: one / one;
-    grid-column: start / end;
     padding-top: 15px;
   }
 `;
@@ -48,10 +48,28 @@ const ContactForm = styled.div`
   width: 100%;
 `;
 
+const Content = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  width: 85%;
+`;
+
 const FormLabel = styled.label`
   font-size: 18px;
   grid-column: second / second;
   height: auto;
+`;
+
+const Head = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Icon = styled.div`
+  height: 100%;
+  width: 15%;
 `;
 
 const Input = styled.input`
@@ -68,6 +86,14 @@ const Item = styled.img`
     display: none;
   }
 `;
+
+const Line = styled.div`
+  background-color: black;
+  height: 3px;
+  margin: 8px 0px;
+  width: 80%;
+`;
+
 const Link = styled.a`
   grid-row: start / one;
 `;
@@ -75,16 +101,12 @@ const Link = styled.a`
 const Me = styled.img`
   align-self: center;
   border-radius: 50%;
-  grid-row: start / one;
-  grid-column: third / third;
   height: auto;
   justify-self: center;
   margin: 10px 0px 10px 0px;
   padding-bottom: 10px;
-  width: 40%;
+  width: 15%;
   @media (max-width: 980px) {
-    grid-row-start: start / start;
-    grid-column: first / sixth;
     height: 200px;
     outline: groove #0077cc 2px;
     outline-offset: 5px;
@@ -94,11 +116,12 @@ const Me = styled.img`
   }
 `;
 const Page = styled.div`
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.secondary}; //#252522
   border-radius: 0.3rem;
-  display: grid;
-  grid-template-rows: [start] auto [one] auto [two] auto [end];
-  grid-template-columns: [start] 20% [first] 8% [second] 8% [third] 28% [fourth] 8% [fifth] 8% [sixth] 20% [end];
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 4% 8%;
   min-height: 100vh;
   padding-top: 10px;
@@ -107,9 +130,31 @@ const Page = styled.div`
   }
 `;
 
+const Profile = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+const Section = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`;
+
+const Skills = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+`;
+
 const Text = styled.span`
   color: ${({ theme }) => theme.colors.text};
   height: 100%;
+  margin: 5px 15%;
+  text-align: center;
 `;
 
 const About = () => {
@@ -145,53 +190,92 @@ const About = () => {
 
   return (
     <Page>
-      <Link
-        href="https://github.com/edtha3rd"
-        style={{
-          alignSelf: "center",
-          display: "grid",
-          justifyItems: "end",
-          gridColumn: "first / first",
-        }}
-      >
-        <AiFillGithub size={60} className="aboutLink" />
-      </Link>
-      <Link
-        href="https://twitter.com/edtha3rd"
-        style={{
-          alignSelf: "center",
-          display: "grid",
-          gridColumn: "second / second",
-          justifyItems: "right",
-        }}
-      >
-        <AiFillTwitterCircle size={80} className="aboutLink" />
-      </Link>
-      <Me src={Avatar} alt="my-avatar" />
-      <Link
-        href="https://instagram.com/ej_ta1da"
-        style={{
-          alignSelf: "center",
-          display: "grid",
-          gridColumn: "fourth / fourth",
-          justifyItems: "left",
-        }}
-      >
-        <AiFillInstagram size={80} className="aboutLink" />
-      </Link>
-      <Link
-        href="https://thoughtrealm.medium.com"
-        style={{
-          alignSelf: "center",
-          borderRadius: 30,
-          display: "grid",
-          gridColumn: "fifth / fifth",
-        }}
-      >
-        <AiFillMediumCircle size={60} className="aboutLink" />
-      </Link>
-      <Body>
-        <Text style={{ fontSize: 18 }}>
+      <Head>
+        <Link
+          href="https://github.com/edtha3rd"
+          style={{
+            alignSelf: "center",
+            display: "grid",
+            justifyItems: "end",
+            gridColumn: "first / first",
+          }}
+        >
+          <AiFillGithub size={60} className="aboutLink" />
+        </Link>
+        <Link
+          href="https://twitter.com/edtha3rd"
+          style={{
+            alignSelf: "center",
+            display: "grid",
+            gridColumn: "second / second",
+            justifyItems: "right",
+          }}
+        >
+          <AiFillTwitterCircle size={80} className="aboutLink" />
+        </Link>
+        <Me src={Avatar} alt="my-avatar" />
+        <Link
+          href="https://instagram.com/ej_ta1da"
+          style={{
+            alignSelf: "center",
+            display: "grid",
+            gridColumn: "fourth / fourth",
+            justifyItems: "left",
+          }}
+        >
+          <AiFillInstagram size={80} className="aboutLink" />
+        </Link>
+        <Link
+          href="https://thoughtrealm.medium.com"
+          style={{
+            alignSelf: "center",
+            borderRadius: 30,
+            display: "grid",
+            gridColumn: "fifth / fifth",
+          }}
+        >
+          <AiFillMediumCircle size={60} className="aboutLink" />
+        </Link>
+      </Head>
+      <Line />
+      <Section>
+        <Profile>
+          <Text style={{ fontSize: 18 }}>
+            I’m a software engineer who loves building full-stack applications
+            that harness the power of cutting-edge web and cloud technologies.
+            My latest web app allows culinary enthusiasts to catalogue and
+            manage their recipes through a fast and responsive web platform that
+            uses Google OAuth 2.0 for user authentication. I have worked
+            primarily with object-oriented programming languages, harnessing
+            their power to real world objects. I especially enjoy exploring the
+            different use cases from different web technologies, whether its
+            Static-Site Generation or Server-Side Render to create optimal
+            digital experiences that are a joy to use and resource-light. I also
+            run a blog where I share my experiences with technology, exploring
+            thoughts and ideas on how we can leverage new technologies in our
+            personal and professional lives.
+          </Text>
+        </Profile>
+      </Section>
+      <Line />
+      <Section>
+        <Skills>
+          <Icon>
+            <AiFillTool size={30} />
+          </Icon>
+          <Content>
+            {skillData.map((item, index) => {
+              return <Skill key={index} data={item} />;
+            })}
+          </Content>
+        </Skills>
+      </Section>
+
+      {/* <Body>
+          
+      </Body> */}
+
+      {/* <Text style={{ fontSize: 18 }}>
           Hello! I'm <strong>Tawanda Munongo </strong>. I'm passionate about
           technology. I was drawn to front end design because I know from
           experience the difference an easy and intuitive user interface can
@@ -224,8 +308,7 @@ const About = () => {
           <Button href="https://www.dropbox.com/s/399u3g47cm59g1l/Tawanda%20Eddie%20Junior%20Munongo%20CV%20Europass.pdf?dl=0">
             Europass CV
           </Button>
-        </div>
-      </Body>
+        </div> */}
 
       {/* <ContactForm>
         <form ref={form} onSubmit={sendEmail}>
