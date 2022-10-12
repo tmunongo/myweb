@@ -7,8 +7,13 @@ import {
   AiFillTool,
   AiFillTwitterCircle,
 } from "react-icons/ai";
+import { FaBookOpen, FaLightbulb } from "react-icons/fa";
 import styled from "styled-components";
+import Interest from "../components/Interest";
+import Publication from "../components/Publication";
 import Skill from "../components/Skill";
+import { interestsData } from "../data/interests";
+import { publicationData } from "../data/publications";
 import { skillData } from "../data/skills";
 import Avatar from "../img/profilepic.jpg";
 
@@ -51,8 +56,16 @@ const ContactForm = styled.div`
 const Content = styled.div`
   align-items: center;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-around;
   width: 85%;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  @media (max-width: 300px) {
+    justify-content: center;
+  }
 `;
 
 const FormLabel = styled.label`
@@ -68,12 +81,29 @@ const Head = styled.div`
 `;
 
 const Icon = styled.div`
+  align-items: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
   width: 15%;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Input = styled.input`
   grid-column: third / third;
+`;
+
+const Interests = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  min-width: 85%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Item = styled.img`
@@ -140,6 +170,8 @@ const Section = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  margin: 4px;
+  width: 100%;
 `;
 
 const Skills = styled.div`
@@ -266,7 +298,7 @@ const About = () => {
       <Section>
         <Skills>
           <Icon>
-            <AiFillTool size={30} />
+            <AiFillTool size={60} />
           </Icon>
           <Content>
             {skillData.map((item, index) => {
@@ -275,7 +307,36 @@ const About = () => {
           </Content>
         </Skills>
       </Section>
+      <Line />
+      <Section>
+        <Skills>
+          <Icon>
+            <FaLightbulb size={60} />
+          </Icon>
+          <Interests>
+            {interestsData.map((item, index) => {
+              return <Interest key={index} data={item} />;
+            })}
+          </Interests>
+        </Skills>
+      </Section>
 
+      <Line />
+
+      <Section>
+        <Skills>
+          <Icon>
+            <FaBookOpen size={60} />
+          </Icon>
+          <Content>
+            {publicationData.map((item, index) => {
+              return <Publication key={index} data={item} />;
+            })}
+          </Content>
+        </Skills>
+      </Section>
+
+      <Line />
       {/* <Body>
           
       </Body> */}
