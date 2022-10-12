@@ -121,7 +121,7 @@ const Page = styled.div`
   border-radius: 0.3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 4% 8%;
   min-height: 100vh;
   padding-top: 10px;
@@ -152,9 +152,14 @@ const Skills = styled.div`
 
 const Text = styled.span`
   color: ${({ theme }) => theme.colors.text};
+  font-size: 18px;
   height: 100%;
   margin: 5px 15%;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    margin: 5px 4px;
+  }
 `;
 
 const About = () => {
@@ -240,7 +245,7 @@ const About = () => {
       <Line />
       <Section>
         <Profile>
-          <Text style={{ fontSize: 18 }}>
+          <Text>
             I’m a software engineer who loves building full-stack applications
             that harness the power of cutting-edge web and cloud technologies.
             My latest web app allows culinary enthusiasts to catalogue and
