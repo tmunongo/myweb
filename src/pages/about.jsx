@@ -278,19 +278,19 @@ const About = () => {
       <Section>
         <Profile>
           <Text>
-            I’m a software engineer who loves building full-stack applications
-            that harness the power of cutting-edge web and cloud technologies.
-            My latest web app allows culinary enthusiasts to catalogue and
-            manage their recipes through a fast and responsive web platform that
-            uses Google OAuth 2.0 for user authentication. I have worked
-            primarily with object-oriented programming languages, harnessing
-            their power to real world objects. I especially enjoy exploring the
-            different use cases from different web technologies, whether its
-            Static-Site Generation or Server-Side Render to create optimal
-            digital experiences that are a joy to use and resource-light. I also
-            run a blog where I share my experiences with technology, exploring
-            thoughts and ideas on how we can leverage new technologies in our
-            personal and professional lives.
+            Tawanda, here! I’m a software engineer who loves building full-stack
+            applications that harness the power of cutting-edge web and cloud
+            technologies. My latest web app allows culinary enthusiasts to
+            catalogue and manage their recipes through a fast and responsive web
+            platform that uses Google OAuth 2.0 for user authentication. I have
+            worked primarily with object-oriented programming languages,
+            harnessing their power to real world objects. I especially enjoy
+            exploring the different use cases from different web technologies,
+            whether its Static-Site Generation or Server-Side Render to create
+            optimal digital experiences that are a joy to use and
+            resource-light. I also run a blog where I share my experiences with
+            technology, exploring thoughts and ideas on how we can leverage new
+            technologies in our personal and professional lives.
           </Text>
         </Profile>
       </Section>
@@ -341,22 +341,8 @@ const About = () => {
           
       </Body> */}
 
-      {/* <Text style={{ fontSize: 18 }}>
-          Hello! I'm <strong>Tawanda Munongo </strong>. I'm passionate about
-          technology. I was drawn to front end design because I know from
-          experience the difference an easy and intuitive user interface can
-          make. The most widely used digital services are popular because using
-          them is an enjoyable experience. My mission is to make the benefits of
-          cutting edge technologies accessible by working on products that are
-          as useful as they are easy on the eyes. <br></br>
-          <br></br>
-          When I'm not coding, I write. I try to be equal parts informative and
-          contemplative. I write to keep up with development in the world of
-          technology, to analyse and understand tech trends, and to help the
-          billions of tech-curious people understand where our lives are headed.{" "}
-          <br />
-          <br /> My fiction has been published online in a number of magazines
-          including{" "}
+      {/* 
+         
           <a href="http://bmpvoices.com/issue-3-robots/">
             Ab Terra Flash Fiction{" "}
           </a>{" "}

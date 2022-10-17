@@ -1,9 +1,9 @@
 export const publicationData = [
   {
     id: 1,
-    name: "I'm a Doctor",
+    name: "What Are We",
     pub: "Rush Magazine",
-    link: "https://www.rushmagazine.org/",
+    link: "https://www.rushmagazine.org/tawanda-eddie-munongo-fiction",
   },
   {
     id: 2,
@@ -13,9 +13,9 @@ export const publicationData = [
   },
   {
     id: 3,
-    name: "I'm a Doctor",
+    name: "Whilst on Vacation",
     pub: "Literary Heist",
-    link: "http://bmpvoices.com/issue-3-robots/",
+    link: "https://www.literaryheist.com/short-stories/whilst-on-vacation/",
   },
   {
     id: 4,
