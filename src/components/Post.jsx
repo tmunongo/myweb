@@ -158,7 +158,7 @@ const Post = ({ post }) => {
           <ReactMarkdown
             className="blogContent"
             style={{
-              fontSize: "1.5rem",
+              fontSize: "1.2rem",
             }}
             components={{
               // Map `h1` (`# heading`) to use `h2`s.
