@@ -610,7 +610,7 @@ const Home = () => {
             }
           })}
           <ProjectLast>
-            <Link to="/Projects">
+            <Link to="/writings">
               <Button
                 style={{
                   alignItems: "center",
