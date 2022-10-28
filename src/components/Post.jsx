@@ -157,7 +157,9 @@ const Post = ({ post }) => {
         <Fade bottom>
           <ReactMarkdown
             className="blogContent"
-            style={{ fontSize: "1rem" }}
+            style={{
+              fontSize: "1.5rem",
+            }}
             components={{
               // Map `h1` (`# heading`) to use `h2`s.
               img: ({ node, ...props }) => (
