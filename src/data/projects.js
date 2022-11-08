@@ -62,7 +62,7 @@ export const projects = [
   },
   {
     id: 7,
-    title: "Hair By X",
+    title: "Hair By A",
     topics: ["GatsbyJS", "Styled Components"],
     details:
       "A static site landing page designed and built for a fashion brand selling hair pieces.",
