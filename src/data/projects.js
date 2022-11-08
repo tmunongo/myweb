@@ -2,7 +2,7 @@ export const projects = [
   {
     id: 1,
     title: "Let's Feast",
-    topics: ["ReactJS", "ExpressJS", "TailWind CSS", "Prisma"],
+    topics: ["React", "Express", "Prisma"],
     details:
       "Let's Feast is a web app designed with cooking enthusiasts and professionals in mind. It allows users to catalogue and organise their recipes. The web app leverages Google OAuth 2.0 for quick and easy authentication flows through Passport JS. Users can take advantage of Markdown to format their recipes.",
     preview:
