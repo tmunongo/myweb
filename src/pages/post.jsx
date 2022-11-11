@@ -1,12 +1,12 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 //local imports
 import Loading from "../components/Loading";
 import Post from "../components/Post";
+import SEO from "../components/SEO";
 import { GET_POST_BY_SLUG } from "../gql/query";
 
 const Error = styled.div`
@@ -50,16 +50,7 @@ const PostPage = () => {
 
   return (
     <div>
-      <Helmet>
-        <meta name="og:title" content={data.postBySlug.title} />
-        <meta name="og:description" content={data.postBySlug.blurb} />
-        <meta name="og:image" content={data.postBySlug.coverURL} />
-        <meta name="twitter:card" content={data.postBySlug.coverURL} />
-        <meta name="twitter:site" content="@edtha3rd" />
-        <meta name="twitter:title" content={data.postBySlug.title} />
-        <meta name="twitter:description" content={data.postBySlug.blurb} />
-        <meta name="twitter:image" content={data.postBySlug.coverURL} />
-      </Helmet>
+      <SEO post={data.postBySlug} />
       <Post post={data.postBySlug} />
     </div>
   );
