@@ -176,7 +176,9 @@ const Post = ({ post }) => {
               pre: ({ node, ...props }) => (
                 <pre
                   style={{
-                    background: "#CCDBDC",
+                    background: "#CCCCCC",
+                    padding: "4px",
+                    textAlign: "center",
                   }}
                   {...props}
                 ></pre>
