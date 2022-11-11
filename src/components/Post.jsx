@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import { Fade } from "react-reveal";
 import {
@@ -167,6 +168,7 @@ const Post = ({ post }) => {
                   style={{
                     marginLeft: "auto",
                     marginRight: "auto",
+                    textAlign: "center",
                     width: "80%",
                   }}
                   alt=""
@@ -176,13 +178,26 @@ const Post = ({ post }) => {
               pre: ({ node, ...props }) => (
                 <pre
                   style={{
-                    background: "#CCCCCC",
+                    background: "#A5A5A5",
                     padding: "4px",
-                    textAlign: "center",
                   }}
                   {...props}
                 ></pre>
               ),
+              code({ node, inline, className, children, ...props }) {
+                const match = /language-(\w+)/.exec(className || "");
+                return !inline && match ? (
+                  <SyntaxHighlighter
+                    children={String(children).replace(/\n$/, "")}
+                    language={match[1]}
+                    {...props}
+                  />
+                ) : (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
             }}
           >
             {store()}
