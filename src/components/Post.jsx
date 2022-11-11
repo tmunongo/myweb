@@ -195,8 +195,8 @@ const Post = ({ post }) => {
                   <code
                     className={className}
                     style={{
-                      background: `${({ theme }) => theme.colors.text}`,
-                      color: `${({ theme }) => theme.colors.background}`,
+                      background: "rgb(245, 242, 240)",
+                      color: "black",
                       borderRadius: "0.375rem",
                       padding: "1px",
                     }}
