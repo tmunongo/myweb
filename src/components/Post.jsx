@@ -178,11 +178,20 @@ const Post = ({ post }) => {
               pre: ({ node, ...props }) => (
                 <pre
                   style={{
-                    background: "#A5A5A5",
                     padding: "4px",
                   }}
                   {...props}
                 ></pre>
+              ),
+              h3: ({ node, ...props }) => (
+                <h3
+                  style={{
+                    fontWeight: "bold",
+                  }}
+                  {...props}
+                >
+                  {node}
+                </h3>
               ),
               code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || "");
@@ -193,7 +202,11 @@ const Post = ({ post }) => {
                     {...props}
                   />
                 ) : (
-                  <code className={className} {...props}>
+                  <code
+                    className={className}
+                    style={{ background: "#FAFAFA", color: "black" }}
+                    {...props}
+                  >
                     {children}
                   </code>
                 );
