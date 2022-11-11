@@ -49,6 +49,16 @@ const PostPage = () => {
 
   return (
     <div>
+      <head>
+        <meta name="og:title" content={data.postBySlug.title} />
+        <meta name="description" content={data.postBySlug.blurb} />
+        <meta name="og:image" content={data.postBySlug.coverURL} />
+        {/* <meta name="twitter:card" content={data.postBySlug.coverURL} />
+        <meta name="twitter:site" content="@edtha3rd" />
+        <meta name="twitter:title" content={data.postBySlug.title} />
+        <meta name="twitter:description" content={data.postBySlug.blurb} />
+        <meta name="twitter:image" content={data.postBySlug.coverURL} /> */}
+      </head>
       <Post post={data.postBySlug} />
     </div>
   );
