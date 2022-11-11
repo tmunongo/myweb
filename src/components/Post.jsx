@@ -194,7 +194,12 @@ const Post = ({ post }) => {
                 ) : (
                   <code
                     className={className}
-                    style={{ background: "#FAFAFA", color: "black" }}
+                    style={{
+                      background: `${({ theme }) => theme.colors.text}`,
+                      color: `${({ theme }) => theme.colors.background}`,
+                      borderRadius: "0.375rem",
+                      padding: "1px",
+                    }}
                     {...props}
                   >
                     {children}
