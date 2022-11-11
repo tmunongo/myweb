@@ -166,9 +166,9 @@ const Post = ({ post }) => {
               img: ({ node, ...props }) => (
                 <img
                   style={{
+                    display: "block",
                     marginLeft: "auto",
                     marginRight: "auto",
-                    textAlign: "center",
                     width: "80%",
                   }}
                   alt=""
