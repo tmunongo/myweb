@@ -183,16 +183,6 @@ const Post = ({ post }) => {
                   {...props}
                 ></pre>
               ),
-              h3: ({ node, ...props }) => (
-                <h3
-                  style={{
-                    fontWeight: "bold",
-                  }}
-                  {...props}
-                >
-                  {node}
-                </h3>
-              ),
               code({ node, inline, className, children, ...props }) {
                 const match = /language-(\w+)/.exec(className || "");
                 return !inline && match ? (
