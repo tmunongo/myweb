@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -49,16 +50,16 @@ const PostPage = () => {
 
   return (
     <div>
-      <head>
+      <Helmet>
         <meta name="og:title" content={data.postBySlug.title} />
-        <meta name="description" content={data.postBySlug.blurb} />
+        <meta name="og:description" content={data.postBySlug.blurb} />
         <meta name="og:image" content={data.postBySlug.coverURL} />
-        {/* <meta name="twitter:card" content={data.postBySlug.coverURL} />
+        <meta name="twitter:card" content={data.postBySlug.coverURL} />
         <meta name="twitter:site" content="@edtha3rd" />
         <meta name="twitter:title" content={data.postBySlug.title} />
         <meta name="twitter:description" content={data.postBySlug.blurb} />
-        <meta name="twitter:image" content={data.postBySlug.coverURL} /> */}
-      </head>
+        <meta name="twitter:image" content={data.postBySlug.coverURL} />
+      </Helmet>
       <Post post={data.postBySlug} />
     </div>
   );

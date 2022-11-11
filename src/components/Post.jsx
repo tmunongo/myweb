@@ -76,7 +76,7 @@ const Body = styled.div`
   border-bottom: 2px solid ${({ theme }) => (theme.dark ? "black" : "#7fe3d8")};
   grid-column-start: second;
   grid-column-end: third;
-  margin-top: 0;
+  margin: 0px 10px;
   @media (min-width: 700px) {
     margin: 0px 0px 10px 0px;
     padding-bottom: 5px;
