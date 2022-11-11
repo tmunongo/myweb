@@ -165,12 +165,21 @@ const Post = ({ post }) => {
               img: ({ node, ...props }) => (
                 <img
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
+                    marginLeft: "auto",
+                    marginRight: "auto",
                     width: "80%",
                   }}
+                  alt=""
                   {...props}
                 />
+              ),
+              pre: ({ node, ...props }) => (
+                <pre
+                  style={{
+                    background: "#CCDBDC",
+                  }}
+                  {...props}
+                ></pre>
               ),
             }}
           >
