@@ -1,7 +1,7 @@
 # NOW RETIRED. SERVED ME WELL, THOUGH :)
 
-## Intro
-This is the code for my portfolio website and blog
+## Info
+This is the code for my portfolio website and blog. Heroku deleted all free dynos, so the backend is no longer functional. 
 
 ## Live
 
